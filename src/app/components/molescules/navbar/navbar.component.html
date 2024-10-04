@@ -1,5 +1,11 @@
-<ul class="navbar">
-    <app-item url="/home" title="Electrodomesticos"></app-item>
-    <app-item url="/home" title="Hogar"></app-item>
-    <app-item url="/home" title="Mascotas"></app-item>
-</ul>
+<div class="navbar-container">
+    <button class="menu-toggle" (click)="toggleMenu()" aria-label="Abrir menú">
+        &#9776;
+    </button>
+    <ul class="navbar" [class.active]="isMenuOpen">
+        <button class="close-menu" (click)="toggleMenu()" aria-label="Cerrar menú">&times;</button> <!-- Botón de cierre -->
+        <menu-item url="/marcas" title="Marcas"></menu-item>
+        <menu-item url="/home" title="Productos"></menu-item>
+        <menu-item url="/login" title="Ingresa"></menu-item>
+    </ul>
+</div>
