@@ -1,0 +1,21 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.form-container form {
+    width: 100%;
+    max-width: 300px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(12, 64, 206, 0.1);
+}
+
+app-input-button {
+    display: block;
+    margin-right: auto; 
+    margin-top: 2px; 
+    width: fit-content;
+}

@@ -1,0 +1,18 @@
+.category-item {
+    font-family: Poppins;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 19.4px;
+    text-align: left;
+    color: #080808;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    background-color: #ffffff;
+
+    &:hover {
+        background-color: darken(#9D3FE7, 10%);
+        color: #ffffff;
+    }
+}

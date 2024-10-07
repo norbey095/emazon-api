@@ -1,0 +1,23 @@
+.menu-item {
+  display: flex;
+  align-items: center;
+  margin: 25px 10px; 
+
+  .menu-link {
+    font-family: Poppins;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 19.4px;
+    text-align: left;
+    color: #080808;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+
+    &:hover {
+        background-color: darken(#ffffff, 10%);
+        color: #0F0BAB;
+    }
+  }
+}
