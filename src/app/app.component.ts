@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { DesignSystemModule } from './design-system/design-system.module';
+import { CoreModule } from './core/components/core.module';  
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  standalone: true,
+  imports: [RouterOutlet, DesignSystemModule, CoreModule],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'emazon-app';
-  menuItems = [
-    { url: '#home', title: 'Inicio' },
-    { url: '#about', title: 'Acerca de' },
-    { url: '#services', title: 'Servicios' },
-    { url: '#contact', title: 'Contacto' }
-  ];
+  title = 'emazon';
 }
