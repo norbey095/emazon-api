@@ -2,7 +2,7 @@ import { Component, Input,ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-category-item',
-  templateUrl: './category-item.component.html',
+  templateUrl: 'category-item.component.html',
   styleUrls: ['category-item.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
