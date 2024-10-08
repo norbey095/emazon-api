@@ -12,7 +12,6 @@ export class CategoryCollapseComponent {
   categories: { id: number; name: string ; description: string }[] = [];
 
   constructor(private categoryService: CategoryService) {}
-
   
 
   toggleCategories() {
@@ -33,5 +32,12 @@ export class CategoryCollapseComponent {
         console.error('Error loading categories', error);
       },
     });
+  }
+
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.toggleCategories();
+    }
   }
 }
