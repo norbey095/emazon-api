@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
 <app-hero  [title]="title"></app-hero>
-<app-form></app-form>
+<app-alert  *ngIf="isSuccess" [message]="message"></app-alert>
+<app-form (formSubmit)="onFormSubmit($event)"></app-form>
 <app-footer></app-footer>

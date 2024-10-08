@@ -32,7 +32,7 @@ export class CategoryService {
 
   createCategories(name: string, description: string): Observable<ResponseSuccess[]> {
       const category = {id:null,name: name, description: description};
-      const registryUrl = `${this.apiUrl}/registry`;
+      const registryUrl = `${this.apiUrl}registry`;
   
       return this.http.post<ResponseSuccess[]>(registryUrl, category);
   }

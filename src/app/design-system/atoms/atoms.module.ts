@@ -1,5 +1,6 @@
 import { NgModule, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { CategoryItemComponent } from './components/category/category-item.component';
 import { CollapseToggleComponent } from './components/collapse/collapse-toggle.component';
@@ -8,6 +9,7 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { inputComponent } from './components/input/input.component';
 import { InputButtonComponent } from './components/input-button/input-button.component';
+import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,12 @@ import { InputButtonComponent } from './components/input-button/input-button.com
     MenuItemComponent,
     HeroComponent,
     inputComponent,
-    InputButtonComponent
+    InputButtonComponent,
+    ImageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     CategoryItemComponent,
@@ -29,7 +33,8 @@ import { InputButtonComponent } from './components/input-button/input-button.com
     MenuItemComponent,
     HeroComponent,
     inputComponent,
-    InputButtonComponent
+    InputButtonComponent,
+    ImageComponent
   ],
 })
 export class AtomsModule {}

@@ -1,29 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CoreModule } from 'src/app/core/components/core.module';
-import { DesignSystemModule } from 'src/app/design-system/design-system.module'; 
-import { CreateCategoryComponent } from './create-category.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: CreateCategoryComponent,
-  },
-];
+import { CreateCategoryRoutingModule } from './create-category-routing.module'; 
+import { DesignSystemModule } from 'src/app/design-system/design-system.module';
+import { CreateCategoryComponent } from './create-category.component';
 
 @NgModule({
-    declarations: [ 
-    CreateCategoryComponent
-   ],
-  imports: [
-    CoreModule,
-    CommonModule,
-    DesignSystemModule,
-    FormsModule,
-    RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule],
+  declarations: [CreateCategoryComponent],
+  imports: [CommonModule,
+    CreateCategoryRoutingModule,
+    DesignSystemModule],
 })
 export class CreateCategoryModule {}

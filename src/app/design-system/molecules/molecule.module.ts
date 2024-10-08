@@ -1,32 +1,34 @@
 import { NgModule, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
-import { CategoryCollapseComponent } from './category/category-collapse.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { AtomsModule } from '../atoms/atoms.module';
-import { HeaderComponent } from './header/header.component';
-import { FormComponent } from './form/form.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FormComponent } from './components/form/form.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 
 @NgModule({
   declarations: [
-    CategoryCollapseComponent,
     NavbarComponent,
     HeaderComponent,
     FormComponent,
-    FooterComponent
+    FooterComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
-    AtomsModule
+    AtomsModule,
+    FormsModule
   ],
   exports: [
-    CategoryCollapseComponent,
     NavbarComponent,
     HeaderComponent,
     FormComponent,
-    FooterComponent
+    FooterComponent,
+    AlertComponent
   ],
 })
 export class MoleculeModule {}
