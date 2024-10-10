@@ -1,0 +1,38 @@
+<section class="form-container">
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div class="input-container">
+      <app-input 
+        [(ngModel)]="categoryName" 
+        type="text" 
+        id="name" 
+        name="name" 
+        placeholder="Nombre:" 
+        width="300px"  
+        height="20px" 
+        required>
+      </app-input>
+      <div *ngIf="form.submitted && form.controls['name']?.invalid" class="error-message">
+        El nombre es requerido.
+      </div>
+    </div>
+    
+    <div class="input-container">
+      <app-input 
+        [(ngModel)]="categoryDescription" 
+        type="text" 
+        id="description" 
+        name="description" 
+        placeholder="Descripción:" 
+        width="300px"  
+        height="60px" 
+        [isTextArea]="true" 
+        required>
+      </app-input>
+      <div *ngIf="form.submitted && form.controls['description']?.invalid" class="error-message">
+        La descripción es requerido.
+      </div>
+    </div>
+    
+    <app-input-button type="submit" value="Guardar"></app-input-button>
+  </form>
+</section>

@@ -1,0 +1,24 @@
+<div class="input-container">
+    <label [for]="id">{{ placeholder }}</label>
+    <ng-container *ngIf="isTextArea; else inputTemplate">
+      <textarea 
+        [id]="id" 
+        [name]="name" 
+        [value]="value" 
+        [style.width]="width"
+        [style.height]="height"
+        (input)="updateValue($event)"></textarea>
+    </ng-container>
+    <ng-template #inputTemplate>
+      <input 
+        [type]="type" 
+        [id]="id" 
+        [name]="name" 
+        [value]="value" 
+        [style.width]="width"
+        [style.height]="height"
+        (input)="updateValue($event)">
+    </ng-template>
+  </div>
+  
+  

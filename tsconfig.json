@@ -22,7 +22,10 @@
       "es2020",
       "dom"
     ],
-    "types": ["jest", "node"]
+    "types":[
+      "jest"
+    ],
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
