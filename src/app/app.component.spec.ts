@@ -1,25 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component } from '@angular/core';
-
-@Component({
-  template: '',
-})
-class MockAppComponent {
-  title = 'emazon';
-}
+import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  let component: MockAppComponent;
-  let fixture: ComponentFixture<MockAppComponent>;
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MockAppComponent],
+      declarations: [AppComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MockAppComponent);
+    fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create the component', () => {

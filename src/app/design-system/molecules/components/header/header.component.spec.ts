@@ -1,40 +1,33 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component } from '@angular/core';
 import { HeaderComponent } from './header.component';
 
-@Component({
-  template: '',
-})
-class MockHeaderComponent {
-  navActive: boolean = false;
-
-  toggleNav() {
-    this.navActive = !this.navActive;
-  }
-}
-
 describe('HeaderComponent', () => {
-  let component: MockHeaderComponent;
-  let fixture: ComponentFixture<MockHeaderComponent>;
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MockHeaderComponent],
+      declarations: [HeaderComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MockHeaderComponent);
+    fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the header component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should toggle navActive when toggleNav is called', () => {
-    expect(component.navActive).toBe(false);
-    component.toggleNav();
-    expect(component.navActive).toBe(true);
-    component.toggleNav();
-    expect(component.navActive).toBe(false);
+  it('should have menuOpen set to false initially', () => {
+    expect(component.menuOpen).toBe(false);
+  });
+
+  it('should toggle menuOpen when toggleMenu is called', () => {
+    component.toggleMenu();
+    expect(component.menuOpen).toBe(true);
+
+    component.toggleMenu();
+    expect(component.menuOpen).toBe(false);
   });
 });

@@ -1,25 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, Input, Output,EventEmitter} from '@angular/core';
-
-@Component({
-  template: '',
-})
-class MockInputButtonComponent{
-    @Input() value!: string;
-}
+import { InputButtonComponent } from './input-button.component';
 
 describe('InputButtonComponent', () => {
-  let component: MockInputButtonComponent;
-  let fixture: ComponentFixture<MockInputButtonComponent>;
+  let component: InputButtonComponent;
+  let fixture: ComponentFixture<InputButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MockInputButtonComponent],
+      declarations: [InputButtonComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MockInputButtonComponent);
+    fixture = TestBed.createComponent(InputButtonComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

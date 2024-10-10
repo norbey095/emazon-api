@@ -1,39 +1,33 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component } from '@angular/core';
-
-@Component({
-  template: '',
-})
-class MockNavbarComponent {
-  isMenuOpen = false;
-
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-}
+import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {
-  let component: MockNavbarComponent;
-  let fixture: ComponentFixture<MockNavbarComponent>;
+  let component: NavbarComponent;
+  let fixture: ComponentFixture<NavbarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MockNavbarComponent],
+      declarations: [NavbarComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MockNavbarComponent);
+    fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the navbar component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should toggle the menu visibility', () => {
-    expect(component.isMenuOpen).toBe(false);
+  it('should have menuOpen set to false initially', () => {
+    expect(component.menuOpen).toBe(false);
+  });
+
+  it('should toggle menuOpen when toggleMenu is called', () => {
     component.toggleMenu();
-    expect(component.isMenuOpen).toBe(true);
+    expect(component.menuOpen).toBe(true);
+
     component.toggleMenu();
-    expect(component.isMenuOpen).toBe(false);
+    expect(component.menuOpen).toBe(false);
   });
 });

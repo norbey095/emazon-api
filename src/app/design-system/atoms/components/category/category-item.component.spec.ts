@@ -1,28 +1,34 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, Input } from '@angular/core';
-
-@Component({
-  template: '',
-})
-class MockCategoryItemComponent {
-  @Input() category!: { id: number; name: string; description: string };
-}
+import { CategoryItemComponent } from './category-item.component';
+import { By } from '@angular/platform-browser';
 
 describe('CategoryItemComponent', () => {
-  let component: MockCategoryItemComponent;
-  let fixture: ComponentFixture<MockCategoryItemComponent>;
+  let component: CategoryItemComponent;
+  let fixture: ComponentFixture<CategoryItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MockCategoryItemComponent],
+      declarations: [CategoryItemComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MockCategoryItemComponent);
+    fixture = TestBed.createComponent(CategoryItemComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render category name', () => {
+    const mockCategory = { id: 1, name: 'Category 1', description: 'Description 1' };
+    component.category = mockCategory;
+
+    fixture.detectChanges();
+
+    const categoryElement = fixture.debugElement.query(By.css('.category-item'));
+
+    expect(categoryElement).toBeTruthy();
+    const categoryNativeElement = categoryElement.nativeElement;
+    expect(categoryNativeElement.textContent).toContain(mockCategory.name);
   });
 });
