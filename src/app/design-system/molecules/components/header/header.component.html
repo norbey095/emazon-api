@@ -1,14 +1,17 @@
-<header>
-    <img src="https://via.placeholder.com/150x50" alt="Logo" id="logo">
-    <nav id="nav" [ngClass]="{'nav-active': navActive}">
-      <a href="#">Inicio</a>
-      <a href="#">Servicios</a>
-      <a href="#">Contacto</a>
-    </nav>
-    <div class="menu-toggle" id="menu-toggle" (click)="toggleNav()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </header>
-  
+<nav class="navbar">
+  <app-logo></app-logo>
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <ul [class.active]="menuOpen" class="menu">
+    <li class="close-button" (click)="toggleMenu()">&times;</li>
+    <menu-item url="/home" title="Inicio"></menu-item>
+    <menu-item url="/home" title="Productos"></menu-item>
+    <menu-item url="/create-category" title="Categorias"></menu-item>
+    <menu-item url="/home" title="Marcas"></menu-item>
+    <menu-item url="/home" title="Ingresar"></menu-item>
+  </ul>
+</nav>

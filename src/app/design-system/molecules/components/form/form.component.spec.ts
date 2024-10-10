@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormComponent } from './form.component';
 
 @Component({
   template: '',

@@ -2,20 +2,57 @@
     display: flex;
     justify-content: center;
     padding: 20px;
-}
-
-.form-container form {
+  }
+  
+  .form-container form {
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(12, 64, 206, 0.1);
-}
-
-app-input-button {
-    display: block;
-    margin-right: auto; 
-    margin-top: 2px; 
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-container {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  
+  .error-message {
+    color: #D21A29;
+    font-size: 15px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    padding-left: 5px;
+  }
+  
+  app-input {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  app-input-button {
+    margin-left: auto;
+    margin-top: 10px;
     width: fit-content;
-}
+  }
+  
+  @media (max-width: 600px) {
+    .error-message {
+      font-size: 12px;
+      left: 0;
+      padding-left: 18px;
+      margin: 0;
+    }
+  
+    app-input {
+      margin-bottom: 5px;
+    }
+  }
+  

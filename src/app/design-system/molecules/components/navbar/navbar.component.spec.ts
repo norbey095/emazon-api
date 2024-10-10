@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { NavbarComponent } from './navbar.component';
 
 @Component({
   template: '',
@@ -31,10 +30,10 @@ describe('NavbarComponent', () => {
   });
 
   it('should toggle the menu visibility', () => {
-    expect(component.isMenuOpen).toBe(false); // Al inicio, el menú debe estar cerrado
+    expect(component.isMenuOpen).toBe(false);
     component.toggleMenu();
-    expect(component.isMenuOpen).toBe(true); // Al llamar a toggleMenu, el menú debe abrirse
+    expect(component.isMenuOpen).toBe(true);
     component.toggleMenu();
-    expect(component.isMenuOpen).toBe(false); // Al llamar a toggleMenu nuevamente, el menú debe cerrarse
+    expect(component.isMenuOpen).toBe(false);
   });
 });

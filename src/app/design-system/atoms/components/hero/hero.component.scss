@@ -5,4 +5,12 @@
     padding: 0.5px 1px;
     font-size: 1.5em;
 }
-  
+
+@media (max-width: 768px) {
+    .hero {
+        font-size: 1.2em;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

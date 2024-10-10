@@ -1,18 +1,18 @@
-<header>
-    <nav>
-        <app-logo></app-logo>
-        <div class="navbar-container">
-            <button class="menu-toggle" (click)="toggleMenu()" aria-label="Abrir menú">
-                &#9776;
-            </button>
-            <ul class="navbar" [class.active]="isMenuOpen">
-                <button class="close-menu" (click)="toggleMenu()" aria-label="Cerrar menú">&times;</button>
-                <menu-item url="/home" title="Inicio"></menu-item>
-                <menu-item url="/home" title="Productos"></menu-item>
-                <menu-item url="/create-category" title="Categorias"></menu-item>
-                <menu-item url="/home" title="Marcas"></menu-item>
-                <menu-item url="/home" title="Ingresar"></menu-item>
-            </ul>   
-        </div>
-    </nav>
-</header>
+<nav class="navbar">
+    <app-logo></app-logo>
+    <div class="menu-toggle" (click)="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  
+    <ul [class.active]="menuOpen" class="menu">
+      <li class="close-button" (click)="toggleMenu()">&times;</li>
+      <menu-item url="/home" title="Inicio"></menu-item>
+      <menu-item url="/home" title="Productos"></menu-item>
+      <menu-item url="/create-category" title="Categorias"></menu-item>
+      <menu-item url="/home" title="Marcas"></menu-item>
+      <menu-item url="/home" title="Ingresar"></menu-item>
+    </ul>
+  </nav>
+  
