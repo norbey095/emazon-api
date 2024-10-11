@@ -1,8 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { CategoryService } from './category.service';
-import { ResponseSuccess } from '../types/response-success';
 import { environment } from 'src/environments/environment';
+import { PaginationDto } from '../types/paginationDto';
+import { Category } from '../types/category';
+import { ResponseSuccess } from '../types/response-success';
 
 describe('CategoryService', () => {
   let service: CategoryService;
@@ -22,30 +24,41 @@ describe('CategoryService', () => {
     httpMock.verify();
   });
 
-  it('should retrieve all categories', () => {
-    const dummyCategories = [{ id: 1, name: 'Category 1', description: 'Description 1' }];
-
-    service.getAllCategories(1, 10, true).subscribe(categories => {
-      expect(categories.length).toBe(1);
-      expect(categories).toEqual(dummyCategories);
-    });
-
-    const req = httpMock.expectOne(`${environment.apiCrearCategoryUrl}?page=1&size=10&descending=true`);
-    expect(req.request.method).toBe('GET');
-    req.flush(dummyCategories);
+  it('should be created', () => {
+    expect(service).toBeTruthy();
   });
 
-  it('should create a category and return success response', () => {
-    const dummyResponse: ResponseSuccess = { status: "success", messages: "Categoría creada correctamente" };
-    const newCategory = { name: 'New Category', description: 'New Description' };
+  describe('getAllCategories', () => {
+    it('should return an Observable<PaginationDto<Category>>', () => {
+      const mockResponse: PaginationDto<Category> = {
+        contentList: [],
+        totalElement: 0
+      };
 
-    service.createCategories(newCategory.name, newCategory.description).subscribe(response => {
-      expect(response).toEqual(dummyResponse);
+      service.getAllCategories(1, 10, false).subscribe(response => {
+        expect(response).toEqual(mockResponse);
+      });
+
+      const req = httpMock.expectOne(`${environment.apiCrearCategoryUrl}?page=1&size=10&descending=false`);
+      expect(req.request.method).toBe('GET');
+      req.flush(mockResponse);
     });
+  });
 
-    const req = httpMock.expectOne(`${environment.apiCrearCategoryUrl}registry`);
-    expect(req.request.method).toBe('POST');
-    expect(req.request.body).toEqual({ id: null, name: newCategory.name, description: newCategory.description });
-    req.flush(dummyResponse);
+  describe('createCategories', () => {
+    it('should create a category and return a ResponseSuccess', () => {
+      const mockSuccessResponse: ResponseSuccess = { status: '400', messages: 'Category created' };
+      const name = 'Test Category';
+      const description = 'Test Description';
+
+      service.createCategories(name, description).subscribe(response => {
+        expect(response).toEqual(mockSuccessResponse);
+      });
+
+      const req = httpMock.expectOne(`${environment.apiCrearCategoryUrl}registry`);
+      expect(req.request.method).toBe('POST');
+      expect(req.request.body).toEqual({ id: null, name, description });
+      req.flush(mockSuccessResponse);
+    });
   });
 });
