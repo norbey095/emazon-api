@@ -22,6 +22,7 @@
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@ngrx/store": "^14.3.3",
     "mi-proyecto": "file:",
+    "ngx-pagination": "^6.0.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "typescript": "^4.8.4",
@@ -43,7 +44,10 @@
     "globalSetup": "jest-preset-angular/global-setup",
     "collectCoverage": true,
     "coverageDirectory": "coverage",
-    "coverageReporters": ["html", "text"],
+    "coverageReporters": [
+      "html",
+      "text"
+    ],
     "collectCoverageFrom": [
       "src/app/**/*.ts",
       "!src/app/**/*.spec.ts",

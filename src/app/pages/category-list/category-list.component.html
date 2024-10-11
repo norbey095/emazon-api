@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Listar Categoría</title>
+    </head>
+    <app-header></app-header>
+    <body>
+        <app-hero [title]="title"></app-hero>
+
+        <div class="table-container">
+            <div class="controls">
+                <div>
+                    <label class="view" for="itemsPerPage">Mostrar:</label>
+                    <select  id="itemsPerPage" [(ngModel)]="itemsPerPage" (change)="onControlsChange()">
+                        <option *ngFor="let option of itemsPerPageOptions" [value]="option">{{ option }}</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="view" for="orderBy">Ordenar Nombre:</label>
+                    <select id="orderBy" [(ngModel)]="orderBy" (change)="onControlsChange()">
+                        <option *ngFor="let option of orderByOptions" [value]="option">{{ option }}</option>
+                    </select>
+                </div>
+                <button routerLink="/create-category" class="btn-create">Crear Categoría</button>
+            </div>
+            <app-table [items]="categories" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [page]="page"></app-table>
+            <div class="pagination-controls">
+                <pagination-controls (pageChange)="page = $event; fetchCategories()"></pagination-controls>
+            </div>
+        </div>
+        <app-footer></app-footer>
+    </body>
+</html>
