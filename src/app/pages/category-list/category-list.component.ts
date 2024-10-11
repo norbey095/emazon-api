@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Category } from 'src/app/shared/types/category';
 import { CategoryService } from 'src/app/shared/services/category.service';
+import { PaginationDto } from 'src/app/shared/types/paginationDto';
 
 
 @Component({
@@ -10,34 +11,37 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 })
 export class CategoryListComponent {
     title: string = "Lista de Categorías";
-    categories: Category[] = [];
-    p: number = 1; // Página inicial
-    itemsPerPage: number = 5; // Elementos por página
-    itemsPerPageOptions: number[] = [5, 10, 20]; // Opciones para mostrar
+    categories: any[] = [];
+    totalItems: number = 0;
+    itemsPerPage: number = 5;
+    page: number = 1;
+    orderBy = 'ASC';
+    descending = false;
 
-    constructor(private categoryService: CategoryService) { }
+    itemsPerPageOptions = [5, 10, 15];
+    orderByOptions = ["ASC", "DES"];
 
-  ngOnInit(): void {
-    this.loadCategories(this.p, this.itemsPerPage);
-  }
+    constructor(private categoryService: CategoryService) {}
 
-  loadCategories(page: number, size: number): void {
-    this.categoryService.getAllCategories(page - 1, size,false).subscribe(
-      (data: Category[]) => {
-        this.categories = data;
-      },
-      (error) => {
-        console.error('Error al cargar las categorías', error);
-      }
-    );
-  }
+    ngOnInit() {
+        this.fetchCategories();
+    }
 
-  onPageChange(page: number): void {
-    this.p = page;
-    this.loadCategories(this.p, this.itemsPerPage);
-  }
-
-  onItemsPerPageChange(): void {
-    this.loadCategories(this.p, this.itemsPerPage);
-  }
+    fetchCategories() {
+        this.categoryService.getAllCategories(this.page - 1, this.itemsPerPage,this.descending).subscribe(
+            (response: PaginationDto<Category>) => {
+                this.categories = response.contentList;
+                this.totalItems = response.totalElement;
+            },
+            (error) => {
+                console.error('Error al cargar las categorías', error);
+            }
+        );
+        
+    }
+    onControlsChange() {
+        this.descending = this.orderBy === 'DES';
+        this.page = 1;
+        this.fetchCategories();
+    }
 }

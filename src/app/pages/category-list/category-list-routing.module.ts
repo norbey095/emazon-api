@@ -5,7 +5,6 @@ import { CreateCategoryComponent } from '../create-category/create-category.comp
 
 const routes: Routes = [
   { path: '', component: CategoryListComponent },
-  { path: 'create-category', component: CreateCategoryComponent }
 ];
 
 @NgModule({

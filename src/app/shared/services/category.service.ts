@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Category } from '../types/category';
 import { ResponseSuccess } from '../types/response-success';
+import { PaginationDto } from '../types/paginationDto';
 
 @Injectable({
   providedIn: 'root',
@@ -13,13 +14,13 @@ export class CategoryService {
 
   constructor(private http: HttpClient) {}
 
-  getAllCategories(page: number, size: number, descending: boolean): Observable<Category[]> {
+  getAllCategories(page: number, size: number, descending: boolean): Observable<PaginationDto<Category>> {
     const params = new HttpParams()
       .set('page', page)
       .set('size', size)
       .set('descending', descending);
 
-    return this.http.get<Category[]>(this.apiUrl, { params });
+    return this.http.get<PaginationDto<Category>>(this.apiUrl, { params });
   }
 
   createCategories(name: string, description: string): Observable<ResponseSuccess> {

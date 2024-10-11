@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { CategoryService } from 'src/app/shared/services/category.service'; 
-import { ResponseSuccess } from 'src/app/shared/types/response-success'; // Importa el tipo correcto
+import { ResponseSuccess } from 'src/app/shared/types/response-success';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-create-category',
@@ -26,9 +27,9 @@ export class CreateCategoryComponent {
       next: (response: ResponseSuccess) => {        
         this.message =  response.messages || "Categoría creada correctamente"; 
         this.isMessagess = true;  
-        this.lineColor = "#00B998";  
-        this.textColor = "#00B998";
-        this.srcImage = "assets/images/Icon-success.png";
+        this.lineColor = environment.lineColorSuccess;  
+        this.textColor = environment.textColorSucess;
+        this.srcImage = environment.srcImageSucess;
         
         setTimeout(() => {
           this.isMessagess = false; 
@@ -38,13 +39,13 @@ export class CreateCategoryComponent {
       error: (error: HttpErrorResponse) => {
         this.isMessagess = true;
         if(error.status == 409 || error.status == 400){
-          this.lineColor = "#FF9500";  
-          this.textColor = "#FF9500";
-          this.srcImage = "assets/images/Icon-warn.png";   
+          this.lineColor = environment.lineColorWarnm;  
+          this.textColor = environment.textColorWarnm;
+          this.srcImage = environment.srcImageWarnm;   
         } else {
-          this.lineColor = "#D51A52";  
-          this.textColor = "#D51A52";
-          this.srcImage = "assets/images/Icon-error.png";   
+          this.lineColor = environment.lineColorError;  
+          this.textColor = environment.textColorError;
+          this.srcImage = environment.srcImageError;   
         }
         this.message = error.message || 'Unknown error!';
         

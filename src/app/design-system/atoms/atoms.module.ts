@@ -8,6 +8,8 @@ import { HeroComponent } from './components/hero/hero.component';
 import { inputComponent } from './components/input/input.component';
 import { InputButtonComponent } from './components/input-button/input-button.component';
 import { ImageComponent } from './components/image/image.component';
+import { TableComponent } from './components/table/table.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -19,11 +21,13 @@ import { ImageComponent } from './components/image/image.component';
     HeroComponent,
     inputComponent,
     InputButtonComponent,
-    ImageComponent
+    ImageComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   exports: [
     CategoryItemComponent,
@@ -32,7 +36,8 @@ import { ImageComponent } from './components/image/image.component';
     HeroComponent,
     inputComponent,
     InputButtonComponent,
-    ImageComponent
+    ImageComponent,
+    TableComponent
   ],
 })
 export class AtomsModule {}
