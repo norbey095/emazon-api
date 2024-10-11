@@ -13,7 +13,7 @@ body {
     justify-content: space-between;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: fixed;
-    right: 20px;
+    right: 25px;
     top: 40%;
     transform: translateY(-50%);
     z-index: 1000;
@@ -62,14 +62,15 @@ body {
 @media (max-width: 480px) {
     .alert {
         position: fixed;
-        top: 23%;
-        right: 20px;
+        top: 30%;
+        right: 10px;
         transform: translateY(-50%);
         padding: 5px 10px;
         flex-direction: row;
         align-items: center;
         border-radius: 8px;
         z-index: 1000;
+        display: flex;
     }
 
     .icon {

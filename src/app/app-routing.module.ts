@@ -7,13 +7,9 @@ const routes: Routes = [
     loadChildren: () => import('./pages/create-category/create-category.module').then(m => m.CreateCategoryModule),
   },
   {
-    path: 'categorias',
+    path: 'categories',
     loadChildren: () => import('./pages/category-list/category-list.module').then(m => m.CategoryListModule),
-  },
-  /*{
-    path: '',
-    redirectTo: 'home', pathMatch: 'full'
-  },*/
+  }
 ];
 
 @NgModule({

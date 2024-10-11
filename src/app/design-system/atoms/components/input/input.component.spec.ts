@@ -44,18 +44,4 @@ describe('inputComponent', () => {
     
     expect(hostFixture.componentInstance.inputValue).toBe('Hello World');
   });
-
-  it('should support textarea when isTextArea is true', () => {
-    component.isTextArea = true;
-    fixture.detectChanges();
-    const textAreaElement = fixture.nativeElement.querySelector('textarea');
-    expect(textAreaElement).toBeTruthy();
-  });
-
-  it('should support input when isTextArea is false', () => {
-    component.isTextArea = false;
-    fixture.detectChanges();
-    const inputElement = fixture.nativeElement.querySelector('input');
-    expect(inputElement).toBeTruthy();
-  });
 });
