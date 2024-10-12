@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { TableComponent } from './components/table/table.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterTableComponent } from './components/filter-table/filter-table.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormComponent,
     FooterComponent,
     AlertComponent,
-    TableComponent
+    TableComponent,
+    FilterTableComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormComponent,
     FooterComponent,
     AlertComponent,
-    TableComponent
+    TableComponent,
+    FilterTableComponent
   ],
 })
 export class MoleculeModule {}

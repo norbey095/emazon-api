@@ -63,21 +63,47 @@ describe('CategoryListComponent', () => {
     expect(consoleSpy).toHaveBeenCalledWith('Error al cargar las categorías', 'Error');
     consoleSpy.mockRestore();
   });
-
-  it('should fetch categories when controls change', () => {
+  it('should call fetchCategories when onControlsChange is triggered', () => {
     const mockResponse: PaginationDto<Category> = {
-        contentList: [{ id: 1, name: 'Category 1', description: 'Description 1' }],
-        totalElement: 1,
+      contentList: [{ id: 1, name: 'Category 1', description: 'Description 1' }],
+      totalElement: 1,
     };
+
     categoryService.getAllCategories.mockReturnValue(of(mockResponse));
 
-    component.orderBy = 'DES';
-    component.onControlsChange();
+    const event = { itemsPerPage: 10, descending: true, page: 2 };
+    component.onControlsChange(event);
 
+    expect(component.itemsPerPage).toBe(10);
     expect(component.descending).toBe(true);
-    expect(component.page).toBe(1);
-    expect(categoryService.getAllCategories).toHaveBeenCalledWith(0, 5, true);
+    expect(component.page).toBe(2);
+    expect(categoryService.getAllCategories).toHaveBeenCalledWith(1, 10, true);
     expect(component.categories).toEqual(mockResponse.contentList);
-    expect(component.totalItems).toBe(mockResponse.totalElement); 
-    });
+    expect(component.totalItems).toBe(mockResponse.totalElement);
+  });
+
+  it('should not throw an error when no categories are returned', () => {
+    const mockResponse: PaginationDto<Category> = {
+      contentList: [],
+      totalElement: 0,
+    };
+
+    categoryService.getAllCategories.mockReturnValue(of(mockResponse));
+    
+    component.ngOnInit();
+
+    expect(component.categories).toEqual([]);
+    expect(component.totalItems).toBe(0);
+  });
+
+  it('should handle error in onControlsChange gracefully', () => {
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
+    categoryService.getAllCategories.mockReturnValue(throwError('Error'));
+
+    const event = { itemsPerPage: 10, descending: true, page: 2 };
+    component.onControlsChange(event);
+
+    expect(consoleSpy).toHaveBeenCalledWith('Error al cargar las categorías', 'Error');
+    consoleSpy.mockRestore();
+  });
 });
