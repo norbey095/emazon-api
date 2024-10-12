@@ -32,4 +32,17 @@ describe('TextareaComponent', () => {
     component.writeValue('test value');
     expect(component.value).toBe('test value');
   });
+
+  
+  it('should bind value with ngModel', () => {
+    hostFixture.detectChanges();
+    const inputElement = hostFixture.nativeElement.querySelector('textarea');
+
+    inputElement.value = 'Hello World';
+    inputElement.dispatchEvent(new Event('input'));
+
+    hostFixture.detectChanges();
+    
+    expect(hostFixture.componentInstance.textareaValue).toBe('Hello World');
+  });
 });

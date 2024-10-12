@@ -70,7 +70,8 @@ app-footer {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .btn-create:hover {
@@ -110,8 +111,9 @@ select{
 }
 
 .view {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 23.68px;
   text-align: left;
+  font-family: 'Poppins', sans-serif;
 }

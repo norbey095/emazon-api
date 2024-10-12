@@ -7,7 +7,11 @@
       <div class="bar"></div>
     </div>  
     <ul [class.active]="menuOpen" class="menu">
-      <li class="close-button" (click)="toggleMenu()">&times;</li>
+      <div class="logo-container">
+        <app-logo class="mobile-logo"></app-logo>
+        <li class="close-button" (click)="toggleMenu()">&times;</li>
+      </div>
+      <li class="separator"></li>
       <menu-item url="/home" title="Inicio"></menu-item>
       <menu-item url="/home" title="Productos"></menu-item>
       <menu-item url="/categories" title="Categorias"></menu-item>
@@ -16,4 +20,3 @@
     </ul>
   </nav>
 </header>
-  

@@ -18,24 +18,24 @@ import {
   
   @Injectable()
   export class ErrorInterceptor implements HttpInterceptor {
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
       return next.handle(req).pipe(
-        catchError((error: any) => {
-          let errorMessage = 'Unknown error!';
-  
-          if (error instanceof HttpErrorResponse) {
-            if (error.error instanceof ErrorEvent) {
-              errorMessage = `Error: ${error.error.message}`;
-            } else {
-              errorMessage = error.error.message || `Sorry! We couldn't complete your request. Try again later.`;
-            }
-          } else if (error.message) {
-            errorMessage = `Connection Error`;
-          }
-  
-          return throwError({ status: error.status || 0, message: errorMessage });
+        catchError((error: HttpErrorResponse) => {
+          const errorMessage = this.getErrorMessage(error);
+          return this.createErrorResponse(error.status || 0, errorMessage);
         })
       );
+    }
+  
+    private getErrorMessage(error: HttpErrorResponse): string {
+      if (error.error instanceof ErrorEvent) {
+        return `Error: ${error.error.message}`;
+      }
+      return error.error?.message || `Sorry! We couldn't complete your request. Try again later.`;
+    }
+  
+    private createErrorResponse(status: number, message: string): Observable<never> {
+      return throwError(() => ({ status, message }));
     }
   }
   

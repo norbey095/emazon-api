@@ -28,17 +28,18 @@ export class CategoryListComponent {
     }
 
     fetchCategories() {
-        this.categoryService.getAllCategories(this.page - 1, this.itemsPerPage,this.descending).subscribe(
-            (response: PaginationDto<Category>) => {
+        this.categoryService.getAllCategories(this.page - 1, this.itemsPerPage, this.descending).subscribe({
+            next: (response: PaginationDto<Category>) => {
                 this.categories = response.contentList;
                 this.totalItems = response.totalElement;
             },
-            (error) => {
+            error: (error) => {
                 console.error('Error al cargar las categorías', error);
             }
-        );
-        
+        });
     }
+    
+
     onControlsChange() {
         this.descending = this.orderBy === 'DES';
         this.page = 1;

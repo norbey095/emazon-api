@@ -6,7 +6,7 @@
   .menu-link {
     font-size: 25px;
     font-weight: 500;
-    line-height: 19.4px;
+    line-height: 30px;
     text-align: left;
     color: #080808;
     padding: 5px 10px;
@@ -17,6 +17,7 @@
     &:hover {
         background-color: darken(#ffffff, 10%);
         color: #0F0BAB;
+        outline: 5px solid darken(#ffffff, 10%);
     }
   }
 }
