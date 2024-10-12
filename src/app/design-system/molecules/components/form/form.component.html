@@ -31,7 +31,9 @@
         La descripción es requerido.
       </div>
     </div>
-    
-    <app-input-button type="submit" value="Guardar"></app-input-button>
+    <div class="button-container">
+      <button type="button" (click)="goBack()" class="btn-back">Volver</button>
+      <app-input-button type="submit" value="Guardar"></app-input-button>
+    </div>
   </form>
 </section>

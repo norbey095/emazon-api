@@ -1,0 +1,21 @@
+<div *ngIf="items.length === 0; else tableContent" class="empty-state">
+    <img src="assets/images/Empty.png" alt="No hay datos" />
+    <p>No hay datos disponibles</p>
+</div>
+
+<ng-template #tableContent>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
+                <td>{{ item.name }}</td>
+                <td>{{ item.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>

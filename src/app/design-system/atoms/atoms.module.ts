@@ -8,8 +8,6 @@ import { HeroComponent } from './components/hero/hero.component';
 import { inputComponent } from './components/input/input.component';
 import { InputButtonComponent } from './components/input-button/input-button.component';
 import { ImageComponent } from './components/image/image.component';
-import { TableComponent } from './components/table/table.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { TextareaComponent } from './components/textarea/textarea.component';
 
 
@@ -22,13 +20,11 @@ import { TextareaComponent } from './components/textarea/textarea.component';
     inputComponent,
     InputButtonComponent,
     ImageComponent,
-    TableComponent,
     TextareaComponent
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    NgxPaginationModule
+    FormsModule
   ],
   exports: [
     CategoryItemComponent,
@@ -38,7 +34,6 @@ import { TextareaComponent } from './components/textarea/textarea.component';
     inputComponent,
     InputButtonComponent,
     ImageComponent,
-    TableComponent,
     TextareaComponent
   ],
 })
