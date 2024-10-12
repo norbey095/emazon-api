@@ -1,0 +1,28 @@
+.view {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23.68px;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+}
+
+select {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 23.68px;
+    text-align: left;
+    border: none;
+    color: #9D3FE7;
+}
+
+label {
+    margin-right: 10px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 50px;
+}

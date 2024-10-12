@@ -46,20 +46,20 @@ app-footer {
 
 @media (max-width: 768px) {
   app-hero, app-alert, app-form, app-footer {
-    width: 100%;
-    box-sizing: border-box;
+      width: 100%;
+      box-sizing: border-box;
   }
 
   .banner {
-    height: auto;
+      height: auto;
   }
   .table-container {
-    width: 95%;
-    padding: 10px;
+      width: 95%;
+      padding: 10px;
   }
 
   .pagination-controls {
-    width: 90%;
+      width: 90%;
   }
 }
 
@@ -72,21 +72,19 @@ app-footer {
   cursor: pointer;
   font-size: 18px;
   font-family: 'Poppins', sans-serif;
-}
-
-.btn-create:hover {
-  background-color: #9D3FE7;
+  display: flex;
 }
 
 .controls {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 20px;
+  gap: 20px; 
 }
 
-label {
-  margin-right: 10px;
+.filter-container {
+  margin-top: 15px;
+  display: flex;
 }
 
 .table-container::-webkit-scrollbar {
@@ -100,20 +98,4 @@ label {
 
 .table-container::-webkit-scrollbar-track {
   background: #f4f4f4;
-}
-select{
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 23.68px;
-  text-align: left;
-  border: none;
-  color: #9D3FE7;
-}
-
-.view {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 23.68px;
-  text-align: left;
-  font-family: 'Poppins', sans-serif;
 }

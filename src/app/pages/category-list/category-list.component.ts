@@ -15,11 +15,7 @@ export class CategoryListComponent {
     totalItems: number = 0;
     itemsPerPage: number = 5;
     page: number = 1;
-    orderBy = 'ASC';
     descending = false;
-
-    itemsPerPageOptions = [5, 10, 15];
-    orderByOptions = ["ASC", "DES"];
 
     constructor(private categoryService: CategoryService) {}
 
@@ -38,11 +34,12 @@ export class CategoryListComponent {
             }
         });
     }
-    
 
-    onControlsChange() {
-        this.descending = this.orderBy === 'DES';
-        this.page = 1;
+
+    onControlsChange(event: { itemsPerPage: number; descending: boolean; page: number }) {
+        this.itemsPerPage = event.itemsPerPage;
+        this.descending = event.descending;
+        this.page = event.page;
         this.fetchCategories();
     }
 }
