@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crear Marca</title>
+    </head>
+    <app-header></app-header>
+    <body>
+        <app-hero  [title]="title"></app-hero>
+        <main>
+            <app-alert *ngIf="isMessagess" [srcImage]="srcImage" [message]="message" [lineColor]="lineColor" [textColor]="textColor"></app-alert>
+            <app-form (formSubmit)="onFormSubmit($event)"></app-form>
+        </main>
+    </body>
+    <app-footer></app-footer>
+</html>
