@@ -1,30 +1,30 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CreateCategoryComponent } from './create-category.component';
-import { CategoryService } from 'src/app/shared/services/category/category.service';
+import { CreateBrandComponent } from './create-brand.component';
+import { BrandService } from 'src/app/shared/services/brand/brand.service';
 import { of, throwError } from 'rxjs';
 import { ResponseSuccess } from 'src/app/shared/types/response-success';
 import { HttpErrorResponse } from '@angular/common/http';
 
 jest.useFakeTimers();
 
-describe('CreateCategoryComponent', () => {
-  let component: CreateCategoryComponent;
-  let fixture: ComponentFixture<CreateCategoryComponent>;
-  let categoryService: { createCategories: jest.Mock };
+describe('CreateBrandComponent', () => {
+  let component: CreateBrandComponent;
+  let fixture: ComponentFixture<CreateBrandComponent>;
+  let brandService: { createBrand: jest.Mock };
 
   beforeEach(async () => {
-    categoryService = {
-      createCategories: jest.fn(),
+    brandService = {
+      createBrand: jest.fn(),
     };
 
     await TestBed.configureTestingModule({
-      declarations: [CreateCategoryComponent],
+      declarations: [CreateBrandComponent],
       providers: [
-        { provide: CategoryService, useValue: categoryService },
+        { provide: BrandService, useValue: brandService },
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CreateCategoryComponent);
+    fixture = TestBed.createComponent(CreateBrandComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -34,12 +34,12 @@ describe('CreateCategoryComponent', () => {
   });
 
   it('should submit form and show success message', () => {
-    const mockResponse: ResponseSuccess = { status: "success", messages: "Categoría creada correctamente" };
-    (categoryService.createCategories as jest.Mock).mockReturnValue(of(mockResponse));
+    const mockResponse: ResponseSuccess = { status: "success", messages: "Marca creada correctamente" };
+    (brandService.createBrand as jest.Mock).mockReturnValue(of(mockResponse));
 
-    component.onFormSubmit({ name: 'Test Category', description: 'Test Description' });
+    component.onFormSubmit({ name: 'Test Brand', description: 'Test Description' });
 
-    expect(component.message).toBe("Categoría creada correctamente");
+    expect(component.message).toBe("Marca creada correctamente");
     expect(component.isMessagess).toBe(true);
     expect(component.lineColor).toBe("#00B998");
     expect(component.textColor).toBe("#00B998");
@@ -51,9 +51,9 @@ describe('CreateCategoryComponent', () => {
 
   it('should handle error response and show error message', () => {
     const errorResponse = new HttpErrorResponse({ status: 409, statusText: 'Conflict' });
-    categoryService.createCategories.mockReturnValue(throwError(() => errorResponse));
+    brandService.createBrand.mockReturnValue(throwError(() => errorResponse));
 
-    component.onFormSubmit({ name: 'Test Category', description: 'Test Description' });
+    component.onFormSubmit({ name: 'Test Brand', description: 'Test Description' });
 
     expect(component.message).toBe(errorResponse.message);
     expect(component.isMessagess).toBe(true);
@@ -67,9 +67,9 @@ describe('CreateCategoryComponent', () => {
 
   it('should handle unexpected error response', () => {
     const errorResponse = new HttpErrorResponse({ status: 500, statusText: 'Server Error' });
-    categoryService.createCategories.mockReturnValue(throwError(() => errorResponse));
+    brandService.createBrand.mockReturnValue(throwError(() => errorResponse));
 
-    component.onFormSubmit({ name: 'Test Category', description: 'Test Description' });
+    component.onFormSubmit({ name: 'Test Brand', description: 'Test Description' });
 
     expect(component.message).toBe(errorResponse.message);
     expect(component.isMessagess).toBe(true);

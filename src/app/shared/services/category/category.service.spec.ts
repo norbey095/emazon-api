@@ -2,9 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { CategoryService } from './category.service';
 import { environment } from 'src/environments/environment';
-import { PaginationDto } from '../types/paginationDto';
-import { Category } from '../types/category';
-import { ResponseSuccess } from '../types/response-success';
+import { PaginationDto } from '../../types/paginationDto';
+import { Category } from '../../types/category';
+import { ResponseSuccess } from '../../types/response-success';
 
 describe('CategoryService', () => {
   let service: CategoryService;

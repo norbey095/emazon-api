@@ -1,31 +1,31 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { CategoryService } from 'src/app/shared/services/category/category.service'; 
+import { BrandService } from 'src/app/shared/services/brand/brand.service'; 
 import { ResponseSuccess } from 'src/app/shared/types/response-success';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-create-category',
-  templateUrl: './create-category.component.html',
-  styleUrls: ['./create-category.component.scss'],
+  selector: 'app-create-brand',
+  templateUrl: './create-brand.component.html',
+  styleUrls: ['./create-brand.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class CreateCategoryComponent {
-  title: string = "Crear Categoría";
+export class CreateBrandComponent {
+  title: string = "Crear Marca";
   message: string = "";
   isMessagess: boolean = false;
   lineColor: string = "";
   textColor: string = "";
   srcImage: string = "";
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(private brandService: BrandService) {}
 
   ngOnInit(): void {}
 
   onFormSubmit(event: { name: string, description: string }) {
-    this.categoryService.createCategories(event.name, event.description).subscribe({
+    this.brandService.createBrand(event.name, event.description).subscribe({
       next: (response: ResponseSuccess) => {        
-        this.message =  response.messages || "Categoría creada correctamente"; 
+        this.message =  response.messages || "Marca creada correctamente"; 
         this.isMessagess = true;  
         this.lineColor = environment.lineColorSuccess;  
         this.textColor = environment.textColorSucess;

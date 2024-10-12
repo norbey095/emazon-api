@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CategoryListComponent } from './category-list.component';
-import { CategoryService } from 'src/app/shared/services/category.service';
+import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { of, throwError } from 'rxjs';
 import { PaginationDto } from 'src/app/shared/types/paginationDto';
 import { Category } from 'src/app/shared/types/category';

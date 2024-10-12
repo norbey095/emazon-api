@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiCrearCategoryUrl: 'http://localhost:9090/stock/category/',
+  apiCrearBrandUrl: 'http://localhost:9090/stock/brand/',
   lineColorSuccess: '#00B998',
   textColorSucess: '#00B998',
   srcImageSucess: 'assets/images/Icon-success.png',
