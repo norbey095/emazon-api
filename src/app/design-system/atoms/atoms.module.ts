@@ -10,7 +10,7 @@ import { InputButtonComponent } from './components/input-button/input-button.com
 import { ImageComponent } from './components/image/image.component';
 import { TableComponent } from './components/table/table.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { TextareaComponent } from './components/textarea/textarea.component';
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     inputComponent,
     InputButtonComponent,
     ImageComponent,
-    TableComponent
+    TableComponent,
+    TextareaComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +38,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     inputComponent,
     InputButtonComponent,
     ImageComponent,
-    TableComponent
+    TableComponent,
+    TextareaComponent
   ],
 })
 export class AtomsModule {}

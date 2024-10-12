@@ -17,7 +17,7 @@
     </div>
     
     <div class="input-container">
-      <app-input 
+      <app-textarea 
         [(ngModel)]="categoryDescription" 
         type="text" 
         id="description" 
@@ -25,9 +25,8 @@
         placeholder="Descripción:" 
         width="300px"  
         height="60px" 
-        [isTextArea]="true" 
         required>
-      </app-input>
+      </app-textarea>
       <div *ngIf="form.submitted && form.controls['description']?.invalid" class="error-message">
         La descripción es requerido.
       </div>

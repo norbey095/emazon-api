@@ -10,7 +10,7 @@ label {
     font-size: 15px;
 }
 
-input {
+textarea {
     width: 280px;
     padding: 10px;
     border: 1px solid #9D3FE7;
@@ -21,7 +21,7 @@ input {
 }
 
 @media (max-width: 600px) {
-    input {
+    textarea {
         width: 100%;
         font-size: 14px;
     }
