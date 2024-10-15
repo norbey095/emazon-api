@@ -1,0 +1,79 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.form-container form {
+  width: 100%;
+  max-width: 800px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(12, 64, 206, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container {
+  display: flex; /* Cambiado a flex */
+  justify-content: space-between; /* Espaciado entre inputs */
+  margin-bottom: 15px;
+}
+
+.error-message {
+  color: #D21A29;
+  font-size: 15px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  text-align: left;
+  padding-left: 5px;
+}
+
+app-input, app-textarea,app-brand-selector {
+  flex: 1;
+  margin-right: 10px;
+}
+
+app-input:last-child {
+  margin-right: 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+app-input-button, .btn-back {
+  margin-top: 8px;
+  width: fit-content;
+}
+
+.btn-back {
+  padding: 10px 20px;
+  background-color: #9D3FE7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .error-message {
+    font-size: 12px;
+    left: 0;
+    padding-left: 18px;
+    margin: 0;
+  }
+
+  app-input, app-textarea,app-brand-selector {
+    margin-bottom: 5px;
+  }
+}

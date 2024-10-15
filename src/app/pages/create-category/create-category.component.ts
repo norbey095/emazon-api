@@ -35,7 +35,6 @@ export class CreateCategoryComponent {
         setTimeout(() => {
           this.isMessagess = false; 
         }, 4000);        
-       
       },
       error: (error: HttpErrorResponse) => {
         this.isMessagess = true;
