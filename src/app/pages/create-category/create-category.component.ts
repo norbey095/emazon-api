@@ -17,6 +17,7 @@ export class CreateCategoryComponent {
   lineColor: string = "";
   textColor: string = "";
   srcImage: string = "";
+  urlBack: string = "/categories";
 
   constructor(private categoryService: CategoryService) {}
 

@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'create-brand',
     loadChildren: () => import('./pages/create-brand/create-brand.module').then(m => m.CreateBrandModule),
+  },
+  {
+    path: 'brands',
+    loadChildren: () => import('./pages/brand-list/brand-list.module').then(m => m.BrandListModule),
   }
 ];
 

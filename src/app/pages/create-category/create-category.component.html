@@ -10,7 +10,7 @@
         <app-hero  [title]="title"></app-hero>
         <main>
             <app-alert *ngIf="isMessagess" [srcImage]="srcImage" [message]="message" [lineColor]="lineColor" [textColor]="textColor"></app-alert>
-            <app-form (formSubmit)="onFormSubmit($event)"></app-form>
+            <app-form (formSubmit)="onFormSubmit($event)" [urlBack]="urlBack"></app-form>
         </main>
     </body>
     <app-footer></app-footer>
