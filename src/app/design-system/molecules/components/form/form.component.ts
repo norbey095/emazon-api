@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,7 @@ export class FormComponent {
   categoryName: string = '';
   categoryDescription: string = '';
   constructor(private router: Router) {}
+  @Input() urlBack: string= '';
 
   @Output() formSubmit = new EventEmitter<{ name: string, description: string }>();
 
@@ -27,6 +28,6 @@ export class FormComponent {
   }
 
   goBack() {
-      this.router.navigate(['/categories']);
-  }
+    this.router.navigate([this.urlBack]);
+}
 }

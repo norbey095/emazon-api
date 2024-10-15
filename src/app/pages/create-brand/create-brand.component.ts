@@ -17,6 +17,7 @@ export class CreateBrandComponent {
   lineColor: string = "";
   textColor: string = "";
   srcImage: string = "";
+  urlBack: string = "/brands";
 
   constructor(private brandService: BrandService) {}
 
