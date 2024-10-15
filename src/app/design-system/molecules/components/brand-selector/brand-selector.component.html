@@ -1,0 +1,22 @@
+<div class="input-container">
+  <label for="brand">Marca:</label>
+  <div class="custom-select-container">
+    <div class="custom-select" (click)="toggleDropdown()">
+      <span>{{ selectedBrand ? getSelectedBrandName() : 'Selecciona' }}</span>
+      <div class="arrow"></div>
+    </div>
+
+    <div class="custom-options" [class.show]="dropdownOpen">
+      <input 
+        type="text" 
+        placeholder="Buscar..." 
+        [(ngModel)]="searchQuery"
+        (input)="filterBrands()" 
+        class="search-input" 
+      />
+      <div *ngFor="let brand of filteredBrands" (click)="onBrandSelect(brand.id)">
+        {{ brand.name }}
+      </div>
+    </div>
+  </div>
+</div>
