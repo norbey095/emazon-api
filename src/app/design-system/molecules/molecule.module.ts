@@ -12,6 +12,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterTableComponent } from './components/filter-table/filter-table.component';
 import { ExtendFormComponent } from './components/form-extend/extend-form.component';
 import { BrandSelectorComponent } from './components/brand-selector/brand-selector.component';
+import { MultiComboBoxComponent } from './components/multi-combo-box/multi-combo-box.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { BrandSelectorComponent } from './components/brand-selector/brand-select
     TableComponent,
     FilterTableComponent,
     ExtendFormComponent,
-    BrandSelectorComponent
+    BrandSelectorComponent,
+    MultiComboBoxComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { BrandSelectorComponent } from './components/brand-selector/brand-select
     TableComponent,
     FilterTableComponent,
     ExtendFormComponent,
-    BrandSelectorComponent
+    BrandSelectorComponent,
+    MultiComboBoxComponent
   ],
 })
 export class MoleculeModule {}

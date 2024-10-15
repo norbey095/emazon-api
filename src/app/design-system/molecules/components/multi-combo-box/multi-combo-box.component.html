@@ -1,0 +1,23 @@
+<div class="input-container">
+    <label for="categories">Categorías:</label>
+    <div class="custom-select-container">
+      <div class="custom-select" (click)="toggleDropdown()">
+        <span>{{ selectedCategories.length ? '' + getSelectedCategoryNames() : 'Selecciona' }}</span>
+        <div class="arrow"></div>
+      </div>
+  
+      <div class="custom-options" [class.show]="dropdownOpen">
+        <input 
+          type="text" 
+          placeholder="Buscar..."
+          [(ngModel)]="searchQuery"
+          (input)="filterCategories()" 
+          class="search-input" 
+        />
+        <div *ngFor="let category of filteredCategories" (click)="toggleCategorySelection(category.id)">
+          <input type="checkbox" [checked]="isSelected(category.id)" /> {{ category.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+  

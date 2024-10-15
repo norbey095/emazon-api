@@ -6,7 +6,8 @@
 
 .form-container form {
   width: 100%;
-  max-width: 800px;
+  max-width: 100%;
+  min-height: 450px;
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
@@ -16,9 +17,9 @@
 }
 
 .input-container {
-  display: flex; /* Cambiado a flex */
-  justify-content: space-between; /* Espaciado entre inputs */
-  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1px;
 }
 
 .error-message {
@@ -32,9 +33,10 @@
   padding-left: 5px;
 }
 
-app-input, app-textarea,app-brand-selector {
+app-input, app-textarea,app-brand-selector,app-multi-comboBox {
   flex: 1;
   margin-right: 10px;
+  margin-bottom: 5px;
 }
 
 app-input:last-child {
@@ -45,7 +47,7 @@ app-input:last-child {
   display: flex;
   justify-content: flex-end;
   gap: 5px;
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 app-input-button, .btn-back {
@@ -73,7 +75,7 @@ app-input-button, .btn-back {
     margin: 0;
   }
 
-  app-input, app-textarea,app-brand-selector {
+  app-input, app-textarea,app-brand-selector,app-multi-comboBox {
     margin-bottom: 5px;
   }
 }

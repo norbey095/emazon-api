@@ -4,6 +4,6 @@ export interface Article{
     description: string;
     quantity: number;
     price: number;
-    idBrand: number;
+    idbrand: number;
     categories: number[];
 }

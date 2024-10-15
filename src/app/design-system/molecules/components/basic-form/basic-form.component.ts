@@ -29,5 +29,5 @@ export class BasicFormComponent {
 
   goBack() {
     this.router.navigate([this.urlBack]);
-}
+  }
 }
