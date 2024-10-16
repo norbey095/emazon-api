@@ -1,77 +1,89 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, NgForm } from '@angular/forms';
-import { ExtendFormComponent } from './extend-form.component'; 
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ExtendFormComponent } from './extend-form.component';
+import { EventEmitter } from '@angular/core';
 
 describe('ExtendFormComponent', () => {
   let component: ExtendFormComponent;
   let fixture: ComponentFixture<ExtendFormComponent>;
+  let router: Router;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ExtendFormComponent],
+  beforeEach(() => {
+    const routerMock = {
+      navigate: jest.fn(),
+    };
+
+    TestBed.configureTestingModule({
       imports: [FormsModule],
+      declarations: [ExtendFormComponent],
+      providers: [{ provide: Router, useValue: routerMock }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ExtendFormComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    router = TestBed.inject(Router);
   });
 
-  it('should create the form component', () => {
-    expect(component).toBeTruthy();
+  it('should create the component with default values', () => {
+    expect(component.articleName).toBe('');
+    expect(component.quantity).toBe(0);
+    expect(component.price).toBe(0);
+    expect(component.selectedBrand).toBe(0);
+    expect(component.description).toBe('');
+    expect(component.selectedCategories).toEqual([]);
   });
 
   it('should emit formSubmit event when form is valid', () => {
+    const form = { valid: true, resetForm: jest.fn() } as any;
+
+    component.articleName = 'Test Article';
+    component.quantity = 10;
+    component.price = 100;
+    component.selectedBrand = 1;
+    component.description = 'Test Description';
+    component.selectedCategories = [1, 2];
+
     const emitSpy = jest.spyOn(component.formSubmit, 'emit');
 
-    component.articleName = 'Test Category';
-    component.quantity = 0;
-    component.price = 0;
-    component.brand = 0;
-
-    const form: NgForm = {
-      valid: true,
-      resetForm: jest.fn(),
-      controls: {
-        name: { markAsTouched: jest.fn() },
-        description: { markAsTouched: jest.fn() },
-      },
-      submitted: false,
-      _directives: [],
-      form: { controls: {} },
-      ngSubmit: null,
-    } as any;
-
-    component.onSubmit(form as NgForm);
+    component.onSubmit(form);
 
     expect(emitSpy).toHaveBeenCalledWith({
-      name: 'Test Category',
-      description: 'Test Description'
+      article: {
+        id: 0,
+        name: 'Test Article',
+        description: 'Test Description',
+        quantity: 10,
+        price: 100,
+        idbrand: 1,
+        categories: [1, 2],
+      },
     });
     expect(form.resetForm).toHaveBeenCalled();
     expect(component.articleName).toBe('');
     expect(component.quantity).toBe(0);
     expect(component.price).toBe(0);
-    expect(component.brand).toBe(0);
+    expect(component.selectedBrand).toBe(0);
+    expect(component.description).toBe('');
+    expect(component.selectedCategories).toEqual([]);
   });
 
-  it('should mark controls as touched if the form is invalid', () => {
-    const form: NgForm = {
+  it('should mark fields as touched when form is invalid', () => {
+    const form = {
       valid: false,
-      resetForm: jest.fn(),
       controls: {
         name: { markAsTouched: jest.fn() },
+        quantity: { markAsTouched: jest.fn() },
+        price: { markAsTouched: jest.fn() },
         description: { markAsTouched: jest.fn() },
       },
-      submitted: false,
-      _directives: [],
-      form: { controls: {} },
-      ngSubmit: null,
     } as any;
 
-    component.onSubmit(form as NgForm);
+    component.onSubmit(form);
 
-    expect( form.controls['name'].markAsTouched).toHaveBeenCalled();
-    expect( form.controls['description'].markAsTouched).toHaveBeenCalled();
+    expect(form.controls.name.markAsTouched).toHaveBeenCalled();
+    expect(form.controls.quantity.markAsTouched).toHaveBeenCalled();
+    expect(form.controls.price.markAsTouched).toHaveBeenCalled();
+    expect(form.controls.description.markAsTouched).toHaveBeenCalled();
   });
 });

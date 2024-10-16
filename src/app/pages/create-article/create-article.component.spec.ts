@@ -1,32 +1,32 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CreateCategoryComponent } from './create-article.component';
-import { CategoryService } from 'src/app/shared/services/category/category.service';
+import { CreateArticleComponent } from './create-article.component';
+import { ArticleService } from 'src/app/shared/services/article/article.service';
 import { of, throwError } from 'rxjs';
 import { ResponseSuccess } from 'src/app/shared/types/response-success';
+import { Article } from 'src/app/shared/types/article';
 import { HttpErrorResponse } from '@angular/common/http';
 
-jest.useFakeTimers();
-
-describe('CreateCategoryComponent', () => {
-  let component: CreateCategoryComponent;
-  let fixture: ComponentFixture<CreateCategoryComponent>;
-  let categoryService: { createCategories: jest.Mock };
+describe('CreateArticleComponent', () => {
+  let component: CreateArticleComponent;
+  let fixture: ComponentFixture<CreateArticleComponent>;
+  let articleService: { createArticle: jest.Mock };
 
   beforeEach(async () => {
-    categoryService = {
-      createCategories: jest.fn(),
+    articleService = {
+      createArticle: jest.fn(),
     };
 
     await TestBed.configureTestingModule({
-      declarations: [CreateCategoryComponent],
+      declarations: [CreateArticleComponent],
       providers: [
-        { provide: CategoryService, useValue: categoryService },
+        { provide: ArticleService, useValue: articleService },
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CreateCategoryComponent);
+    fixture = TestBed.createComponent(CreateArticleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    jest.useFakeTimers();
   });
 
   it('should create the component', () => {
@@ -34,12 +34,12 @@ describe('CreateCategoryComponent', () => {
   });
 
   it('should submit form and show success message', () => {
-    const mockResponse: ResponseSuccess = { status: "success", messages: "Categoría creada correctamente" };
-    (categoryService.createCategories as jest.Mock).mockReturnValue(of(mockResponse));
+    const mockResponse: ResponseSuccess = { status: "success", messages: "Articulo creado correctamente" };
+    (articleService.createArticle as jest.Mock).mockReturnValue(of(mockResponse));
 
-    component.onFormSubmit({ name: 'Test Category', description: 'Test Description' });
+    component.onFormSubmit({article: nuevoArticle});
 
-    expect(component.message).toBe("Categoría creada correctamente");
+    expect(component.message).toBe("Articulo creado correctamente");
     expect(component.isMessagess).toBe(true);
     expect(component.lineColor).toBe("#00B998");
     expect(component.textColor).toBe("#00B998");
@@ -51,9 +51,9 @@ describe('CreateCategoryComponent', () => {
 
   it('should handle error response and show error message', () => {
     const errorResponse = new HttpErrorResponse({ status: 409, statusText: 'Conflict' });
-    categoryService.createCategories.mockReturnValue(throwError(() => errorResponse));
+    articleService.createArticle.mockReturnValue(throwError(() => errorResponse));
 
-    component.onFormSubmit({ name: 'Test Category', description: 'Test Description' });
+    component.onFormSubmit({ article: nuevoArticle });
 
     expect(component.message).toBe(errorResponse.message);
     expect(component.isMessagess).toBe(true);
@@ -67,9 +67,9 @@ describe('CreateCategoryComponent', () => {
 
   it('should handle unexpected error response', () => {
     const errorResponse = new HttpErrorResponse({ status: 500, statusText: 'Server Error' });
-    categoryService.createCategories.mockReturnValue(throwError(() => errorResponse));
-
-    component.onFormSubmit({ name: 'Test Category', description: 'Test Description' });
+    articleService.createArticle.mockReturnValue(throwError(() => errorResponse));
+    
+    component.onFormSubmit({ article: nuevoArticle });
 
     expect(component.message).toBe(errorResponse.message);
     expect(component.isMessagess).toBe(true);
@@ -80,4 +80,31 @@ describe('CreateCategoryComponent', () => {
     jest.advanceTimersByTime(4000);
     expect(component.isMessagess).toBe(false);
   });
+
+  it('should handle error response and show error message and status 400', () => {
+    const errorResponse = new HttpErrorResponse({ status: 400, statusText: 'Conflict' });
+    articleService.createArticle.mockReturnValue(throwError(() => errorResponse));
+
+    component.onFormSubmit({ article: nuevoArticle });
+
+    expect(component.message).toBe(errorResponse.message);
+    expect(component.isMessagess).toBe(true);
+    expect(component.lineColor).toBe("#FF9500");
+    expect(component.textColor).toBe("#FF9500");
+    expect(component.srcImage).toBe("assets/images/Icon-warn.png");
+
+    jest.advanceTimersByTime(4000);
+    expect(component.isMessagess).toBe(false);
+  });
+
+  const nuevoArticle: Article = {
+    id: 0,
+    name: "Test",
+    description: "Test",
+    quantity: 0,
+    price: 0,
+    idbrand: 1,
+    categories: []
+  };
+  
 });

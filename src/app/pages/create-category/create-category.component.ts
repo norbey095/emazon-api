@@ -26,7 +26,7 @@ export class CreateCategoryComponent {
   onFormSubmit(event: { name: string, description: string }) {
     this.categoryService.createCategories(event.name, event.description).subscribe({
       next: (response: ResponseSuccess) => {        
-        this.message =  response.messages || "Categoría creada correctamente"; 
+        this.message =  response.messages; 
         this.isMessagess = true;  
         this.lineColor = environment.lineColorSuccess;  
         this.textColor = environment.textColorSucess;
@@ -47,7 +47,7 @@ export class CreateCategoryComponent {
           this.textColor = environment.textColorError;
           this.srcImage = environment.srcImageError;   
         }
-        this.message = error.message || 'Unknown error!';
+        this.message = error.message;
         
         setTimeout(() => {
           this.isMessagess = false; 

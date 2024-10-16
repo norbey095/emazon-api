@@ -28,7 +28,7 @@ export class CreateArticleComponent {
   onFormSubmit(event: {article: Article}) {
     this.articleService.createArticle(event.article).subscribe({
       next: (response: ResponseSuccess) => {        
-        this.message =  response.messages || "Articulo creado correctamente"; 
+        this.message =  response.messages; 
         this.isMessagess = true;  
         this.lineColor = environment.lineColorSuccess;  
         this.textColor = environment.textColorSucess;
@@ -49,7 +49,7 @@ export class CreateArticleComponent {
           this.textColor = environment.textColorError;
           this.srcImage = environment.srcImageError;   
         }
-        this.message = error.message || 'Unknown error!';
+        this.message = error.message;
         
         setTimeout(() => {
           this.isMessagess = false; 

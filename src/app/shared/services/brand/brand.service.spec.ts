@@ -47,7 +47,7 @@ describe('BrandService', () => {
 
   describe('createBrand', () => {
     it('should create a brand and return a ResponseSuccess', () => {
-      const mockSuccessResponse: ResponseSuccess = { status: '400', messages: 'Brand created' };
+      const mockSuccessResponse: ResponseSuccess = { status: '201', messages: 'Brand created' };
       const name = 'Test Brand';
       const description = 'Test Description';
 
