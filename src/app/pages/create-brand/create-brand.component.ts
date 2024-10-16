@@ -26,7 +26,7 @@ export class CreateBrandComponent {
   onFormSubmit(event: { name: string, description: string }) {
     this.brandService.createBrand(event.name, event.description).subscribe({
       next: (response: ResponseSuccess) => {        
-        this.message =  response.messages || "Marca creada correctamente"; 
+        this.message =  response.messages; 
         this.isMessagess = true;  
         this.lineColor = environment.lineColorSuccess;  
         this.textColor = environment.textColorSucess;
@@ -48,7 +48,7 @@ export class CreateBrandComponent {
           this.textColor = environment.textColorError;
           this.srcImage = environment.srcImageError;   
         }
-        this.message = error.message || 'Unknown error!';
+        this.message = error.message;
         
         setTimeout(() => {
           this.isMessagess = false; 

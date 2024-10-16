@@ -1,30 +1,32 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { CategoryService } from 'src/app/shared/services/category/category.service'; 
+import { ArticleService } from 'src/app/shared/services/article/article.service'; 
 import { ResponseSuccess } from 'src/app/shared/types/response-success';
 import { environment } from 'src/environments/environment';
+import { Article } from 'src/app/shared/types/article';
 
 @Component({
-  selector: 'app-create-category',
-  templateUrl: './create-category.component.html',
-  styleUrls: ['./create-category.component.scss'],
+  selector: 'app-create-article',
+  templateUrl: './create-article.component.html',
+  styleUrls: ['./create-article.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class CreateCategoryComponent {
-  title: string = "Crear Categoría";
+export class CreateArticleComponent {
+  title: string = "Crear Articulo";
   message: string = "";
   isMessagess: boolean = false;
   lineColor: string = "";
   textColor: string = "";
   srcImage: string = "";
-  urlBack: string = "/categories";
+  urlBack: string = "/articles";
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(private articleService: ArticleService) {}
+  
 
   ngOnInit(): void {}
 
-  onFormSubmit(event: { name: string, description: string }) {
-    this.categoryService.createCategories(event.name, event.description).subscribe({
+  onFormSubmit(event: {article: Article}) {
+    this.articleService.createArticle(event.article).subscribe({
       next: (response: ResponseSuccess) => {        
         this.message =  response.messages; 
         this.isMessagess = true;  

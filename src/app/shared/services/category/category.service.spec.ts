@@ -47,7 +47,7 @@ describe('CategoryService', () => {
 
   describe('createCategories', () => {
     it('should create a category and return a ResponseSuccess', () => {
-      const mockSuccessResponse: ResponseSuccess = { status: '400', messages: 'Category created' };
+      const mockSuccessResponse: ResponseSuccess = { status: '201', messages: 'Category created' };
       const name = 'Test Category';
       const description = 'Test Description';
 

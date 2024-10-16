@@ -3,11 +3,11 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  selector: 'app-basic-form',
+  templateUrl: './basic-form.component.html',
+  styleUrls: ['./basic-form.component.scss']
 })
-export class FormComponent {
+export class BasicFormComponent {
   categoryName: string = '';
   categoryDescription: string = '';
   constructor(private router: Router) {}
@@ -29,5 +29,5 @@ export class FormComponent {
 
   goBack() {
     this.router.navigate([this.urlBack]);
-}
+  }
 }
