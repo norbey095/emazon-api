@@ -54,10 +54,6 @@ export class ExtendFormComponent {
     }
   }
 
-  goBack() {
-    this.router.navigate([this.urlBack]);
-  }
-
   resetFields(){
       this.articleName = '';
       this.quantity = 0;

@@ -42,4 +42,21 @@ describe('ErrorInterceptor', () => {
       message: 'Custom error message'
     });
   });
+
+  it('should handle ErrorEvent type errors', async () => {
+    const mockErrorEvent = {
+      message: 'A network error occurred',
+      name: 'NetworkError',
+    };
+  
+    const response = firstValueFrom(httpClient.get('/test').pipe());
+  
+    const req = httpMock.expectOne('/test');
+    req.error(new ErrorEvent('NetworkError', { message: mockErrorEvent.message }));
+  
+    await expect(response).rejects.toMatchObject({
+      status: 0,
+      message: 'Error: A network error occurred',
+    });
+  });    
 });

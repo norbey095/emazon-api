@@ -37,6 +37,15 @@ describe('ExtendFormComponent', () => {
   it('should emit formSubmit event when form is valid', () => {
     const form = { valid: true, resetForm: jest.fn() } as any;
 
+    const selectedBrandMock = {
+      reset: jest.fn(),
+    };
+    const multiComboBoxMock = {
+      reset: jest.fn(),
+    };
+
+    component.selectedBrand = selectedBrandMock as any;
+    component.multiComboBox = multiComboBoxMock as any;
     component.articleName = 'Test Article';
     component.quantity = 10;
     component.price = 100;
@@ -60,6 +69,8 @@ describe('ExtendFormComponent', () => {
       },
     });
     expect(form.resetForm).toHaveBeenCalled();
+    expect(selectedBrandMock.reset).toHaveBeenCalled();
+    expect(multiComboBoxMock.reset).toHaveBeenCalled();
     expect(component.articleName).toBe('');
     expect(component.quantity).toBe(0);
     expect(component.price).toBe(0);
