@@ -2,7 +2,7 @@ import { NgModule, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { HeaderComponent } from './components/navbar/header.component'; 
+import { HeaderComponent } from './components/header/header.component'; 
 import { AtomsModule } from '../atoms/atoms.module'; 
 import { BasicFormComponent } from './components/basic-form/basic-form.component'; 
 import { FooterComponent } from './components/footer/footer.component';

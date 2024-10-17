@@ -6,16 +6,7 @@ export const environment = {
   production: false,
   apiCrearCategoryUrl: 'http://localhost:9090/stock/category/',
   apiCrearBrandUrl: 'http://localhost:9090/stock/brand/',
-  apiCrearArticleUrl: 'http://localhost:9090/stock/article/',
-  lineColorSuccess: '#00B998',
-  textColorSucess: '#00B998',
-  srcImageSucess: 'assets/images/Icon-success.png',
-  lineColorWarnm: '#FF9500',
-  textColorWarnm: '#FF9500',
-  srcImageWarnm: 'assets/images/Icon-warn.png',
-  lineColorError: '#D51A52',
-  textColorError: '#D51A52',
-  srcImageError: 'assets/images/Icon-error.png',
+  apiCrearArticleUrl: 'http://localhost:9090/stock/article/',  
 };
 
 /*
