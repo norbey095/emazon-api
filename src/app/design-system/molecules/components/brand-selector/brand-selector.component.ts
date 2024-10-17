@@ -78,5 +78,10 @@ export class BrandSelectorComponent implements OnInit {
             brand.name.toLowerCase().includes(this.searchQuery.toLowerCase())
           );
         }
-      }
+    }
+
+    reset() {
+        this.selectedBrand = 0;
+        this.selectedBrandChange.emit(this.selectedBrand);
+    }
   }

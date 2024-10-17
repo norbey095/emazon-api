@@ -1,8 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/shared/types/article';
 import { Brand } from 'src/app/shared/types/brand';
+import { BrandSelectorComponent } from '../brand-selector/brand-selector.component';
+import { MultiComboBoxComponent } from '../multi-combo-box/multi-combo-box.component';
 
 @Component({
   selector: 'app-extend-form',
@@ -10,6 +12,8 @@ import { Brand } from 'src/app/shared/types/brand';
   styleUrls: ['./extend-form.component.scss']
 })
 export class ExtendFormComponent {
+  @ViewChild('selectedBrand') selectedBrand: BrandSelectorComponent  | undefined;
+  @ViewChild('multiComboBox') multiComboBox!: MultiComboBoxComponent | undefined;
   @Input() urlBack: string= '';
   @Output() formSubmit = new EventEmitter<{ article: Article}>();
 
@@ -18,7 +22,7 @@ export class ExtendFormComponent {
   price: number = 0;
   brand: number = 0;  
   brandObject: Brand[] = [];
-  selectedBrand: number | 0 = 0;
+  selectedBrandChange: number | 0 = 0;
   description: string = '';
   selectedCategories: number[] = [];
  
@@ -33,7 +37,7 @@ export class ExtendFormComponent {
         description: this.description,
         quantity: this.quantity,
         price: this.price,
-        idbrand: this.selectedBrand,
+        idbrand: this.selectedBrandChange,
         categories: this.selectedCategories
       };
 
@@ -60,7 +64,14 @@ export class ExtendFormComponent {
       this.price = 0;
       this.brand = 0;
       this.description = '';
-      this.selectedBrand = 0;
+      this.selectedBrandChange = 0;
       this.selectedCategories = [];
+
+      if (this.selectedBrand) {
+        this.selectedBrand.reset();
+      }
+      if (this.multiComboBox) {
+        this.multiComboBox.reset();
+      }      
   }
 }

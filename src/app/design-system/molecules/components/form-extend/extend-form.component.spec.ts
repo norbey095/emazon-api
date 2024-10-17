@@ -29,7 +29,7 @@ describe('ExtendFormComponent', () => {
     expect(component.articleName).toBe('');
     expect(component.quantity).toBe(0);
     expect(component.price).toBe(0);
-    expect(component.selectedBrand).toBe(0);
+    expect(component.selectedBrandChange).toBe(0);
     expect(component.description).toBe('');
     expect(component.selectedCategories).toEqual([]);
   });
@@ -40,7 +40,7 @@ describe('ExtendFormComponent', () => {
     component.articleName = 'Test Article';
     component.quantity = 10;
     component.price = 100;
-    component.selectedBrand = 1;
+    component.selectedBrandChange = 1;
     component.description = 'Test Description';
     component.selectedCategories = [1, 2];
 
@@ -63,7 +63,7 @@ describe('ExtendFormComponent', () => {
     expect(component.articleName).toBe('');
     expect(component.quantity).toBe(0);
     expect(component.price).toBe(0);
-    expect(component.selectedBrand).toBe(0);
+    expect(component.selectedBrandChange).toBe(0);
     expect(component.description).toBe('');
     expect(component.selectedCategories).toEqual([]);
   });
