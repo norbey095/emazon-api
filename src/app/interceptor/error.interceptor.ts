@@ -22,7 +22,7 @@ import {
       return next.handle(req).pipe(
         catchError((error: HttpErrorResponse) => {
           const errorMessage = this.getErrorMessage(error);
-          return this.createErrorResponse(error.status || 0, errorMessage);
+          return this.createErrorResponse(error.status, errorMessage);
         })
       );
     }
@@ -31,7 +31,7 @@ import {
       if (error.error instanceof ErrorEvent) {
         return `Error: ${error.error.message}`;
       }
-      return error.error?.message || `Sorry! We couldn't complete your request. Try again later.`;
+      return error.error ?.message;
     }
   
     private createErrorResponse(status: number, message: string): Observable<never> {
