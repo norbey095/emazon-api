@@ -1,6 +1,6 @@
-<div *ngIf="isVisible" class="alert" id="alert" [ngStyle]="{'color': textColor}">
-    <div class="line" [ngStyle]="{'background-color': lineColor}"></div>
+<div *ngIf="isVisible" class="alert" id="alert" [ngClass]="textColor">
+    <div class="line" [ngClass]="lineColor"></div>
     <app-image [src]="srcImage" class="icon"></app-image>
-    <span class="message" >{{ message }}</span>
+    <span class="message">{{ message }}</span>
     <app-image [src]="srcClose" class="close-btn" (click)="closeAlert()"></app-image>
 </div>

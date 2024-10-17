@@ -8,13 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AlertComponent implements OnInit {
   isVisible = true;
   srcClose = 'assets/images/close-line.png';
-  @Input() srcImage = 'assets/images/Icon-success.png';  
-  @Input() lineColor: string = '#00B998';
-  @Input() textColor: string = 'green'; 
+  lineColor = "";
+  textColor = "";
 
+  @Input() srcImage = 'assets/images/Icon-success.png';  
+  @Input() status: string = 'success';
   @Input() message!: string;
 
   ngOnInit() {
+    this.setLineAndTextColor(); 
     setTimeout(() => {
       this.closeAlert();
     }, 4000);
@@ -22,5 +24,22 @@ export class AlertComponent implements OnInit {
 
   closeAlert() {
     this.isVisible = false;
+  }
+
+  setLineAndTextColor() {
+    switch (this.status) {
+      case 'warning':
+        this.lineColor = "line-warn";
+        this.textColor = "text-warn";
+        break;
+      case 'error':
+        this.lineColor = "line-error";
+        this.textColor = "text-error";
+        break;
+      default:
+        this.lineColor = "line-sucess";
+        this.textColor = "text-sucess";
+        break;
+    }
   }
 }

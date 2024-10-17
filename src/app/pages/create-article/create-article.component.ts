@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ArticleService } from 'src/app/shared/services/article/article.service'; 
 import { ResponseSuccess } from 'src/app/shared/types/response-success';
-import { environment } from 'src/environments/environment';
+import { AppConstants } from 'src/app/shared/constants/constants'; 
 import { Article } from 'src/app/shared/types/article';
 
 @Component({
@@ -15,8 +15,7 @@ export class CreateArticleComponent {
   title: string = "Crear Articulo";
   message: string = "";
   isMessagess: boolean = false;
-  lineColor: string = "";
-  textColor: string = "";
+  status: string = "sucess";
   srcImage: string = "";
   urlBack: string = "/articles";
 
@@ -30,9 +29,8 @@ export class CreateArticleComponent {
       next: (response: ResponseSuccess) => {        
         this.message =  response.messages; 
         this.isMessagess = true;  
-        this.lineColor = environment.lineColorSuccess;  
-        this.textColor = environment.textColorSucess;
-        this.srcImage = environment.srcImageSucess;
+        this.status = "success";
+        this.srcImage = AppConstants.SRC_IMAGE_SUCCESS;
         
         setTimeout(() => {
           this.isMessagess = false; 
@@ -41,13 +39,11 @@ export class CreateArticleComponent {
       error: (error: HttpErrorResponse) => {
         this.isMessagess = true;
         if(error.status == 409 || error.status == 400){
-          this.lineColor = environment.lineColorWarnm;  
-          this.textColor = environment.textColorWarnm;
-          this.srcImage = environment.srcImageWarnm;   
+          this.status = "warning";
+          this.srcImage = AppConstants.SRC_IMAGE_WARNING;   
         } else {
-          this.lineColor = environment.lineColorError;  
-          this.textColor = environment.textColorError;
-          this.srcImage = environment.srcImageError;   
+          this.status = "error";
+          this.srcImage = AppConstants.SRC_IMAGE_ERROR;   
         }
         this.message = error.message;
         

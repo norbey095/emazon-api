@@ -41,8 +41,7 @@ describe('CreateArticleComponent', () => {
 
     expect(component.message).toBe("Articulo creado correctamente");
     expect(component.isMessagess).toBe(true);
-    expect(component.lineColor).toBe("#00B998");
-    expect(component.textColor).toBe("#00B998");
+    expect(component.status).toBe("success");
     expect(component.srcImage).toBe("assets/images/Icon-success.png");
 
     jest.advanceTimersByTime(4000);
@@ -57,8 +56,7 @@ describe('CreateArticleComponent', () => {
 
     expect(component.message).toBe(errorResponse.message);
     expect(component.isMessagess).toBe(true);
-    expect(component.lineColor).toBe("#FF9500");
-    expect(component.textColor).toBe("#FF9500");
+    expect(component.status).toBe("warning");
     expect(component.srcImage).toBe("assets/images/Icon-warn.png");
 
     jest.advanceTimersByTime(4000);
@@ -73,8 +71,7 @@ describe('CreateArticleComponent', () => {
 
     expect(component.message).toBe(errorResponse.message);
     expect(component.isMessagess).toBe(true);
-    expect(component.lineColor).toBe("#D51A52");
-    expect(component.textColor).toBe("#D51A52");
+    expect(component.status).toBe("error");
     expect(component.srcImage).toBe("assets/images/Icon-error.png");
 
     jest.advanceTimersByTime(4000);
@@ -89,8 +86,7 @@ describe('CreateArticleComponent', () => {
 
     expect(component.message).toBe(errorResponse.message);
     expect(component.isMessagess).toBe(true);
-    expect(component.lineColor).toBe("#FF9500");
-    expect(component.textColor).toBe("#FF9500");
+    expect(component.status).toBe("warning");
     expect(component.srcImage).toBe("assets/images/Icon-warn.png");
 
     jest.advanceTimersByTime(4000);
