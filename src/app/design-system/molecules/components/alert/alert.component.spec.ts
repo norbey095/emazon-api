@@ -21,26 +21,59 @@ describe('AlertComponent', () => {
 
   it('should display the alert message', () => {
     component.message = 'This is a test alert';
+    component.status = 'success';
     fixture.detectChanges();
 
     const messageElement = fixture.debugElement.query(By.css('.message'));
     expect(messageElement.nativeElement.textContent).toContain('This is a test alert');
   });
 
-  it('should have the correct line color', () => {
-    component.lineColor = '#FF0000'; 
+  it('should set the correct line color for success', () => {
+    component.status = 'success';
+    component.ngOnInit();
     fixture.detectChanges();
 
     const lineElement = fixture.debugElement.query(By.css('.line'));
-    expect(lineElement.nativeElement.style.backgroundColor).toBe('rgb(255, 0, 0)');
+    expect(lineElement.nativeElement.classList).toContain('line-sucess');
   });
 
-  it('should have the correct text color', () => {
-    component.textColor = 'blue';
+  it('should set the correct line color for warning', () => {
+    component.status = 'warning';
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    const lineElement = fixture.debugElement.query(By.css('.line'));
+    expect(lineElement.nativeElement.classList).toContain('line-warn');
+  });
+
+  it('should set the correct line color for error', () => {
+    component.status = 'error';
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    const lineElement = fixture.debugElement.query(By.css('.line'));
+    expect(lineElement.nativeElement.classList).toContain('line-error');
+  });
+
+  it('should have the correct text color based on status', () => {
+    component.status = 'warning';
+    component.ngOnInit();
     fixture.detectChanges();
 
     const alertElement = fixture.debugElement.query(By.css('.alert'));
-    expect(alertElement.nativeElement.style.color).toBe('blue');
+    expect(alertElement.nativeElement.classList).toContain('text-warn');
+
+    component.status = 'error';
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    expect(alertElement.nativeElement.classList).toContain('text-error');
+
+    component.status = 'success';
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    expect(alertElement.nativeElement.classList).toContain('text-sucess');
   });
 
   it('should close the alert after 4 seconds', (done) => {

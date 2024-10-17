@@ -1,32 +1,13 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-}
-
-body {
-    flex-grow: 1;
-}
-
 main {
-    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-app-footer {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20px 0;
-    margin-top: auto;
+    margin: 0;
+    padding: 0;
 }
 
 @media (max-width: 768px) {
-    app-hero, app-form, app-footer {
+    app-hero, app-form {
         width: 100%;
         box-sizing: border-box;
     }

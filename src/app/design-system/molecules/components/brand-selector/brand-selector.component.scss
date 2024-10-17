@@ -1,6 +1,6 @@
 .input-container {
-  margin: 10px 3%;
-  width: 100%;
+  margin: 10px 1%;
+  width: 100%;  
 }
 
 .custom-select-container {
@@ -15,7 +15,7 @@
   border: 1px solid #9D3FE7;
   border-radius: 4px;
   background-color: white;
-  width: 300px;
+  width: 296px;
   height: 20px;
 }
 
@@ -65,7 +65,7 @@
   border: 1px solid #9D3FE7;
   border-radius: 4px 4px 0 0;
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   box-sizing: border-box;
   margin-bottom: 8px;
 }
@@ -78,7 +78,7 @@
 
 .custom-options div:hover {
   background-color: #9D3FE7;
-  
+  color: white;
 }
 
 label {
@@ -86,5 +86,13 @@ label {
   margin-bottom: 5px;
   font-weight: bold;
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
+  font-size: 1rem;
 }
+
+@media (max-width: 600px) {
+  input {
+      width: 100%;
+      font-size: 1rem;
+  }
+}
+

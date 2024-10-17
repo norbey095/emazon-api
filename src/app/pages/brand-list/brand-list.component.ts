@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Brand } from 'src/app/shared/types/brand';
 import { BrandService } from 'src/app/shared/services/brand/brand.service';
 import { PaginationDto } from 'src/app/shared/types/paginationDto';
@@ -8,6 +8,7 @@ import { PaginationDto } from 'src/app/shared/types/paginationDto';
     selector: 'app-brand-list',
     templateUrl: './brand-list.component.html',
     styleUrls: ['./brand-list.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class BrandListComponent {
     title: string = "Lista de Marcas";

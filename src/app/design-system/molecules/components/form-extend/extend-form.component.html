@@ -1,35 +1,49 @@
 <section class="form-container">
   <form (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div class="input-container">
-      <app-input 
-        [(ngModel)]="articleName" 
-        type="text" 
-        id="name" 
-        name="name" 
-        placeholder="Nombre:" 
-        width="300px"  
-        height="20px" 
-        required>
-      </app-input>
-      <div *ngIf="form.submitted && form.controls['name']?.invalid" class="error-message">
-        El nombre es requerido.
+      <div class="input-wrapper">
+        <app-input 
+          [(ngModel)]="articleName" 
+          type="text" 
+          id="name" 
+          name="name" 
+          placeholder="Nombre:" 
+          width="300px"  
+          height="20px" 
+          required>
+        </app-input>
+        <span *ngIf="form.controls['name']?.touched && form.controls['name']?.invalid" class="error-message">Este campo es obligatorio.</span>
       </div>
-      <app-input 
-        [(ngModel)]="quantity" 
-        type="number" 
-        id="quantity" 
-        name="quantity" 
-        placeholder="Cantidad:" 
-        width="300px"  
-        height="20px" 
-        required>
-      </app-input>      
-      <div *ngIf="form.submitted && form.controls['quantity']?.invalid" class="error-message">
-        La cantidad es requerida.
+      <div class="input-wrapper">
+        <app-textarea 
+          [(ngModel)]="description" 
+          type="text" 
+          id="description" 
+          name="description" 
+          placeholder="Descripción:" 
+          width="300px"  
+          height="20px" 
+          required>
+        </app-textarea>
+        <span *ngIf="form.controls['description']?.touched && form.controls['description']?.invalid" class="error-message">Este campo es obligatorio.</span>          
       </div>
     </div>
     <div class="input-container">
-      <app-input 
+      <div class="input-wrapper">
+        <app-input 
+          [(ngModel)]="quantity" 
+          type="number" 
+          id="quantity" 
+          name="quantity" 
+          placeholder="Cantidad:" 
+          width="300px"  
+          height="20px" 
+          required>
+        </app-input>
+        <span *ngIf="form.controls['quantity']?.touched && form.controls['quantity']?.invalid" class="error-message">Este campo es obligatorio.</span>
+      </div>
+      <div class="input-wrapper">
+        <app-input 
         [(ngModel)]="price" 
         type="number" 
         id="price" 
@@ -38,28 +52,14 @@
         width="300px"  
         height="20px" 
         required>
-      </app-input>
-      <div *ngIf="form.submitted && form.controls['price']?.invalid" class="error-message">
-        El precio es requerido.
+        </app-input>
+        <span *ngIf="form.controls['price']?.touched && form.controls['price']?.invalid" class="error-message">Este campo es obligatorio.</span>
       </div>
-      <app-brand-selector (selectedBrandChange)="selectedBrand = $event"></app-brand-selector>      
     </div>
 
-    <div class="input-container">
-      <app-multi-comboBox (selectedCategoriesChange)="selectedCategories = $event"></app-multi-comboBox>
-      <app-textarea 
-        [(ngModel)]="description" 
-        type="text" 
-        id="description" 
-        name="description" 
-        placeholder="Descripción:" 
-        width="300px"  
-        height="20px" 
-        required>
-      </app-textarea>
-      <div *ngIf="form.submitted && form.controls['description']?.invalid" class="error-message">
-        La descripción es requerida.
-      </div>
+    <div class="input-container-selector">
+      <app-brand-selector #selectedBrand (selectedBrandChange)="selectedBrandChange = $event"></app-brand-selector>
+      <app-multi-comboBox #multiComboBox (selectedCategoriesChange)="selectedCategories = $event"></app-multi-comboBox>      
     </div>    
     <div class="button-container">
       <button type="button" (click)="goBack()" class="btn-back">Volver</button>

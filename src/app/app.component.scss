@@ -1,0 +1,33 @@
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    flex-grow: 1;
+}  
+
+app-footer {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 0;
+    margin-top: auto;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    app-footer,html {
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+}

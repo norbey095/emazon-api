@@ -66,4 +66,9 @@ export class MultiComboBoxComponent implements OnInit {
       );
     }
   }
+
+  reset() {
+    this.selectedCategories = [];
+    this.selectedCategoriesChange.emit(this.selectedCategories);
+  }
 }

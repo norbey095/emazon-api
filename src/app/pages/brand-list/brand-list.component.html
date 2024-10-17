@@ -1,28 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar Marcas</title>
-</head>
-<body>
-    <app-header></app-header>
-    <app-hero [title]="title"></app-hero>
-
-    <div class="table-container">
-        <div class="controls">
-            <div class="filter-container">
-                <app-filter-table (controlsChange)="onControlsChange($event)"></app-filter-table>
-            </div>
-            <div class="button-container">
-                <button routerLink="/create-brand" class="btn-create">Crear Marca</button>
-            </div>
+<app-hero [title]="title"></app-hero>
+<div class="table-container">
+    <div class="controls">
+        <div class="filter-container">
+            <app-filter-table (controlsChange)="onControlsChange($event)"></app-filter-table>
         </div>
-        <app-table [items]="brands" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [page]="page"></app-table>
-        <div class="pagination-controls">
-            <pagination-controls (pageChange)="page = $event; fetchBrands()"></pagination-controls>
+        <div class="button-container">
+            <button routerLink="/create-brand" class="btn-create">Crear Marca</button>
         </div>
     </div>
-    <app-footer></app-footer>
-</body>
-</html>
+    <app-table [items]="brands" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [page]="page"></app-table>
+    <div class="pagination-controls">
+        <pagination-controls (pageChange)="page = $event; fetchBrands()"></pagination-controls>
+    </div>
+</div>
