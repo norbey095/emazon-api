@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ExtendFormComponent } from './extend-form.component';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, SimpleChanges } from '@angular/core';
 
 describe('ExtendFormComponent', () => {
   let component: ExtendFormComponent;
@@ -44,6 +44,7 @@ describe('ExtendFormComponent', () => {
       reset: jest.fn(),
     };
 
+    component.resetOnSuccess = true;
     component.selectedBrand = selectedBrandMock as any;
     component.multiComboBox = multiComboBoxMock as any;
     component.articleName = 'Test Article';
@@ -97,4 +98,31 @@ describe('ExtendFormComponent', () => {
     expect(form.controls.price.markAsTouched).toHaveBeenCalled();
     expect(form.controls.description.markAsTouched).toHaveBeenCalled();
   });
+
+  it('should reset fields when resetOnSuccess input changes to true', () => {
+    component.articleName = 'Test Article';
+    component.quantity = 10;
+    component.price = 100;
+    component.selectedBrandChange = 1;
+    component.description = 'Test Description';
+    component.selectedCategories = [1, 2];
+  
+    component.resetOnSuccess = true;
+    component.ngOnChanges({
+      resetOnSuccess: {
+        currentValue: true,
+        previousValue: false,
+        firstChange: false,
+        isFirstChange: () => false,
+      },
+    } as SimpleChanges);
+  
+    expect(component.articleName).toBe('');
+    expect(component.quantity).toBe(0);
+    expect(component.price).toBe(0);
+    expect(component.selectedBrandChange).toBe(0);
+    expect(component.description).toBe('');
+    expect(component.selectedCategories).toEqual([]);
+  });
+  
 });

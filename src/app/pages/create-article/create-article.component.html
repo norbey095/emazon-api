@@ -1,5 +1,5 @@
 <app-hero  [title]="title"></app-hero>
 <main>
     <app-alert *ngIf="isMessagess" [srcImage]="srcImage" [message]="message" [status]="status"></app-alert>
-    <app-extend-form (formSubmit)="onFormSubmit($event)" [urlBack]="urlBack"></app-extend-form>
+    <app-extend-form (formSubmit)="onFormSubmit($event)" [urlBack]="urlBack" [resetOnSuccess]="isSuccessful"></app-extend-form>
 </main>

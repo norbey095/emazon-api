@@ -18,6 +18,7 @@ export class CreateArticleComponent {
   status: string = "sucess";
   srcImage: string = "";
   urlBack: string = "/articles";
+  isSuccessful: boolean = false;
 
   constructor(private articleService: ArticleService) {}
   
@@ -31,6 +32,7 @@ export class CreateArticleComponent {
         this.isMessagess = true;  
         this.status = "success";
         this.srcImage = AppConstants.SRC_IMAGE_SUCCESS;
+        this.isSuccessful = true;
         
         setTimeout(() => {
           this.isMessagess = false; 
