@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/shared/types/article';
@@ -15,6 +15,7 @@ export class ExtendFormComponent {
   @ViewChild('selectedBrand') selectedBrand: BrandSelectorComponent  | undefined;
   @ViewChild('multiComboBox') multiComboBox!: MultiComboBoxComponent | undefined;
   @Input() urlBack: string= '';
+  @Input() resetOnSuccess: boolean = false;
   @Output() formSubmit = new EventEmitter<{ article: Article}>();
 
   articleName: string = '';
@@ -24,10 +25,15 @@ export class ExtendFormComponent {
   brandObject: Brand[] = [];
   selectedBrandChange: number | 0 = 0;
   description: string = '';
-  selectedCategories: number[] = [];
- 
+  selectedCategories: number[] = []; 
 
   constructor(private router: Router) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['resetOnSuccess'] && this.resetOnSuccess) {
+      this.resetFields();
+    }
+  }
 
   onSubmit(form: NgForm) {
     if (form.valid) {
@@ -43,9 +49,10 @@ export class ExtendFormComponent {
 
       this.formSubmit.emit({article: nuevoArticle});
 
-      this.resetFields();
-
-      form.resetForm();
+      if (this.resetOnSuccess) {
+        this.resetFields();
+        form.resetForm();
+      }
     } else {
       form.controls['name'].markAsTouched();
       form.controls['quantity'].markAsTouched();
