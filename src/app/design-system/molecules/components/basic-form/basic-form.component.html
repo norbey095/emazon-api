@@ -3,6 +3,7 @@
     <div class="input-container">
       <app-input 
         [(ngModel)]="categoryName" 
+        (input)="checkLength()"
         type="text" 
         id="name" 
         name="name" 
@@ -11,14 +12,14 @@
         height="20px" 
         required>
       </app-input>
-      <div *ngIf="form.submitted && form.controls['name']?.invalid" class="error-message">
-        El nombre es requerido.
-      </div>
+      <div *ngIf="form.submitted && form.controls['name']?.invalid" class="error-message">{{messagesName}}</div>
+      <div *ngIf="lengthNameError" class="error-message">{{lengthNameError}}</div>
     </div>
     
     <div class="input-container">
       <app-textarea 
-        [(ngModel)]="categoryDescription" 
+        [(ngModel)]="categoryDescription"
+        (input)="checkLength()"
         type="text" 
         id="description" 
         name="description" 
@@ -27,10 +28,10 @@
         height="60px" 
         required>
       </app-textarea>
-      <div *ngIf="form.submitted && form.controls['description']?.invalid" class="error-message">
-        La descripción es requerido.
-      </div>
+        <div *ngIf="form.submitted && form.controls['description']?.invalid" class="error-message">{{messagesDescription}}  </div>      
+        <div *ngIf="lengthDescriptionError" class="error-message">{{lengthDescriptionError}}</div>      
     </div>
+    
     <div class="button-container">
       <button type="button" (click)="goBack()" class="btn-back">Volver</button>
       <app-input-button type="submit" value="Guardar"></app-input-button>
