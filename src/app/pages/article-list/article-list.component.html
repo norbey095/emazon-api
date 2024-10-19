@@ -1,0 +1,12 @@
+<app-filter-table (controlsChange)="onControlsChange($event)"></app-filter-table>
+<div class="product-grid">
+    <div class="product-card" *ngFor="let product of articles | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
+        <app-article-card 
+            [id]="product.id" 
+            [title]="product.name" 
+            [price]="product.price"></app-article-card>
+    </div>
+</div>
+<div class="pagination-controls">
+    <pagination-controls (pageChange)="page = $event; fetchArticles()"></pagination-controls>
+</div>

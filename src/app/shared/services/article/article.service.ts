@@ -14,11 +14,12 @@ export class ArticleService {
 
   constructor(private http: HttpClient) {}
 
-  getAllArticles(page: number, size: number, descending: boolean): Observable<PaginationDto<Article>> {
+  getAllArticles(page: number, size: number, descending: boolean,filterBy: string): Observable<PaginationDto<Article>> {
     const params = new HttpParams()
       .set('page', page)
       .set('size', size)
-      .set('descending', descending);
+      .set('descending', descending)
+      .set('filterBy', filterBy);
 
     return this.http.get<PaginationDto<Article>>(this.apiUrl, { params });
   }
