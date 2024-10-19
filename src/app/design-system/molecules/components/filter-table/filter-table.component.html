@@ -6,7 +6,13 @@
         </select>
     </div>
     <div>
-        <label class="view" for="orderBy">Ordenar Nombre:</label>
+        <label class="view" for="orderBy">Filtrar por:</label>
+        <select id="orderBy" [(ngModel)]="filterBy" (change)="onControlsChange()">
+            <option *ngFor="let option of filterByOptions" [value]="option">{{ option }}</option>
+        </select>
+    </div>
+    <div>
+        <label class="view" for="orderBy">Ordenar:</label>
         <select id="orderBy" [(ngModel)]="orderBy" (change)="onControlsChange()">
             <option *ngFor="let option of orderByOptions" [value]="option">{{ option }}</option>
         </select>
