@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ArticleService } from 'src/app/shared/services/article/article.service';
-import { Article } from 'src/app/shared/types/article';
+import { ArticleList } from 'src/app/shared/types/article';
 import { PaginationDto } from 'src/app/shared/types/paginationDto';
 
 @Component({
@@ -12,6 +12,7 @@ export class ArticleListComponent {
     title: string = "Lista de Articulos";
     articles: any[] = [];
 
+    filterbys: boolean = true;
     totalItems: number = 0;
     itemsPerPage: number = 8;
     page: number = 1;
@@ -31,7 +32,7 @@ export class ArticleListComponent {
 
     fetchArticles() {
         this.articleService.getAllArticles(this.page - 1, this.itemsPerPage, this.descending,this.filterBy).subscribe({
-            next: (response: PaginationDto<Article>) => {
+            next: (response: PaginationDto<ArticleList>) => {
                 this.articles = response.contentList;
                 this.totalItems = response.totalElement;
             },

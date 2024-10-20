@@ -1,7 +1,7 @@
 <div class="product-card">
-    <img src="https://studiofco.vteximg.com.br/arquivos/ids/1529071-4000-4284/-stfco-producto-Bolsosycarteras-NEGRO-S402359-1.jpg?v=638367826377400000" alt="Bolso Negro" class="product-image">
-    <h2 class="product-name">{{title}}</h2>
-    <p class="product-price">${{price}}</p>
+    <img src="assets/images/{{id}}.webp" alt="Bolso Negro" class="product-image" (click)="handleCardClick()">
+    <h3 class="product-name">{{title}}</h3>
+    <p class="product-price">{{formatPrice(price)}}</p>
     <div class="quantity-selector">
         <button (click)="decreaseQuantity()">-</button>
         <span>{{ quantity }}</span>

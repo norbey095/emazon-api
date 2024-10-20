@@ -5,8 +5,8 @@
             <option *ngFor="let option of itemsPerPageOptions" [value]="option">{{ option }}</option>
         </select>
     </div>
-    <div>
-        <label class="view" for="orderBy">Filtrar por:</label>
+    <div *ngIf="filterbys">
+        <label  class="view" for="orderBy">Filtrar por:</label>
         <select id="orderBy" [(ngModel)]="filterBy" (change)="onControlsChange()">
             <option *ngFor="let option of filterByOptions" [value]="option">{{ option }}</option>
         </select>

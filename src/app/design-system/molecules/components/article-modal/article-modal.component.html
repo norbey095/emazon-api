@@ -1,0 +1,11 @@
+<div class="modal" *ngIf="isVisible">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>{{ title }}</h2>
+      <p><strong>Precio:</strong> ${{ price }}</p>
+      <p><strong>Descripción:</strong> {{ description }}</p>
+      <p><strong>Categorías:</strong> {{ getCategoryNames() }}</p>
+      <p><strong>Marca:</strong> {{ brand.name }}</p>
+    </div>
+</div>
+  

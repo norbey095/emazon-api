@@ -13,3 +13,30 @@ $product-grid-columns: 4;
     width: 100%;
     max-width: 240px;
 }
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px; 
+}
+
+app-filter-table {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+    margin-top: 20px; 
+}
+
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+}

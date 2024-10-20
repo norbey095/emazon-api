@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-filter-table',
@@ -6,6 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['filter-table.component.scss']
 })
 export class FilterTableComponent {
+    @Input() filterbys: boolean = false;
     @Output() controlsChange = new EventEmitter<{
         itemsPerPage: number;
         descending: boolean;
