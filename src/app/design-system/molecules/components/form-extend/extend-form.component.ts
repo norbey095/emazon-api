@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Article } from 'src/app/shared/types/article';
-import { Brand } from 'src/app/shared/types/brand';
+import { Article } from 'src/app/shared/types/stop/article';
+import { Brand } from 'src/app/shared/types/stop/brand';
 import { BrandSelectorComponent } from '../brand-selector/brand-selector.component';
 import { MultiComboBoxComponent } from '../multi-combo-box/multi-combo-box.component';
 

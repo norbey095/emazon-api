@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ArticleService } from 'src/app/shared/services/article/article.service';
-import { ArticleList } from 'src/app/shared/types/article';
-import { PaginationDto } from 'src/app/shared/types/paginationDto';
+import { ArticleService } from 'src/app/shared/services/stop/article/article.service';
+import { ArticleList } from 'src/app/shared/types/stop/article';
+import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 
 @Component({
   selector: 'app-article-list',

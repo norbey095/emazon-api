@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CreateBrandComponent } from './create-brand.component';
-import { BrandService } from 'src/app/shared/services/brand/brand.service';
+import { BrandService } from 'src/app/shared/services/stop/brand/brand.service';
 import { of, throwError } from 'rxjs';
-import { ResponseSuccess } from 'src/app/shared/types/response-success';
+import { ResponseSuccess } from 'src/app/shared/types/stop/response-success';
 import { HttpErrorResponse } from '@angular/common/http';
 
 jest.useFakeTimers();

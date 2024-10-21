@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CategoryService } from 'src/app/shared/services/category/category.service';
-import { Category } from 'src/app/shared/types/category';
-import { PaginationDto } from 'src/app/shared/types/paginationDto';
+import { CategoryService } from 'src/app/shared/services/stop/category/category.service';
+import { Category } from 'src/app/shared/types/stop/category';
+import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 
 @Component({
   selector: 'app-multi-comboBox',

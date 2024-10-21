@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Brand } from 'src/app/shared/types/brand';
-import { Category } from 'src/app/shared/types/category';
+import { Brand } from 'src/app/shared/types/stop/brand';
+import { Category } from 'src/app/shared/types/stop/category';
 
 @Component({
   selector: 'app-article-card',

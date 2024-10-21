@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Article,ArticleList } from '../../types/article';
-import { ResponseSuccess } from '../../types/response-success';
-import { PaginationDto } from '../../types/paginationDto';
+import { Article,ArticleList } from 'src/app/shared/types/stop/article';
+import { ResponseSuccess } from '../../../types/stop/response-success';
+import { PaginationDto } from '../../../types/stop/paginationDto';
 
 @Injectable({
   providedIn: 'root',
