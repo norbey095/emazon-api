@@ -1,0 +1,123 @@
+$primary-color: #9D3FE7;
+$primary-hover: #9D3FE7;
+$success-color: #9D3FE7;
+$success-hover: #9D3FE7;
+$background-color: #f0f0f0;
+$card-background: #fff;
+$card-hover-background: #f9f9f9;
+
+$product-card-width: 200px;
+$product-image-height: 150px;
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: $card-background;
+    width: $product-card-width;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: $card-hover-background;
+    }
+
+    .product-image {
+        width: 100%;
+        height: $product-image-height;
+        object-fit: cover;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .product-name {
+        font-size: 1rem;
+        margin: 12px 0;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        max-height: 4.5em;
+        line-height: 1.5;
+        white-space: normal;
+        text-overflow: ellipsis;
+    }
+    
+    .content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100px;
+    }    
+
+    .product-price {
+        font-size: 1.1rem;
+        color: #333;
+        margin: 12px 0;
+    }
+
+    .quantity-selector {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 12px 0;
+
+        button {
+            background-color: $primary-color;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 1rem;
+
+            &:hover {
+                background-color: $primary-hover;
+            }
+        }
+
+        span {
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+    }
+
+    .add-to-cart {
+        background-color: $success-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 16px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: $success-hover;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .product-card {
+        padding: 10px;
+        height: auto;
+    }
+
+    .product-name {
+        font-size: 0.9rem;
+    }
+
+    .product-price {
+        font-size: 1rem;
+    }
+
+    .add-to-cart {
+        width: 100%;
+    }
+}

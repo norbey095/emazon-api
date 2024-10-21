@@ -14,7 +14,7 @@ export class BrandListComponent {
     title: string = "Lista de Marcas";
     brands: any[] = [];
     totalItems: number = 0;
-    itemsPerPage: number = 5;
+    itemsPerPage: number = 8;
     page: number = 1;
     descending = false;
 

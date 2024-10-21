@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Article } from '../../types/article';
+import { Article,ArticleList } from '../../types/article';
 import { ResponseSuccess } from '../../types/response-success';
 import { PaginationDto } from '../../types/paginationDto';
 
@@ -14,13 +14,14 @@ export class ArticleService {
 
   constructor(private http: HttpClient) {}
 
-  getAllArticles(page: number, size: number, descending: boolean): Observable<PaginationDto<Article>> {
+  getAllArticles(page: number, size: number, descending: boolean,filterBy: string): Observable<PaginationDto<ArticleList>> {
     const params = new HttpParams()
       .set('page', page)
       .set('size', size)
-      .set('descending', descending);
+      .set('descending', descending)
+      .set('filterBy', filterBy);
 
-    return this.http.get<PaginationDto<Article>>(this.apiUrl, { params });
+    return this.http.get<PaginationDto<ArticleList>>(this.apiUrl, { params });
   }
 
   createArticle(article: Article): Observable<ResponseSuccess> {

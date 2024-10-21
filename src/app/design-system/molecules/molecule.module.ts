@@ -13,6 +13,8 @@ import { FilterTableComponent } from './components/filter-table/filter-table.com
 import { ExtendFormComponent } from './components/form-extend/extend-form.component';
 import { BrandSelectorComponent } from './components/brand-selector/brand-selector.component';
 import { MultiComboBoxComponent } from './components/multi-combo-box/multi-combo-box.component';
+import { ArticleCardComponent } from './components/article-card/article-card.component';
+import { ArticleModalComponent } from './components/article-modal/article-modal.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { MultiComboBoxComponent } from './components/multi-combo-box/multi-combo
     FilterTableComponent,
     ExtendFormComponent,
     BrandSelectorComponent,
-    MultiComboBoxComponent
+    MultiComboBoxComponent,
+    ArticleCardComponent,
+    ArticleModalComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +46,9 @@ import { MultiComboBoxComponent } from './components/multi-combo-box/multi-combo
     FilterTableComponent,
     ExtendFormComponent,
     BrandSelectorComponent,
-    MultiComboBoxComponent
+    MultiComboBoxComponent,
+    ArticleCardComponent,
+    ArticleModalComponent
   ],
 })
 export class MoleculeModule {}

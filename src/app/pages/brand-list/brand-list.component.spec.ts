@@ -34,7 +34,7 @@ describe('BrandListComponent', () => {
     expect(component.title).toBe('Lista de Marcas');
     expect(component.brands).toEqual([]);
     expect(component.totalItems).toBe(0);
-    expect(component.itemsPerPage).toBe(5);
+    expect(component.itemsPerPage).toBe(8);
     expect(component.page).toBe(1);
     expect(component.descending).toBe(false);
   });
@@ -49,7 +49,7 @@ describe('BrandListComponent', () => {
 
     component.ngOnInit();
 
-    expect(brandService.getAllBrand).toHaveBeenCalledWith(0, 5, false);
+    expect(brandService.getAllBrand).toHaveBeenCalledWith(0, 8, false);
     expect(component.brands).toEqual(mockResponse.contentList);
     expect(component.totalItems).toBe(mockResponse.totalElement);
   });
@@ -63,6 +63,7 @@ describe('BrandListComponent', () => {
     expect(consoleSpy).toHaveBeenCalledWith('Error al cargar las Marcas', 'Error');
     consoleSpy.mockRestore();
   });
+  
   it('should call fetchBrands when onControlsChange is triggered', () => {
     const mockResponse: PaginationDto<Brand> = {
       contentList: [{ id: 1, name: 'Brand 1', description: 'Description 1' }],

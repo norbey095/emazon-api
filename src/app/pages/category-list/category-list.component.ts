@@ -13,7 +13,7 @@ export class CategoryListComponent {
     title: string = "Lista de Categorías";
     categories: any[] = [];
     totalItems: number = 0;
-    itemsPerPage: number = 5;
+    itemsPerPage: number = 8;
     page: number = 1;
     descending = false;
 

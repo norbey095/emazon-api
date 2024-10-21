@@ -1,0 +1,18 @@
+<app-hero [title]="title"></app-hero>
+<app-filter-table (controlsChange)="onControlsChange($event)" [filterbys]="filterbys"></app-filter-table>
+<div class="product-grid">
+    <div class="product-card" *ngFor="let product of articles | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
+        <app-article-card 
+        [id]="product.id" 
+        [name]="product.name" 
+        [price]="product.price"
+        [description]="product.description"
+        [categories]="product.categories"
+        [brand]="product.brand"
+        (openModal)="productModal.openModal($event)"></app-article-card>
+    </div>
+</div>
+<app-article-modal #productModal></app-article-modal>
+<div class="pagination-controls">
+    <pagination-controls (pageChange)="page = $event; fetchArticles()"></pagination-controls>
+</div>
