@@ -9,7 +9,7 @@ import { Category } from 'src/app/shared/types/category';
 })
 export class ArticleCardComponent {
   @Input() id: number = 0;  
-  @Input() title: string = '';
+  @Input() name: string = '';
   @Input() price: number = 0;
   @Input() description: string = '';
   @Input() categories: Category[] = [];
@@ -34,7 +34,7 @@ export class ArticleCardComponent {
 
   handleCardClick(): void {
     this.openModal.emit({
-      title: this.title,
+      name: this.name,
       price: this.price,
       description: this.description,
       categories: this.categories,
@@ -43,6 +43,7 @@ export class ArticleCardComponent {
   }
 
   formatPrice(price: number): string {
-    return price.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
-}
+    const formattedNumber = price.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return `$${formattedNumber}`;
+  }
 }

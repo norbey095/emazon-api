@@ -42,7 +42,6 @@ export class ArticleListComponent {
         });
     }
 
-
     onControlsChange(event: { itemsPerPage: number; descending: boolean; page: number,filterBy: string }) {
         this.itemsPerPage = event.itemsPerPage;
         this.descending = event.descending;

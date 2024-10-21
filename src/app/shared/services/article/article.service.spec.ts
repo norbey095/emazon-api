@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ArticleService } from './article.service';
-import { Article } from '../../types/article';
+import { Article, ArticleList } from '../../types/article';
 import { ResponseSuccess } from '../../types/response-success';
 import { PaginationDto } from '../../types/paginationDto';
 import { environment } from 'src/environments/environment';
@@ -11,12 +11,12 @@ describe('ArticleService', () => {
     let httpMock: HttpTestingController;
 
     const mockApiUrl = environment.apiCrearArticleUrl;
-    const mockArticles: Article[] = [
-        { id: 1, name: 'Article A', description: 'Description A', quantity: 10, price: 100, idbrand: 1, categories: [] },
-        { id: 2, name: 'Article B', description: 'Description B', quantity: 20, price: 200, idbrand: 1, categories: [] },
+    const mockArticles: ArticleList[] = [
+        { id: 1, name: 'Article A', description: 'Description A', quantity: 10, price: 100, brand: {id:1,name:"",description: ""}, categories: [] },
+        { id: 2, name: 'Article B', description: 'Description B', quantity: 20, price: 200, brand: {id:1,name:"",description: ""}, categories: [] },
     ];
 
-    const mockPaginationResponse: PaginationDto<Article> = {
+    const mockPaginationResponse: PaginationDto<ArticleList> = {
         contentList: mockArticles,
         totalElement: 2,
     };
@@ -40,12 +40,12 @@ describe('ArticleService', () => {
     });
 
     it('should retrieve all articles', (done) => {
-        service.getAllArticles(0, 10, false).subscribe((response) => {
+        service.getAllArticles(0, 10, false,"article").subscribe((response) => {
             expect(response).toEqual(mockPaginationResponse);
             done();
         });
     
-        const req = httpMock.expectOne(`${environment.apiCrearArticleUrl}?page=0&size=10&descending=false`); // Asegúrate de que esto coincida
+        const req = httpMock.expectOne(`${environment.apiCrearArticleUrl}?page=0&size=10&descending=false&filterBy=article`);
         expect(req.request.method).toBe('GET');
         req.flush(mockPaginationResponse);
     });      

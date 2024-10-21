@@ -4,7 +4,7 @@
     <div class="product-card" *ngFor="let product of articles | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
         <app-article-card 
         [id]="product.id" 
-        [title]="product.name" 
+        [name]="product.name" 
         [price]="product.price"
         [description]="product.description"
         [categories]="product.categories"

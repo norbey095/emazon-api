@@ -10,7 +10,7 @@ import { Category } from 'src/app/shared/types/category';
 })
 export class ArticleModalComponent {
   id: number = 0;  
-  title: string = '';
+  name: string = '';
   price: number = 0;
   description: string = '';
   categories: Category[] = [];
@@ -18,7 +18,7 @@ export class ArticleModalComponent {
   isVisible: boolean = false;
 
   openModal(article : ArticleList): void {
-    this.title = article.name;
+    this.name = article.name;
     this.price = article.price;
     this.description = article.description;
     this.categories = article.categories;
@@ -32,5 +32,10 @@ export class ArticleModalComponent {
 
   getCategoryNames(): string {
     return this.categories.map(category => category.name).join(', ');
+  }
+  
+  formatPrice(price: number): string {
+    const formattedNumber = price.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return `$${formattedNumber}`;
   }
 }

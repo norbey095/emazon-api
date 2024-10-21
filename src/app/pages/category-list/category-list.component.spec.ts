@@ -34,7 +34,7 @@ describe('CategoryListComponent', () => {
     expect(component.title).toBe('Lista de Categorías');
     expect(component.categories).toEqual([]);
     expect(component.totalItems).toBe(0);
-    expect(component.itemsPerPage).toBe(5);
+    expect(component.itemsPerPage).toBe(8);
     expect(component.page).toBe(1);
     expect(component.descending).toBe(false);
   });
@@ -49,7 +49,7 @@ describe('CategoryListComponent', () => {
 
     component.ngOnInit();
 
-    expect(categoryService.getAllCategories).toHaveBeenCalledWith(0, 5, false);
+    expect(categoryService.getAllCategories).toHaveBeenCalledWith(0, 8, false);
     expect(component.categories).toEqual(mockResponse.contentList);
     expect(component.totalItems).toBe(mockResponse.totalElement);
   });
