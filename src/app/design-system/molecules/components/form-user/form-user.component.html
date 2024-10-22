@@ -1,0 +1,106 @@
+<section class="form-container">
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="form-container__form">
+    <div class="form-container__input-group">
+      <div class="form-container__input-wrapper">
+        <app-input 
+          [(ngModel)]="Name" 
+          type="text" 
+          id="name" 
+          name="name" 
+          placeholder="Nombre:" 
+          width="300px"  
+          height="20px" 
+          required>
+        </app-input>
+        <span *ngIf="form.controls['name']?.touched && form.controls['name']?.invalid" class="form-container__error-message">Este campo es obligatorio.</span>
+      </div>
+      <div class="form-container__input-wrapper">
+        <app-input 
+          [(ngModel)]="lastname" 
+          type="text" 
+          id="lastname" 
+          name="lastname" 
+          placeholder="Apellidos:" 
+          width="300px"  
+          height="20px" 
+          required>
+        </app-input>
+        <span *ngIf="form.controls['lastname']?.touched && form.controls['lastname']?.invalid" class="form-container__error-message">Este campo es obligatorio.</span>          
+      </div>
+    </div>
+    <div class="form-container__input-group">
+      <div class="form-container__input-wrapper">
+        <app-input 
+          [(ngModel)]="documentNumber" 
+          type="number" 
+          id="documentNumber" 
+          name="documentNumber" 
+          placeholder="Documento:" 
+          width="300px"  
+          height="20px" 
+          required>
+        </app-input>
+        <span *ngIf="form.controls['documentNumber']?.touched && form.controls['documentNumber']?.invalid" class="form-container__error-message">Este campo es obligatorio.</span>
+      </div>
+      <div class="form-container__input-wrapper">
+        <app-input 
+        [(ngModel)]="cellPhone" 
+        type="text" 
+        id="cellPhone" 
+        name="cellPhone" 
+        placeholder="Telefono:" 
+        width="300px"  
+        height="20px" 
+        required>
+        </app-input>
+        <span *ngIf="form.controls['cellPhone']?.touched && form.controls['cellPhone']?.invalid" class="form-container__error-message">Este campo es obligatorio.</span>
+      </div>
+    </div>
+    <div class="form-container__input-group">
+      <div class="form-container__input-wrapper">
+        <app-input 
+          [(ngModel)]="birthdate" 
+          type="date" 
+          id="birthdate" 
+          name="birthdate" 
+          placeholder="Fecha de nacimiento:" 
+          width="300px"  
+          height="20px" 
+          required>
+        </app-input>
+        <span *ngIf="form.controls['birthdate']?.touched && form.controls['birthdate']?.invalid" class="form-container__error-message">Este campo es obligatorio.</span>
+      </div>
+      <div class="form-container__input-wrapper">
+        <app-input 
+        [(ngModel)]="email" 
+        type="text" 
+        id="email" 
+        name="email" 
+        placeholder="Correo:" 
+        width="300px"  
+        height="20px" 
+        required>
+        </app-input>
+        <span *ngIf="form.controls['email']?.touched && form.controls['email']?.invalid" class="form-container__error-message">Este campo es obligatorio.</span>
+      </div>
+    </div>
+    <div class="form-container__input-group">
+      <div class="form-container__input-final">
+        <app-input 
+          [(ngModel)]="password" 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="Contraseña:" 
+          width="300px"  
+          height="20px" 
+          required>
+        </app-input>
+        <span *ngIf="form.controls['password']?.touched && form.controls['password']?.invalid" class="form-container__error-message">Este campo es obligatorio.</span>
+      </div>
+    </div>
+    <div class="form-container__button-container">
+      <app-input-button type="submit" value="Guardar"></app-input-button>
+    </div>
+  </form>
+</section>

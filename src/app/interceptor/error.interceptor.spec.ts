@@ -30,7 +30,7 @@ describe('ErrorInterceptor', () => {
   });
 
   it('should handle other types of errors', async () => {
-    const mockError = { message: 'Custom error message' };
+    const mockError = { message: 'Error de comunicación, por favor intente mas tarde.' };
 
     const response = firstValueFrom(httpClient.get('/test').pipe());
 
@@ -39,7 +39,7 @@ describe('ErrorInterceptor', () => {
 
     await expect(response).rejects.toMatchObject({
       status: 500,
-      message: 'Custom error message'
+      message: 'Error de comunicación, por favor intente mas tarde.'
     });
   });
 

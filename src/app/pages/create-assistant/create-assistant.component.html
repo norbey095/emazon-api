@@ -1,0 +1,5 @@
+<app-hero  [title]="title"></app-hero>
+<main>
+    <app-alert *ngIf="isMessagess" [srcImage]="srcImage" [message]="message" [status]="status"></app-alert>
+    <app-form-user (formSubmit)="onFormSubmit($event)" [resetOnSuccess]="isSuccessful"></app-form-user>
+</main>

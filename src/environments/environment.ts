@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   apiCrearCategoryUrl: 'http://localhost:9090/stock/category/',
   apiCrearBrandUrl: 'http://localhost:9090/stock/brand/',
-  apiCrearArticleUrl: 'http://localhost:9090/stock/article/',  
+  apiCrearArticleUrl: 'http://localhost:9090/stock/article/',
+  apiUserUrl: 'http://localhost:9091/user/',   
 };
 
 /*

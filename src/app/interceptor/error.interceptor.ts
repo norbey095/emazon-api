@@ -31,7 +31,7 @@ import {
       if (error.error instanceof ErrorEvent) {
         return `Error: ${error.error.message}`;
       }
-      return error.error ?.message;
+      return error.error ?.message || "Error de comunicación, por favor intente mas tarde.";
     }
   
     private createErrorResponse(status: number, message: string): Observable<never> {

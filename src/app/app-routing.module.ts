@@ -25,7 +25,11 @@ const routes: Routes = [
   {
     path: 'articles',
     loadChildren: () => import('./pages/article-list/article-list.module').then(m => m.ArticleListModule),
-  }
+  },
+  {
+    path: 'create-user',
+    loadChildren: () => import('./pages/create-assistant/create-assistant.module').then(m => m.CreateAssistantModule),
+  },
 ];
 
 @NgModule({
