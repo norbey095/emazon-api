@@ -1,0 +1,101 @@
+$form-bg-color: #f9f9f9;
+$form-border-radius: 8px;
+$error-color: red;
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  &__form {
+    width: 100%;
+    max-width: 100%;
+    min-height: 450px;
+    background-color: $form-bg-color;
+    padding: 20px;
+    border-radius: $form-border-radius;
+    box-shadow: 0 0 10px rgba(12, 64, 206, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  &__input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &__input-wrapper {
+    flex: 1;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__input-final {
+    margin-right: 15px;
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-top: 50px;
+  }
+
+  &__error-message {
+    position: absolute;
+    color: $error-color;
+    font-size: 0.7rem;
+    margin-top: 90px;
+  }
+  
+  @media (max-width: 600px) {
+    &__input-group {
+      flex-direction: column;
+    }
+
+    app-input {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+
+    &__button-container {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+  }
+}
+
+app-input {
+  flex: 1;
+  margin-right: 0;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+app-input-button, .btn-back {
+  margin-top: 8px;
+  width: fit-content;
+}
+
+.btn-back {
+  padding: 10px 20px;
+  background-color: #9D3FE7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+}

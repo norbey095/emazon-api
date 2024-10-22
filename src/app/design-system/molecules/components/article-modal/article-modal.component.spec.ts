@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArticleModalComponent } from './article-modal.component';
-import { ArticleList } from 'src/app/shared/types/article';
+import { ArticleList } from 'src/app/shared/types/stop/article';
 
 describe('ArticleModalComponent', () => {
     let component: ArticleModalComponent;

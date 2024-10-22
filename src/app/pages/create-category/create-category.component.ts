@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { CategoryService } from 'src/app/shared/services/category/category.service'; 
-import { ResponseSuccess } from 'src/app/shared/types/response-success';
+import { CategoryService } from 'src/app/shared/services/stop/category/category.service'; 
+import { ResponseSuccess } from 'src/app/shared/types/stop/response-success';
 import { AppConstants } from 'src/app/shared/constants/constants'; 
 
 @Component({

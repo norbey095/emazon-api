@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { ArticleList } from 'src/app/shared/types/article';
-import { Brand } from 'src/app/shared/types/brand';
-import { Category } from 'src/app/shared/types/category';
+import { ArticleList } from 'src/app/shared/types/stop/article';
+import { Brand } from 'src/app/shared/types/stop/brand';
+import { Category } from 'src/app/shared/types/stop/category';
 
 @Component({
   selector: 'app-article-modal',
@@ -33,7 +33,7 @@ export class ArticleModalComponent {
   getCategoryNames(): string {
     return this.categories.map(category => category.name).join(', ');
   }
-  
+
   formatPrice(price: number): string {
     const formattedNumber = price.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     return `$${formattedNumber}`;

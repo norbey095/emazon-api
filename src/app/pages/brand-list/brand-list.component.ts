@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { Brand } from 'src/app/shared/types/brand';
-import { BrandService } from 'src/app/shared/services/brand/brand.service';
-import { PaginationDto } from 'src/app/shared/types/paginationDto';
+import { Brand } from 'src/app/shared/types/stop/brand';
+import { BrandService } from 'src/app/shared/services/stop/brand/brand.service';
+import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 
 
 @Component({

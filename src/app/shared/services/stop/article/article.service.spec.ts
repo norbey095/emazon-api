@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ArticleService } from './article.service';
-import { Article, ArticleList } from '../../types/article';
-import { ResponseSuccess } from '../../types/response-success';
-import { PaginationDto } from '../../types/paginationDto';
+import { Article,ArticleList } from 'src/app/shared/types/stop/article'; 
+import { ResponseSuccess } from '../../../types/stop/response-success';
+import { PaginationDto } from '../../../types/stop/paginationDto';
 import { environment } from 'src/environments/environment';
 
 describe('ArticleService', () => {
