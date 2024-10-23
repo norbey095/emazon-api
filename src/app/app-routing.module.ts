@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes  } from '@angular/router';
+import { AuthGuard } from './guard/auth-guard.component';
 
 const routes: Routes = [
   {
     path: 'create-category',
     loadChildren: () => import('./pages/create-category/create-category.module').then(m => m.CreateCategoryModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'categories',
