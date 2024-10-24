@@ -5,11 +5,11 @@
       <div class="bar"></div>
       <div class="bar"></div>
       <div class="bar"></div>
-    </div>  
+    </div>
     <ul [class.active]="menuOpen" class="menu">
       <div class="logo-container">
         <app-logo class="mobile-logo"></app-logo>
-        <li class="close-button" (click)="toggleMenu()">&times;</li>
+        <div class="close-button" (click)="toggleMenu()">&times;</div>
       </div>
       <li class="separator"></li>
       <menu-item url="/home" title="Inicio"></menu-item>
@@ -17,6 +17,17 @@
       <menu-item url="/categories" title="Categorias"></menu-item>
       <menu-item url="/brands" title="Marcas"></menu-item>
       <menu-item url="/create-user" title="Usuario"></menu-item>
+      <li>
+        <button (click)="openLoginModal()" class="icon-button">
+          <i class="fas fa-user"></i>
+        </button>
+      </li>
+      <li>
+        <button (click)="logout()" class="icon-button">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </li>
+      <app-modal-login #loginModal></app-modal-login>
     </ul>
   </nav>
 </header>

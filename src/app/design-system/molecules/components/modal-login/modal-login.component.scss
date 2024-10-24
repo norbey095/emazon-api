@@ -12,11 +12,11 @@
 
     &__content {
         background-color: #fefefe;
-        margin: 5% auto;  // Ajustado para centrar mejor
+        margin: 5% auto; 
         padding: 20px;
         border: 1px solid #888;
-        width: 90%;  // Ajusta el ancho según sea necesario
-        max-width: 400px; // Máximo ancho para evitar que se expanda demasiado
+        width: 90%;
+        max-width: 400px;
         text-align: center;
         border-radius: 8px;
     }
@@ -45,7 +45,7 @@
     }
     
     &__input {
-        width: calc(100% - 20px); // Ocupa el 100% menos el padding
+        width: calc(100% - 20px);
         padding: 10px;
         margin-top: 5px;
         border: 1px solid #ccc;
