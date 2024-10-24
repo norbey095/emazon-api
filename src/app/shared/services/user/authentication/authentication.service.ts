@@ -12,11 +12,15 @@ export class AuthService {
 
     constructor(private http: HttpClient) {}
 
-    login(username: string, password: string): Observable<any> {
+    login(email: string, password: string): Observable<any> {
+        const login = { email: email, password: password};
         const registryUrl = `${this.apiUrl}login`;
-        return this.http.post<any>(`${registryUrl}`, { username, password })
+        return this.http.post<any>(registryUrl, login)
             .pipe(tap(response => {
-            localStorage.setItem('token', response.token); 
+            if (response.token) {
+                localStorage.setItem('token', response.token);
+                console.log('token', response.token)
+            }            
         }));
     }
 
@@ -26,5 +30,9 @@ export class AuthService {
 
     logout(): void {
         localStorage.removeItem('token');
+    }
+
+    getToken(): string | null {
+        return localStorage.getItem('token');
     }
 }

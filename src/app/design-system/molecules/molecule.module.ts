@@ -16,6 +16,7 @@ import { MultiComboBoxComponent } from './components/multi-combo-box/multi-combo
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import { ArticleModalComponent } from './components/article-modal/article-modal.component';
 import { FormUserComponent } from './components/form-user/form-user.component';
+import { ModalLoginComponent } from './components/modal-login/modal-login.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FormUserComponent } from './components/form-user/form-user.component';
     MultiComboBoxComponent,
     ArticleCardComponent,
     ArticleModalComponent,
-    FormUserComponent
+    FormUserComponent,
+    ModalLoginComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,8 @@ import { FormUserComponent } from './components/form-user/form-user.component';
     MultiComboBoxComponent,
     ArticleCardComponent,
     ArticleModalComponent,
-    FormUserComponent
+    FormUserComponent,
+    ModalLoginComponent
   ],
 })
 export class MoleculeModule {}

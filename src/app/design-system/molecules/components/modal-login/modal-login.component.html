@@ -1,0 +1,35 @@
+<app-alert *ngIf="isMessagess" [srcImage]="srcImage" [message]="message" [status]="status"></app-alert>
+
+<div class="login-modal" *ngIf="isOpen">
+    <div class="login-modal__content">
+        <span class="login-modal__close" (click)="closeModal()">&times;</span>
+        <h2 class="login-modal__title">Iniciar Sesión</h2>
+        <form class="login-modal__form" (submit)="onSubmit($event)">
+            <app-input 
+                [(ngModel)]="email" 
+                type="text" 
+                id="email" 
+                name="email" 
+                placeholder="Email:" 
+                width="100%"  
+                height="40px" 
+                required class="login-modal__label">
+                </app-input>
+            <app-input 
+                [(ngModel)]="password" 
+                type="password" 
+                id="password" 
+                name="password" 
+                placeholder="Contraseña:" 
+                width="100%"  
+                height="40px" 
+                required class="login-modal__label">
+                </app-input>
+
+            <div class="login-modal__button-container">
+                <button type="button" class="login-modal__btn" (click)="onRegister()">Registrarse</button>
+                <button type="submit" class="login-modal__btn">Iniciar Sesión</button>                
+            </div>
+        </form>
+    </div>
+</div>

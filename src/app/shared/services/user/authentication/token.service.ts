@@ -5,12 +5,17 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root'
 })
 export class TokenService {
+    
   getRole(): string | null {
     const token = localStorage.getItem('token');
     if (token) {
       const decoded: any = jwtDecode(token);
-      return decoded.role;
+      return decoded.authorities;
     }
     return null;
+  }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
   }
 }
