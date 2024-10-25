@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppConstants } from 'src/app/shared/constants/constants';
 import { ArticleService } from 'src/app/shared/services/stop/article/article.service';
 import { ArticleList } from 'src/app/shared/types/stop/article';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
@@ -23,10 +24,12 @@ export class ArticleListComponent {
     price: number = 0;
     id: number = 0;
     quantity: number = 0;
+    isAdmin= false;
 
     constructor(private articleService: ArticleService) {}
 
     ngOnInit() {
+        this.isAdmin = localStorage.getItem("ROLE") == AppConstants.ROLE_ADMIN? true: false;
         this.fetchArticles();
     }
 

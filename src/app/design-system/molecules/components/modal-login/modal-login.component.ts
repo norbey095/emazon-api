@@ -1,7 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppConstants } from 'src/app/shared/constants/constants';
 import { AuthService } from 'src/app/shared/services/user/authentication/authentication.service';
+import { TokenService } from 'src/app/shared/services/user/authentication/token.service';
 
 @Component({
   selector: 'app-modal-login',
@@ -18,7 +21,7 @@ export class ModalLoginComponent {
   isSuccessful: boolean = false;
   message: string = "";
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private router: Router) {}
 
   openModal() {
     this.isOpen = true;
@@ -28,8 +31,8 @@ export class ModalLoginComponent {
     this.isOpen = false;
   }
 
-  onSubmit(event: Event) {
-    event.preventDefault();
+  onSubmit(form: NgForm) {
+   if (form.valid) {
     this.authService.login(this.email,this.password).subscribe({
       next: () => {        
         this.message =  "Inicio de sesión correcto";
@@ -37,6 +40,7 @@ export class ModalLoginComponent {
         this.status = "success";
         this.srcImage = AppConstants.SRC_IMAGE_SUCCESS;
         this.isSuccessful = true;
+        
         this.closeModal();
         
         setTimeout(() => {
@@ -59,6 +63,11 @@ export class ModalLoginComponent {
         }, 4000);
       }
     });
+   }else{
+      form.controls['email'].markAsTouched();
+      form.controls['password'].markAsTouched();  
+   }
+    
   }
 
   onRegister() {

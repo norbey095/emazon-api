@@ -1,5 +1,12 @@
 <app-hero [title]="title"></app-hero>
-<app-filter-table (controlsChange)="onControlsChange($event)" [filterbys]="filterbys"></app-filter-table>
+<div class="controls">
+    <div class="filter-container">
+        <app-filter-table (controlsChange)="onControlsChange($event)" [filterbys]="filterbys"></app-filter-table>
+    </div>
+    <div class="button-container" *ngIf="isAdmin">
+        <button routerLink="/create-article" class="btn-create">Crear Articulo</button>
+    </div>
+</div>
 <div class="product-grid">
     <div class="product-card" *ngFor="let product of articles | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
         <app-article-card 

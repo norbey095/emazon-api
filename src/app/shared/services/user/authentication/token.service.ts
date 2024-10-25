@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
+  private roleSource = new BehaviorSubject<string | null>(null);
+  currentRole = this.roleSource.asObservable();
     
-  getRole(): string | null {
+  getRoleToken(): string | null {
     const token = localStorage.getItem('token');
     if (token) {
       const decoded: any = jwtDecode(token);
@@ -17,5 +20,9 @@ export class TokenService {
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
+  }
+
+  setRole(role: string | null): void {
+    this.roleSource.next(role);
   }
 }
