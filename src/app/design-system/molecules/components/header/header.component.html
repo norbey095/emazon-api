@@ -13,16 +13,16 @@
       </div>
       <li class="separator"></li>
       <menu-item url="/home" title="Inicio"></menu-item>
-      <menu-item url="/articles" title="Articulos"></menu-item>
-      <menu-item url="/categories" title="Categorias"></menu-item>
+      <menu-item url="/articles" title="Artículos"></menu-item>
+      <menu-item url="/categories" title="Categorías"></menu-item>
       <menu-item url="/brands" title="Marcas"></menu-item>
-      <menu-item url="/create-user" title="Usuario"></menu-item>
-      <li>
+      <menu-item url="/create-user" title="Auxiliar" *ngIf="isAdmin"></menu-item>
+      <li *ngIf="!isAuthenticate">
         <button (click)="openLoginModal()" class="icon-button">
           <i class="fas fa-user"></i>
         </button>
       </li>
-      <li>
+      <li  *ngIf="isAuthenticate">
         <button (click)="logout()" class="icon-button">
           <i class="fas fa-sign-out-alt"></i>
         </button>

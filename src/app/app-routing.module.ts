@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes  } from '@angular/router';
 import { AuthGuard } from './guard/auth-guard.component';
+import { AppConstants } from './shared/constants/constants';
+
 
 const routes: Routes = [
   {
     path: 'create-category',
     loadChildren: () => import('./pages/create-category/create-category.module').then(m => m.CreateCategoryModule),
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { expectedRoles: [AppConstants.ROLE_ADMIN]}
   },
   {
     path: 'categories',
@@ -15,6 +18,8 @@ const routes: Routes = [
   {
     path: 'create-brand',
     loadChildren: () => import('./pages/create-brand/create-brand.module').then(m => m.CreateBrandModule),
+    canActivate: [AuthGuard],
+    data: { expectedRoles: [AppConstants.ROLE_ADMIN]}
   },
   {
     path: 'brands',
@@ -23,6 +28,8 @@ const routes: Routes = [
   {
     path: 'create-article',
     loadChildren: () => import('./pages/create-article/create-article.module').then(m => m.CreateArticleModule),
+    canActivate: [AuthGuard],
+    data: { expectedRoles: [AppConstants.ROLE_ADMIN]}
   },
   {
     path: 'articles',
@@ -31,6 +38,8 @@ const routes: Routes = [
   {
     path: 'create-user',
     loadChildren: () => import('./pages/create-assistant/create-assistant.module').then(m => m.CreateAssistantModule),
+    canActivate: [AuthGuard],
+    data: { expectedRoles: [AppConstants.ROLE_ADMIN]}
   },
 ];
 
