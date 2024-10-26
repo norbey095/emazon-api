@@ -39,6 +39,6 @@ export class HeaderComponent {
     localStorage.removeItem('token');
     localStorage.removeItem('ROLE');
     this.tokenService.setRole(null);
-    this.router.navigate(['/articles']);
+    this.router.navigate(['']);
   }
 }

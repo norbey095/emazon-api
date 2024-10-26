@@ -41,7 +41,10 @@ export class ModalLoginComponent {
         this.srcImage = AppConstants.SRC_IMAGE_SUCCESS;
         this.isSuccessful = true;
         
+        this.router.navigate(['']);
         this.closeModal();
+        this.email = "";
+        this.password = "";
         
         setTimeout(() => {
           this.isMessagess = false; 

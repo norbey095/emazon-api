@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
     if (this.tokenService.isAuthenticated() && userRole && expectedRoles.includes(userRole)) {      
       return true;
     } else {
-      this.router.navigate(['/articles']);
+      this.router.navigate(['/']);
       return false;
     }
   }
