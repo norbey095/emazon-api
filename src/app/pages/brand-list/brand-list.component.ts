@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Brand } from 'src/app/shared/types/stop/brand';
 import { BrandService } from 'src/app/shared/services/stop/brand/brand.service';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
+import { AppConstants } from 'src/app/shared/constants/constants';
 
 
 @Component({
@@ -17,10 +18,12 @@ export class BrandListComponent {
     itemsPerPage: number = 8;
     page: number = 1;
     descending = false;
+    isAdmin= false;
 
     constructor(private brandService: BrandService) {}
 
     ngOnInit() {
+        this.isAdmin = localStorage.getItem("ROLE") == AppConstants.ROLE_ADMIN? true: false;
         this.fetchBrands();
     }
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Category } from 'src/app/shared/types/stop/category';
 import { CategoryService } from 'src/app/shared/services/stop/category/category.service';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
+import { AppConstants } from 'src/app/shared/constants/constants';
 
 
 @Component({
@@ -16,10 +17,12 @@ export class CategoryListComponent {
     itemsPerPage: number = 8;
     page: number = 1;
     descending = false;
+    isAdmin= false;
 
     constructor(private categoryService: CategoryService) {}
 
     ngOnInit() {
+        this.isAdmin = localStorage.getItem("ROLE") == AppConstants.ROLE_ADMIN? true: false;
         this.fetchCategories();
     }
 

@@ -4,7 +4,7 @@
         <div class="filter-container">
             <app-filter-table (controlsChange)="onControlsChange($event)"></app-filter-table>
         </div>
-        <div class="button-container">
+        <div class="button-container" *ngIf="isAdmin">
             <button routerLink="/create-category" class="btn-create">Crear Categoría</button>
         </div>
     </div>
