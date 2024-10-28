@@ -58,7 +58,7 @@
     </div>
 
     <div class="input-container-selector">
-      <app-brand-selector #selectedBrand (selectedBrandChange)="selectedBrandChange = $event"></app-brand-selector>
+      <app-selector #selectedItem (selectedItemChange)="selectedBrandChange = $event" [isBrand]="true"></app-selector>
       <app-multi-comboBox #multiComboBox (selectedCategoriesChange)="selectedCategories = $event"></app-multi-comboBox>      
     </div>    
     <div class="button-container">

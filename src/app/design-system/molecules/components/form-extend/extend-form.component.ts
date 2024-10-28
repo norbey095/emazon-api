@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/shared/types/stop/article';
 import { Brand } from 'src/app/shared/types/stop/brand';
-import { BrandSelectorComponent } from '../brand-selector/brand-selector.component';
+import { SelectorComponent } from '../selector/selector.component';
 import { MultiComboBoxComponent } from '../multi-combo-box/multi-combo-box.component';
 
 @Component({
@@ -12,7 +12,7 @@ import { MultiComboBoxComponent } from '../multi-combo-box/multi-combo-box.compo
   styleUrls: ['./extend-form.component.scss']
 })
 export class ExtendFormComponent {
-  @ViewChild('selectedBrand') selectedBrand: BrandSelectorComponent  | undefined;
+  @ViewChild('selectedItem') selectedItem: SelectorComponent  | undefined;
   @ViewChild('multiComboBox') multiComboBox!: MultiComboBoxComponent | undefined;
   @Input() urlBack: string= '';
   @Input() resetOnSuccess: boolean = false;
@@ -70,8 +70,8 @@ export class ExtendFormComponent {
       this.selectedBrandChange = 0;
       this.selectedCategories = [];
 
-      if (this.selectedBrand) {
-        this.selectedBrand.reset();
+      if (this.selectedItem) {
+        this.selectedItem.reset();
       }
       if (this.multiComboBox) {
         this.multiComboBox.reset();

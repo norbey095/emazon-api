@@ -45,7 +45,7 @@ describe('ExtendFormComponent', () => {
     };
 
     component.resetOnSuccess = true;
-    component.selectedBrand = selectedBrandMock as any;
+    component.selectedItem = selectedBrandMock as any;
     component.multiComboBox = multiComboBoxMock as any;
     component.articleName = 'Test Article';
     component.quantity = 10;
