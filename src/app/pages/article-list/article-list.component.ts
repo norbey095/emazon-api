@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ModalSupplyComponent } from 'src/app/design-system/molecules/components/modal-supply/modal-supply.component';
 import { AppConstants } from 'src/app/shared/constants/constants';
 import { ArticleService } from 'src/app/shared/services/stop/article/article.service';
 import { ArticleList } from 'src/app/shared/types/stop/article';
@@ -10,6 +11,8 @@ import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
   styleUrls: ['./article-list.component.scss']
 })
 export class ArticleListComponent {
+
+    @ViewChild('supplyModal') supplyModal!: ModalSupplyComponent;
     title: string = "Lista de Articulos";
     articles: any[] = [];
 
@@ -25,11 +28,13 @@ export class ArticleListComponent {
     id: number = 0;
     quantity: number = 0;
     isAdmin= false;
+    isAux= false;
 
     constructor(private articleService: ArticleService) {}
 
     ngOnInit() {
         this.isAdmin = localStorage.getItem("ROLE") == AppConstants.ROLE_ADMIN? true: false;
+        this.isAux = localStorage.getItem("ROLE") == AppConstants.ROLE_AUX? true: false;
         this.fetchArticles();
     }
 
@@ -51,5 +56,9 @@ export class ArticleListComponent {
         this.page = event.page;
         this.filterBy = event.filterBy;
         this.fetchArticles();
+    }
+
+    opensupplyModal() {
+        this.supplyModal.openModal();
     }
 }

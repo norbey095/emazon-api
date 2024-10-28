@@ -9,6 +9,7 @@ export const environment = {
   apiCrearArticleUrl: 'http://localhost:9090/stock/article/',
   apiUserUrl: 'http://localhost:9091/user/',
   apiAuthUrl: 'http://localhost:9091/auth/',
+  apiTransactionUrl: 'http://localhost:9092/transaction/supply/',
 };
 
 /*

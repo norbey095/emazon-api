@@ -1,0 +1,33 @@
+<app-alert *ngIf="isMessagess" [srcImage]="srcImage" [message]="message" [status]="status"></app-alert>
+<div class="supply-modal" *ngIf="isOpen">
+    <div class="supply-modal__content">
+        <span class="supply-modal__close" (click)="closeModal()">&times;</span>
+        <h2 class="supply-modal__title">Agregar Sumunistro</h2>
+        <form class="supply-modal__form" (ngSubmit)="onSubmit(form)" #form="ngForm">
+            <div class="supply-modal__input-container">
+                <app-selector
+                    #selectedItem
+                    (selectedItemChange)="idArticle = $event"
+                    [isBrand]="false"
+                    name="articleId"
+                    class="supply-modal__label">
+                </app-selector>
+                <div *ngIf="form.submitted && form.controls['articleId']?.invalid" class="supply-modal__error-message">Este campo es obligatorio</div>
+                <app-input
+                    [(ngModel)]="quantity"
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    placeholder="Cantidad:"
+                    width="300px"
+                    height="20px"
+                    required class="supply-modal__label">
+                    </app-input>
+                    <div *ngIf="form.submitted && form.controls['quantity']?.invalid" class="supply-modal__error-message">Este campo es obligatorio</div>
+            </div>
+            <div class="supply-modal__button-container">
+                <button type="submit" class="supply-modal__btn">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
