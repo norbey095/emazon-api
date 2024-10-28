@@ -11,12 +11,13 @@ import { TableComponent } from './components/table/table.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterTableComponent } from './components/filter-table/filter-table.component';
 import { ExtendFormComponent } from './components/form-extend/extend-form.component';
-import { BrandSelectorComponent } from './components/brand-selector/brand-selector.component';
+import { SelectorComponent } from './components/selector/selector.component';
 import { MultiComboBoxComponent } from './components/multi-combo-box/multi-combo-box.component';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import { ArticleModalComponent } from './components/article-modal/article-modal.component';
 import { FormUserComponent } from './components/form-user/form-user.component';
 import { ModalLoginComponent } from './components/modal-login/modal-login.component';
+import { ModalSupplyComponent } from './components/modal-supply/modal-supply.component';
 
 
 @NgModule({
@@ -28,12 +29,13 @@ import { ModalLoginComponent } from './components/modal-login/modal-login.compon
     TableComponent,
     FilterTableComponent,
     ExtendFormComponent,
-    BrandSelectorComponent,
+    SelectorComponent,
     MultiComboBoxComponent,
     ArticleCardComponent,
     ArticleModalComponent,
     FormUserComponent,
-    ModalLoginComponent
+    ModalLoginComponent,
+    ModalSupplyComponent
   ],
   imports: [
     CommonModule,
@@ -49,12 +51,13 @@ import { ModalLoginComponent } from './components/modal-login/modal-login.compon
     TableComponent,
     FilterTableComponent,
     ExtendFormComponent,
-    BrandSelectorComponent,
+    SelectorComponent,
     MultiComboBoxComponent,
     ArticleCardComponent,
     ArticleModalComponent,
     FormUserComponent,
-    ModalLoginComponent
+    ModalLoginComponent,
+    ModalSupplyComponent
   ],
 })
 export class MoleculeModule {}

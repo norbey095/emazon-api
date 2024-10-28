@@ -1,8 +1,8 @@
 <div class="input-container">
-  <label for="brand">Marca:</label>
+  <label for="brand">{{itemName}}:</label>
   <div class="custom-select-container">
     <div class="custom-select" (click)="toggleDropdown()">
-      <span>{{ selectedBrand ? getSelectedBrandName() : 'Selecciona' }}</span>
+      <span>{{ selectedItem ? getSelectedItemName() : 'Selecciona' }}</span>
       <div class="arrow"></div>
     </div>
 
@@ -11,11 +11,11 @@
         type="text" 
         placeholder="Buscar..." 
         [(ngModel)]="searchQuery"
-        (input)="filterBrands()" 
+        (input)="filterItems()" 
         class="search-input" 
       />
-      <div *ngFor="let brand of filteredBrands" (click)="onBrandSelect(brand.id)">
-        {{ brand.name }}
+      <div *ngFor="let item of filteredItems" (click)="onItemSelect(item.id)">
+        {{ item.name }}
       </div>
     </div>
   </div>
