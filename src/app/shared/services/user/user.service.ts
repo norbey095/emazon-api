@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ResponseSuccess } from '../../types/stop/response-success';
@@ -14,8 +14,14 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   createAssistant(user: User): Observable<ResponseSuccess> {
+    const token = localStorage.getItem("token");
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
     const registryUrl = `${this.apiUrl}registryAux`;
 
-    return this.http.post<ResponseSuccess>(registryUrl, user);
+    return this.http.post<ResponseSuccess>(registryUrl, user , { headers });
   }
 }

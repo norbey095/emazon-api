@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Category } from '../../../types/stop/category';
@@ -26,7 +26,12 @@ export class CategoryService {
   createCategories(name: string, description: string): Observable<ResponseSuccess> {
     const category = { id: null, name: name, description: description };
     const registryUrl = `${this.apiUrl}registry`;
+    const token = localStorage.getItem("token");
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
 
-    return this.http.post<ResponseSuccess>(registryUrl, category);
+    return this.http.post<ResponseSuccess>(registryUrl, category, { headers });
   }
 }
