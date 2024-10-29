@@ -34,7 +34,7 @@ export class ModalLoginComponent {
   onSubmit(form: NgForm) {
    if (form.valid) {
     this.authService.login(this.email,this.password).subscribe({
-      next: () => {        
+      next: () => {
         this.message =  "Inicio de sesión correcto";
         this.isMessagess = true;  
         this.status = "success";
