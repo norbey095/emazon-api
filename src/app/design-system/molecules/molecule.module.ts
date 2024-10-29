@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './components/header/header.component'; 
 import { AtomsModule } from '../atoms/atoms.module'; 
-import { BasicFormComponent } from './components/basic-form/basic-form.component'; 
+import { FormBasicComponent } from './components/form-basic/form-basic.component'; 
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { TableComponent } from './components/table/table.component';
@@ -23,7 +23,7 @@ import { ModalSupplyComponent } from './components/modal-supply/modal-supply.com
 @NgModule({
   declarations: [
     HeaderComponent,
-    BasicFormComponent,
+    FormBasicComponent,
     FooterComponent,
     AlertComponent,
     TableComponent,
@@ -45,7 +45,7 @@ import { ModalSupplyComponent } from './components/modal-supply/modal-supply.com
   ],
   exports: [
     HeaderComponent,
-    BasicFormComponent,
+    FormBasicComponent,
     FooterComponent,
     AlertComponent,
     TableComponent,

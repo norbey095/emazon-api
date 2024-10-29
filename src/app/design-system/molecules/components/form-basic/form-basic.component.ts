@@ -3,11 +3,11 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-basic-form',
-  templateUrl: './basic-form.component.html',
-  styleUrls: ['./basic-form.component.scss']
+  selector: 'app-form-basic',
+  templateUrl: './form-basic.component.html',
+  styleUrls: ['./form-basic.component.scss']
 })
-export class BasicFormComponent {
+export class FormBasicComponent {
   messagesName: string = '';
   messagesDescription: string = '';
   lengthDescriptionError: string = '';

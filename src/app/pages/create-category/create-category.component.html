@@ -1,5 +1,5 @@
 <app-hero  [title]="title"></app-hero>
 <main>
     <app-alert *ngIf="isMessagess" [srcImage]="srcImage" [message]="message" [status]="status"></app-alert>
-    <app-basic-form (formSubmit)="onFormSubmit($event)" [urlBack]="urlBack"></app-basic-form>
+    <app-form-basic (formSubmit)="onFormSubmit($event)" [urlBack]="urlBack"></app-form-basic>
 </main>
