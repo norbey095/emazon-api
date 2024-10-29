@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrandListComponent } from './brand-list.component';
-import { BrandService } from 'src/app/shared/services/stop/brand/brand.service';
+import { BrandService } from 'src/app/shared/services/stock/brand/brand.service';
 import { of, throwError } from 'rxjs';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 import { Brand } from 'src/app/shared/types/stop/brand';

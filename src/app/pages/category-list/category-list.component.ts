@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Category } from 'src/app/shared/types/stop/category';
-import { CategoryService } from 'src/app/shared/services/stop/category/category.service';
+import { CategoryService } from 'src/app/shared/services/stock/category/category.service';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 import { AppConstants } from 'src/app/shared/constants/constants';
 

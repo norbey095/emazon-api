@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ArticleService } from 'src/app/shared/services/stop/article/article.service';
-import { BrandService } from 'src/app/shared/services/stop/brand/brand.service';
+import { ArticleService } from 'src/app/shared/services/stock/article/article.service';
+import { BrandService } from 'src/app/shared/services/stock/brand/brand.service';
 import { ArticleList } from 'src/app/shared/types/stop/article';
 import { Brand } from 'src/app/shared/types/stop/brand';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';

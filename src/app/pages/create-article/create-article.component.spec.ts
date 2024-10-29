@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CreateArticleComponent } from './create-article.component';
-import { ArticleService } from 'src/app/shared/services/stop/article/article.service';
+import { ArticleService } from 'src/app/shared/services/stock/article/article.service';
 import { of, throwError } from 'rxjs';
 import { ResponseSuccess } from 'src/app/shared/types/stop/response-success';
 import { Article } from 'src/app/shared/types/stop/article';

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ModalSupplyComponent } from 'src/app/design-system/molecules/components/modal-supply/modal-supply.component';
 import { AppConstants } from 'src/app/shared/constants/constants';
-import { ArticleService } from 'src/app/shared/services/stop/article/article.service';
+import { ArticleService } from 'src/app/shared/services/stock/article/article.service';
 import { ArticleList } from 'src/app/shared/types/stop/article';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 

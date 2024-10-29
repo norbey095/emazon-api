@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CategoryService } from 'src/app/shared/services/stop/category/category.service';
+import { CategoryService } from 'src/app/shared/services/stock/category/category.service';
 import { Category } from 'src/app/shared/types/stop/category';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 

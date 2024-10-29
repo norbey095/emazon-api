@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SelectorComponent } from './selector.component';
-import { BrandService } from 'src/app/shared/services/stop/brand/brand.service';
+import { BrandService } from 'src/app/shared/services/stock/brand/brand.service';
 import { Observable, of } from 'rxjs';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 import { Brand } from 'src/app/shared/types/stop/brand';
-import { ArticleService } from 'src/app/shared/services/stop/article/article.service';
+import { ArticleService } from 'src/app/shared/services/stock/article/article.service';
 import { ArticleList } from 'src/app/shared/types/stop/article';
 
 describe('BrandSelectorComponent', () => {
