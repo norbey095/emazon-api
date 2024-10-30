@@ -102,6 +102,6 @@ describe('MultiComboBoxComponent', () => {
         
         expect(consoleErrorSpy).toHaveBeenCalledWith('Error al cargar las Categorías', expect.any(Error));
         
-        consoleErrorSpy.mockRestore(); // Limpiar el espía después
+        consoleErrorSpy.mockRestore();
     });
 });

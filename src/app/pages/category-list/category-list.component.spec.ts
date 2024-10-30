@@ -8,12 +8,12 @@ import { Category } from 'src/app/shared/types/stop/category';
 describe('CategoryListComponent', () => {
   let component: CategoryListComponent;
   let fixture: ComponentFixture<CategoryListComponent>;
-  let categoryService: jest.Mocked<CategoryService>;
+  let categoryService: { getAllCategories: jest.Mock };
 
   beforeEach(async () => {
     categoryService = {
       getAllCategories: jest.fn(),
-    } as any;
+    };
 
     await TestBed.configureTestingModule({
       declarations: [CategoryListComponent],

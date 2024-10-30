@@ -12,8 +12,8 @@ import { MultiComboBoxComponent } from '../multi-combo-box/multi-combo-box.compo
   styleUrls: ['./extend-form.component.scss']
 })
 export class ExtendFormComponent {
-  @ViewChild('selectedItem') selectedItem: SelectorComponent  | undefined;
-  @ViewChild('multiComboBox') multiComboBox!: MultiComboBoxComponent | undefined;
+  @ViewChild('selectedItem') selectedItem!: SelectorComponent;
+  @ViewChild('multiComboBox') multiComboBox!: MultiComboBoxComponent;
   @Input() urlBack: string= '';
   @Input() resetOnSuccess: boolean = false;
   @Output() formSubmit = new EventEmitter<{ article: Article}>();

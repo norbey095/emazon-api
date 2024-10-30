@@ -4,13 +4,13 @@ import { SupplyService } from 'src/app/shared/services/transation/supply.service
 import { of, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AppConstants } from 'src/app/shared/constants/constants';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { SelectorComponent } from '../selector/selector.component';
 
 describe('ModalSupplyComponent', () => {
   let component: ModalSupplyComponent;
   let fixture: ComponentFixture<ModalSupplyComponent>;
-  let mockSupplyService: any;
+  let mockSupplyService: { addSupply: jest.Mock};
 
   beforeEach(async () => {
     mockSupplyService = {
@@ -54,12 +54,12 @@ describe('ModalSupplyComponent', () => {
         idArticle: { markAsTouched: jest.fn() },
         quantity: { markAsTouched: jest.fn() },
       },
-    };
+    } as unknown as NgForm;
 
     component.idArticle = 1;
     component.quantity = 10;
 
-    component.onSubmit(form as any);
+    component.onSubmit(form);
 
     expect(mockSupplyService.addSupply).toHaveBeenCalledWith(1, 10);
     expect(component.message).toBe('Supply added successfully');
@@ -79,12 +79,12 @@ describe('ModalSupplyComponent', () => {
         idArticle: { markAsTouched: jest.fn() },
         quantity: { markAsTouched: jest.fn() },
       },
-    };
+    }  as unknown as NgForm;
 
     component.idArticle = 1;
     component.quantity = 10;
 
-    component.onSubmit(form as any);
+    component.onSubmit(form);
 
     expect(mockSupplyService.addSupply).toHaveBeenCalledWith(1, 10);
     expect(component.isMessagess).toBe(true);
@@ -93,18 +93,18 @@ describe('ModalSupplyComponent', () => {
   });
 
   it('should mark fields as touched when form is invalid', () => {
-    const form: any = {
+    const form = {
       valid: false,
       controls: {
         idArticle: { markAsTouched: jest.fn() },
         quantity: { markAsTouched: jest.fn() },
       },
-    };
+    }  as unknown as NgForm;
 
     component.onSubmit(form);
 
-    expect(form.controls.idArticle.markAsTouched).toHaveBeenCalled();
-    expect(form.controls.quantity.markAsTouched).toHaveBeenCalled();
+    expect(form.controls["idArticle"].markAsTouched).toHaveBeenCalled();
+    expect(form.controls["quantity"].markAsTouched).toHaveBeenCalled();
   });
 
   it('should call onRegister and close modal', () => {
@@ -122,12 +122,12 @@ describe('ModalSupplyComponent', () => {
         idArticle: { markAsTouched: jest.fn() },
         quantity: { markAsTouched: jest.fn() },
       },
-    };
+    }  as unknown as NgForm;
 
     component.idArticle = 1;
     component.quantity = 10;
 
-    component.onSubmit(form as any);
+    component.onSubmit(form);
 
     expect(mockSupplyService.addSupply).toHaveBeenCalledWith(1, 10);
     expect(component.isMessagess).toBe(true);

@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Brand } from 'src/app/shared/types/stop/brand';
 import { Category } from 'src/app/shared/types/stop/category';
+import { ArticleList } from 'src/app/shared/types/stop/article';
 
 @Component({
   selector: 'app-article-card',
@@ -13,8 +14,8 @@ export class ArticleCardComponent {
   @Input() price: number = 0;
   @Input() description: string = '';
   @Input() categories: Category[] = [];
-  @Input() brand: Brand = {id: 0, name:"",description: ""};
-  @Output() openModal = new EventEmitter<any>();
+  @Input() brand: Brand = { id: 0, name: "", description: "" };  
+  @Output() openModal = new EventEmitter<ArticleList>();
 
   quantity: number = 1;
 
@@ -34,11 +35,13 @@ export class ArticleCardComponent {
 
   handleCardClick(): void {
     this.openModal.emit({
+      id: this.id,
       name: this.name,
       price: this.price,
       description: this.description,
       categories: this.categories,
-      brand: this.brand
+      brand: this.brand,
+      quantity: this.quantity
     });
   }
 

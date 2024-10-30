@@ -2,11 +2,12 @@ import { TestBed } from '@angular/core/testing';
 import { AuthGuard } from './auth-guard.component'; 
 import { TokenService } from '../shared/services/user/authentication/token.service';
 import { Router } from '@angular/router';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 describe('AuthGuard', () => {
   let guard: AuthGuard;
-  let mockTokenService: any;
-  let mockRouter: any;
+  let mockTokenService: { isAuthenticated: jest.Mock; getRoleToken: jest.Mock };
+  let mockRouter: { navigate: jest.Mock };
 
   beforeEach(() => {
     mockTokenService = {
@@ -38,7 +39,11 @@ describe('AuthGuard', () => {
     mockTokenService.isAuthenticated.mockReturnValue(true);
     mockTokenService.getRoleToken.mockReturnValue('admin');
 
-    const canActivate = guard.canActivate({ data: { expectedRoles } } as any);
+    const mockRoute: Partial<ActivatedRouteSnapshot> = {
+      data: { expectedRoles },
+    };
+
+    const canActivate = guard.canActivate(mockRoute as ActivatedRouteSnapshot);
     expect(canActivate).toBe(true);
   });
 
@@ -47,7 +52,11 @@ describe('AuthGuard', () => {
     mockTokenService.isAuthenticated.mockReturnValue(false);
     mockTokenService.getRoleToken.mockReturnValue('admin');
 
-    const canActivate = guard.canActivate({ data: { expectedRoles } } as any);
+    const mockRoute: Partial<ActivatedRouteSnapshot> = {
+      data: { expectedRoles },
+    };
+
+    const canActivate = guard.canActivate(mockRoute as ActivatedRouteSnapshot);
     expect(canActivate).toBe(false);
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/']);
   });
@@ -57,7 +66,11 @@ describe('AuthGuard', () => {
     mockTokenService.isAuthenticated.mockReturnValue(true);
     mockTokenService.getRoleToken.mockReturnValue('guest');
 
-    const canActivate = guard.canActivate({ data: { expectedRoles } } as any);
+    const mockRoute: Partial<ActivatedRouteSnapshot> = {
+      data: { expectedRoles },
+    };
+
+    const canActivate = guard.canActivate(mockRoute as ActivatedRouteSnapshot);
     expect(canActivate).toBe(false);
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/']);
   });
@@ -67,7 +80,11 @@ describe('AuthGuard', () => {
     mockTokenService.isAuthenticated.mockReturnValue(true);
     mockTokenService.getRoleToken.mockReturnValue(undefined);
 
-    const canActivate = guard.canActivate({ data: { expectedRoles } } as any);
+    const mockRoute: Partial<ActivatedRouteSnapshot> = {
+      data: { expectedRoles },
+    };
+
+    const canActivate = guard.canActivate(mockRoute as ActivatedRouteSnapshot);
     expect(canActivate).toBe(false);
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/']);
   });

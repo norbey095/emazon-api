@@ -13,7 +13,7 @@ import { AppConstants } from 'src/app/shared/constants/constants';
 })
 export class BrandListComponent {
     title: string = "Lista de Marcas";
-    brands: any[] = [];
+    brands: Brand[] = [];
     totalItems: number = 0;
     itemsPerPage: number = 8;
     page: number = 1;

@@ -27,7 +27,7 @@ describe('FormBasicFComponent', () => {
     component.categoryName = 'Test Category';
     component.categoryDescription = 'Test Description';
 
-    const form: NgForm = {
+    const form = {
       valid: true,
       resetForm: jest.fn(),
       controls: {
@@ -38,9 +38,9 @@ describe('FormBasicFComponent', () => {
       _directives: [],
       form: { controls: {} },
       ngSubmit: null,
-    } as any;
+    } as unknown as NgForm;
 
-    component.onSubmit(form as NgForm);
+    component.onSubmit(form);
 
     expect(emitSpy).toHaveBeenCalledWith({
       name: 'Test Category',
@@ -52,7 +52,7 @@ describe('FormBasicFComponent', () => {
   });
 
   it('should mark controls as touched if the form is invalid', () => {
-    const form: NgForm = {
+    const form = {
       valid: false,
       resetForm: jest.fn(),
       controls: {
@@ -63,9 +63,9 @@ describe('FormBasicFComponent', () => {
       _directives: [],
       form: { controls: {} },
       ngSubmit: null,
-    } as any;
+    } as unknown as NgForm;
 
-    component.onSubmit(form as NgForm);
+    component.onSubmit(form);
 
     expect(form.controls['name'].markAsTouched).toHaveBeenCalled();
     expect(form.controls['description'].markAsTouched).toHaveBeenCalled();

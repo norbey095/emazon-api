@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ExtendFormComponent } from './extend-form.component';
-import { EventEmitter, SimpleChanges } from '@angular/core';
+import { SimpleChanges } from '@angular/core';
+import { SelectorComponent } from '../selector/selector.component';
+import { MultiComboBoxComponent } from '../multi-combo-box/multi-combo-box.component';
 
 describe('ExtendFormComponent', () => {
   let component: ExtendFormComponent;
@@ -35,18 +37,18 @@ describe('ExtendFormComponent', () => {
   });
 
   it('should emit formSubmit event when form is valid', () => {
-    const form = { valid: true, resetForm: jest.fn() } as any;
+    const form = { valid: true, resetForm: jest.fn() } as unknown as NgForm;
 
-    const selectedBrandMock = {
+    const selectedBrandMock: Partial<SelectorComponent> = {
       reset: jest.fn(),
     };
-    const multiComboBoxMock = {
+    const multiComboBoxMock: Partial<MultiComboBoxComponent> = {
       reset: jest.fn(),
     };
 
     component.resetOnSuccess = true;
-    component.selectedItem = selectedBrandMock as any;
-    component.multiComboBox = multiComboBoxMock as any;
+    component.selectedItem = selectedBrandMock as SelectorComponent;
+    component.multiComboBox = multiComboBoxMock as MultiComboBoxComponent;
     component.articleName = 'Test Article';
     component.quantity = 10;
     component.price = 100;
@@ -89,14 +91,14 @@ describe('ExtendFormComponent', () => {
         price: { markAsTouched: jest.fn() },
         description: { markAsTouched: jest.fn() },
       },
-    } as any;
+    } as unknown as NgForm;
 
     component.onSubmit(form);
 
-    expect(form.controls.name.markAsTouched).toHaveBeenCalled();
-    expect(form.controls.quantity.markAsTouched).toHaveBeenCalled();
-    expect(form.controls.price.markAsTouched).toHaveBeenCalled();
-    expect(form.controls.description.markAsTouched).toHaveBeenCalled();
+    expect(form.controls["name"].markAsTouched).toHaveBeenCalled();
+    expect(form.controls["quantity"].markAsTouched).toHaveBeenCalled();
+    expect(form.controls["price"].markAsTouched).toHaveBeenCalled();
+    expect(form.controls["description"].markAsTouched).toHaveBeenCalled();
   });
 
   it('should reset fields when resetOnSuccess input changes to true', () => {
@@ -124,5 +126,4 @@ describe('ExtendFormComponent', () => {
     expect(component.description).toBe('');
     expect(component.selectedCategories).toEqual([]);
   });
-  
 });

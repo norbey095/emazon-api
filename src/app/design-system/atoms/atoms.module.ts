@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { CategoryItemComponent } from './components/category/category-item.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';

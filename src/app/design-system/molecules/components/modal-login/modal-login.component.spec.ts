@@ -5,12 +5,13 @@ import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AppConstants } from 'src/app/shared/constants/constants';
+import { NgForm } from '@angular/forms';
 
 describe('ModalLoginComponent', () => {
   let component: ModalLoginComponent;
-  let fixture: ComponentFixture<ModalLoginComponent>;
-  let mockAuthService: any;
-  let mockRouter: any;
+  let fixture: ComponentFixture<ModalLoginComponent>;  
+  let mockAuthService: { login: jest.Mock };
+  let mockRouter: Partial<Router>;
 
   beforeEach(async () => {
     mockAuthService = {
@@ -49,7 +50,13 @@ describe('ModalLoginComponent', () => {
   });
 
   it('should submit form and login successfully', () => {
-    const form = { valid: true, resetForm: jest.fn() } as any;
+    const form: NgForm = {
+      valid: true,
+      resetForm: jest.fn(),
+      controls: {},
+      submitted: false,
+      ngSubmit: null,
+    } as unknown as NgForm;
 
     mockAuthService.login.mockReturnValue(of({}));
 
@@ -64,7 +71,13 @@ describe('ModalLoginComponent', () => {
   });
 
   it('should handle login error', () => {
-    const form = { valid: true, resetForm: jest.fn() } as any;
+    const form: NgForm = {
+      valid: true,
+      resetForm: jest.fn(),
+      controls: {},
+      submitted: false,
+      ngSubmit: null,
+    } as unknown as NgForm;
 
     const errorResponse = new HttpErrorResponse({ error: 'Unauthorized', status: 401 });
     mockAuthService.login.mockReturnValue(throwError(() => errorResponse));
@@ -79,18 +92,21 @@ describe('ModalLoginComponent', () => {
   });
 
   it('should mark fields as touched when form is invalid', () => {
-    const form: any = {
-        valid: false,
-        controls: {
-            email: { markAsTouched: jest.fn() },
-            password: { markAsTouched: jest.fn() },
-        }
-      };
+    const form: NgForm = {
+      valid: false,
+      resetForm: jest.fn(),
+      controls: {
+        email: { markAsTouched: jest.fn() },
+        password: { markAsTouched: jest.fn() },
+      },
+      submitted: false,
+      ngSubmit: null,
+    } as unknown as NgForm;
 
     component.onSubmit(form);
 
-    expect(form.controls.email.markAsTouched).toHaveBeenCalled();
-    expect(form.controls.password.markAsTouched).toHaveBeenCalled();
+    expect(form.controls['email'].markAsTouched).toHaveBeenCalled();
+    expect(form.controls['password'].markAsTouched).toHaveBeenCalled();
   });
 
   it('should call onRegister and close modal', () => {

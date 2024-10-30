@@ -19,12 +19,12 @@
       <menu-item url="/create-user" title="Auxiliar" *ngIf="isAdmin"></menu-item>
       <li *ngIf="!isAuthenticate">
         <button (click)="openLoginModal()" class="icon-button">
-          <i class="fas fa-user"></i>
+          <i class="fas fa-user" title="Iniciar Sesión"></i>
         </button>
       </li>
       <li  *ngIf="isAuthenticate">
         <button (click)="logout()" class="icon-button">
-          <i class="fas fa-sign-out-alt"></i>
+          <i class="fas fa-sign-out-alt" title="Cerrar Sesión"></i>
         </button>
       </li>
       <app-modal-login #loginModal></app-modal-login>

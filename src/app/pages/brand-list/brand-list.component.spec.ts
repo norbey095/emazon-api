@@ -8,12 +8,12 @@ import { Brand } from 'src/app/shared/types/stop/brand';
 describe('BrandListComponent', () => {
   let component: BrandListComponent;
   let fixture: ComponentFixture<BrandListComponent>;
-  let brandService: jest.Mocked<BrandService>;
+  let brandService: { getAllBrand: jest.Mock };
 
   beforeEach(async () => {
     brandService = {
       getAllBrand: jest.fn(),
-    } as any;
+    };
 
     await TestBed.configureTestingModule({
       declarations: [BrandListComponent],

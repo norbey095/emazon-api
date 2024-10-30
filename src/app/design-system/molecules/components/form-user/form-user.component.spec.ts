@@ -2,11 +2,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormUserComponent } from './form-user.component';
+import { NgForm } from '@angular/forms';
 
 describe('FormUserComponent', () => {
   let component: FormUserComponent;
   let fixture: ComponentFixture<FormUserComponent>;
-  let mockRouter: any;
+  let mockRouter: Partial<Router>;
 
   beforeEach(async () => {
     mockRouter = {
@@ -30,7 +31,13 @@ describe('FormUserComponent', () => {
   });
 
   it('should emit formSubmit event on valid form submission', () => {
-    const form = { valid: true, resetForm: jest.fn() } as any;
+    const form: NgForm = {
+      valid: true,
+      resetForm: jest.fn(),
+      controls: {},
+      submitted: false,
+      ngSubmit: null,
+    } as unknown as NgForm;
 
     component.resetOnSuccess = true;
     component.Name = 'John';
@@ -65,11 +72,10 @@ describe('FormUserComponent', () => {
     expect(component.birthdate).toBe('');
     expect(component.email).toBe('');
     expect(component.password).toBe('');
-});
-
+  });
 
   it('should mark fields as touched on invalid form submission', () => {
-    const form: any = {
+    const form: NgForm = {
       valid: false,
       controls: {
         name: { markAsTouched: jest.fn() },
@@ -79,30 +85,33 @@ describe('FormUserComponent', () => {
         birthdate: { markAsTouched: jest.fn() },
         email: { markAsTouched: jest.fn() },
         password: { markAsTouched: jest.fn() },
-      }
-    };
+      },
+      resetForm: jest.fn(),
+      submitted: false,
+      ngSubmit: null,
+    } as unknown as NgForm;
 
     component.onSubmit(form);
 
-    expect(form.controls.name.markAsTouched).toHaveBeenCalled();
-    expect(form.controls.lastname.markAsTouched).toHaveBeenCalled();
-    expect(form.controls.documentNumber.markAsTouched).toHaveBeenCalled();
-    expect(form.controls.cellPhone.markAsTouched).toHaveBeenCalled();
-    expect(form.controls.birthdate.markAsTouched).toHaveBeenCalled();
-    expect(form.controls.email.markAsTouched).toHaveBeenCalled();
-    expect(form.controls.password.markAsTouched).toHaveBeenCalled();
+    expect(form.controls['name'].markAsTouched).toHaveBeenCalled();
+    expect(form.controls['lastname'].markAsTouched).toHaveBeenCalled();
+    expect(form.controls['documentNumber'].markAsTouched).toHaveBeenCalled();
+    expect(form.controls['cellPhone'].markAsTouched).toHaveBeenCalled();
+    expect(form.controls['birthdate'].markAsTouched).toHaveBeenCalled();
+    expect(form.controls['email'].markAsTouched).toHaveBeenCalled();
+    expect(form.controls['password'].markAsTouched).toHaveBeenCalled();
   });
 
   it('should reset fields on resetOnSuccess input change', () => {
     component.resetOnSuccess = true;
     component.ngOnChanges({
-        resetOnSuccess: {
-          currentValue: true,
-          previousValue: false,
-          firstChange: false,
-          isFirstChange: () => false,
-        },
-      });
+      resetOnSuccess: {
+        currentValue: true,
+        previousValue: false,
+        firstChange: false,
+        isFirstChange: () => false,
+      },
+    });
 
     expect(component.Name).toBe('');
     expect(component.lastname).toBe('');
