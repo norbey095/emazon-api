@@ -56,11 +56,13 @@ describe('ArticleCardComponent', () => {
         component.handleCardClick();
 
         expect(component.openModal.emit).toHaveBeenCalledWith({
+            id: component.id,
             name: component.name,
             price: component.price,
             description: component.description,
             categories: component.categories,
             brand: component.brand,
+            quantity: component.quantity,
         });
     });
 

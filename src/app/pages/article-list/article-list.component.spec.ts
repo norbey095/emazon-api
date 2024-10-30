@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArticleListComponent } from './article-list.component';
-import { ArticleService } from 'src/app/shared/services/stop/article/article.service';
+import { ArticleService } from 'src/app/shared/services/stock/article/article.service';
 import { of, throwError } from 'rxjs';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 import { ArticleList } from 'src/app/shared/types/stop/article';
@@ -9,12 +9,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 describe('ArticleListComponent', () => {
     let component: ArticleListComponent;
     let fixture: ComponentFixture<ArticleListComponent>;
-    let articleService: jest.Mocked<ArticleService>;
+    let articleService: { getAllArticles: jest.Mock };
 
     beforeEach(async () => {
         articleService = {
             getAllArticles: jest.fn().mockReturnValue(of({ contentList: [], totalElement: 0 })),
-        } as any;
+        };
 
         await TestBed.configureTestingModule({
             declarations: [ArticleListComponent],

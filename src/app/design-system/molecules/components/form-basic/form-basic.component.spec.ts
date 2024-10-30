@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, NgForm } from '@angular/forms';
-import { BasicFormComponent } from './basic-form.component'; 
+import { FormBasicComponent } from './form-basic.component'; 
 
-describe('BasicFormComponent', () => {
-  let component: BasicFormComponent;
-  let fixture: ComponentFixture<BasicFormComponent>;
+describe('FormBasicFComponent', () => {
+  let component: FormBasicComponent;
+  let fixture: ComponentFixture<FormBasicComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BasicFormComponent],
+      declarations: [FormBasicComponent],
       imports: [FormsModule],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BasicFormComponent);
+    fixture = TestBed.createComponent(FormBasicComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -27,7 +27,7 @@ describe('BasicFormComponent', () => {
     component.categoryName = 'Test Category';
     component.categoryDescription = 'Test Description';
 
-    const form: NgForm = {
+    const form = {
       valid: true,
       resetForm: jest.fn(),
       controls: {
@@ -38,9 +38,9 @@ describe('BasicFormComponent', () => {
       _directives: [],
       form: { controls: {} },
       ngSubmit: null,
-    } as any;
+    } as unknown as NgForm;
 
-    component.onSubmit(form as NgForm);
+    component.onSubmit(form);
 
     expect(emitSpy).toHaveBeenCalledWith({
       name: 'Test Category',
@@ -52,7 +52,7 @@ describe('BasicFormComponent', () => {
   });
 
   it('should mark controls as touched if the form is invalid', () => {
-    const form: NgForm = {
+    const form = {
       valid: false,
       resetForm: jest.fn(),
       controls: {
@@ -63,9 +63,9 @@ describe('BasicFormComponent', () => {
       _directives: [],
       form: { controls: {} },
       ngSubmit: null,
-    } as any;
+    } as unknown as NgForm;
 
-    component.onSubmit(form as NgForm);
+    component.onSubmit(form);
 
     expect(form.controls['name'].markAsTouched).toHaveBeenCalled();
     expect(form.controls['description'].markAsTouched).toHaveBeenCalled();

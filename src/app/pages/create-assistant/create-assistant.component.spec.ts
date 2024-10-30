@@ -12,12 +12,13 @@ jest.useFakeTimers();
 describe('CreateAssistantComponent', () => {
   let component: CreateAssistantComponent;
   let fixture: ComponentFixture<CreateAssistantComponent>;
-  let userService: jest.Mocked<UserService>;
+  let userService: { createAssistant: jest.Mock };
+  
 
   beforeEach(() => {
     userService = {
       createAssistant: jest.fn(),
-    } as any;
+    };
 
     TestBed.configureTestingModule({
       declarations: [CreateAssistantComponent],

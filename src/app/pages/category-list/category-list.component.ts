@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Category } from 'src/app/shared/types/stop/category';
-import { CategoryService } from 'src/app/shared/services/stop/category/category.service';
+import { CategoryService } from 'src/app/shared/services/stock/category/category.service';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 import { AppConstants } from 'src/app/shared/constants/constants';
 
@@ -12,7 +12,7 @@ import { AppConstants } from 'src/app/shared/constants/constants';
 })
 export class CategoryListComponent {
     title: string = "Lista de Categorías";
-    categories: any[] = [];
+    categories: Category[] = [];
     totalItems: number = 0;
     itemsPerPage: number = 8;
     page: number = 1;

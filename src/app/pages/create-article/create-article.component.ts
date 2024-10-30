@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { ArticleService } from 'src/app/shared/services/stop/article/article.service'; 
+import { ArticleService } from 'src/app/shared/services/stock/article/article.service'; 
 import { ResponseSuccess } from 'src/app/shared/types/stop/response-success';
 import { AppConstants } from 'src/app/shared/constants/constants'; 
 import { Article } from 'src/app/shared/types/stop/article';

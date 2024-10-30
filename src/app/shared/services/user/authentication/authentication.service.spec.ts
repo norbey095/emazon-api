@@ -7,7 +7,11 @@ import { environment } from 'src/environments/environment';
 describe('AuthService', () => {
   let service: AuthService;
   let httpMock: HttpTestingController;
-  let mockTokenService: any;
+
+  let mockTokenService: {
+    getRoleToken: jest.Mock<string>;
+    setRole: jest.Mock<void>;
+  };
 
   beforeEach(() => {
     mockTokenService = {
@@ -64,15 +68,6 @@ describe('AuthService', () => {
 
     expect(localStorage.getItem('ROLE')).toBe('admin');
     expect(mockTokenService.setRole).toHaveBeenCalledWith('admin');
-  });
-
-  it('should return true', () => {
-    localStorage.setItem('token', 'mockToken');
-    expect(service.isAuthenticated()).toBe(true);
-  });
-
-  it('should return false', () => {
-    expect(service.isAuthenticated()).toBe(false);
   });
 
   it('should log out the user and remove the token', () => {

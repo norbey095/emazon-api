@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MultiComboBoxComponent } from './multi-combo-box.component';
-import { CategoryService } from 'src/app/shared/services/stop/category/category.service';
+import { CategoryService } from 'src/app/shared/services/stock/category/category.service';
 import { of, throwError } from 'rxjs';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 import { Category } from 'src/app/shared/types/stop/category';
@@ -102,6 +102,6 @@ describe('MultiComboBoxComponent', () => {
         
         expect(consoleErrorSpy).toHaveBeenCalledWith('Error al cargar las Categorías', expect.any(Error));
         
-        consoleErrorSpy.mockRestore(); // Limpiar el espía después
+        consoleErrorSpy.mockRestore();
     });
 });

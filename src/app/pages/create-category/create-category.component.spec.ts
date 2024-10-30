@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CreateCategoryComponent } from './create-category.component';
-import { CategoryService } from 'src/app/shared/services/stop/category/category.service';
+import { CategoryService } from 'src/app/shared/services/stock/category/category.service';
 import { of, throwError } from 'rxjs';
 import { ResponseSuccess } from 'src/app/shared/types/stop/response-success';
 import { HttpErrorResponse } from '@angular/common/http';

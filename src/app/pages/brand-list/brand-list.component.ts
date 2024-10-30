@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Brand } from 'src/app/shared/types/stop/brand';
-import { BrandService } from 'src/app/shared/services/stop/brand/brand.service';
+import { BrandService } from 'src/app/shared/services/stock/brand/brand.service';
 import { PaginationDto } from 'src/app/shared/types/stop/paginationDto';
 import { AppConstants } from 'src/app/shared/constants/constants';
 
@@ -13,7 +13,7 @@ import { AppConstants } from 'src/app/shared/constants/constants';
 })
 export class BrandListComponent {
     title: string = "Lista de Marcas";
-    brands: any[] = [];
+    brands: Brand[] = [];
     totalItems: number = 0;
     itemsPerPage: number = 8;
     page: number = 1;

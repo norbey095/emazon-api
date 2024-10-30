@@ -7,7 +7,7 @@
         <button routerLink="/create-article" class="btn-create">Crear Articulo</button>
     </div>
     <div class="button-container" *ngIf="isAux">
-        <button (click)="opensupplyModal()" class="btn-create">Agregar Suministro</button>
+        <button (click)="openSupplyModal()" class="btn-create">Agregar Suministro</button>
     </div>
     <app-modal-supply #supplyModal></app-modal-supply>
 </div>

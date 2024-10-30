@@ -56,6 +56,12 @@ $error-color: red;
     font-size: 0.7rem;
     margin-top: 90px;
   }
+
+  &__error-message--final {
+    color: $error-color;
+    font-size: 0.7rem;
+    margin-top: 15px;
+  }
   
   @media (max-width: 600px) {
     &__input-group {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { BehaviorSubject } from 'rxjs';
+import { DecodedToken } from 'src/app/shared/types/login';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,11 @@ export class TokenService {
   getRoleToken(): string | null {
     const token = localStorage.getItem('token');
     if (token) {
-      const decoded: any = jwtDecode(token);
-      return decoded.authorities;
+      const decoded: DecodedToken = jwtDecode(token);
+      return decoded.authorities || null;
     }
     return null;
-  }
+  }  
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
