@@ -24,4 +24,10 @@ export class UserService {
 
     return this.http.post<ResponseSuccess>(registryUrl, user , { headers });
   }
+
+  createClient(user: User): Observable<ResponseSuccess> {
+    const registryUrl = `${this.apiUrl}registryClient`;
+
+    return this.http.post<ResponseSuccess>(registryUrl, user );
+  }
 }
