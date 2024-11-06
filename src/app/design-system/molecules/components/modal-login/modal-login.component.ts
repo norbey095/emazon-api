@@ -75,5 +75,6 @@ export class ModalLoginComponent {
 
   onRegister() {
     this.closeModal();
+    this.router.navigate(['/create-client']);
   }
 }

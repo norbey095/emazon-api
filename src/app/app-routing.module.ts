@@ -41,6 +41,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { expectedRoles: [AppConstants.ROLE_ADMIN]}
   },
+  {
+    path: 'create-client',
+    loadChildren: () => import('./pages/create-client/create-client.module').then(m => m.CreateClientModule)
+  },
 ];
 
 @NgModule({

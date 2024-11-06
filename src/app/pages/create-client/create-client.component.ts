@@ -6,13 +6,13 @@ import { UserService } from 'src/app/shared/services/user/user.service';
 import { User } from 'src/app/shared/types/user/user';
 
 @Component({
-  selector: 'app-create-assistant',
-  templateUrl: './create-assistant.component.html',
-  styleUrls: ['./create-assistant.component.scss'],
+  selector: 'app-create-client',
+  templateUrl: './create-client.component.html',
+  styleUrls: ['./create-client.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class CreateAssistantComponent {
-  title: string = "Crear Auxiliar de Bodega";
+export class CreateClientComponent {
+  title: string = "Crear Cliente";
   message: string = "";
   isMessagess: boolean = false;
   status: string = "sucess";
@@ -25,9 +25,8 @@ export class CreateAssistantComponent {
   ngOnInit(): void {}
 
   onFormSubmit(event: { user: User }) {
-    this.userService.createAssistant(event.user).subscribe({
-      next: (response: ResponseSuccess) => {
-        console.log("MENOR DE EDAD");      
+    this.userService.createClient(event.user).subscribe({
+      next: (response: ResponseSuccess) => {    
         this.message =  response.messages; 
         this.isMessagess = true;  
         this.status = "success";

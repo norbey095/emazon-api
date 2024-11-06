@@ -50,4 +50,28 @@ describe('UserService', () => {
       req.flush(mockSuccessResponse);
     });
   });
+
+  describe('createClient', () => {
+    it('should create an client and return a ResponseSuccess', () => {
+      const mockSuccessResponse: ResponseSuccess = { status: '201', messages: 'Client created' };
+      const user: User = {
+        name: 'John',
+        lastName: 'Doe',
+        documentNumber: '12345678',
+        cellPhone: '987654321',
+        birthdate: '1990-01-01',
+        email: 'john.doe@example.com',
+        password: 'securePassword',
+      };
+
+      service.createClient(user).subscribe(response => {
+        expect(response).toEqual(mockSuccessResponse);
+      });
+
+      const req = httpMock.expectOne(`${environment.apiUserUrl}registryClient`);
+      expect(req.request.method).toBe('POST');
+      expect(req.request.body).toEqual(user);
+      req.flush(mockSuccessResponse);
+    });
+  });
 });
