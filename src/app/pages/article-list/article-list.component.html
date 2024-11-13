@@ -1,4 +1,5 @@
 <app-hero [title]="title"></app-hero>
+
 <div class="controls">
     <div class="filter-container">
         <app-filter-table (controlsChange)="onControlsChange($event)" [filterbys]="filterbys"></app-filter-table>
@@ -11,21 +12,31 @@
     </div>
     <app-modal-supply #supplyModal></app-modal-supply>
 </div>
+
 <app-alert *ngIf="isMessagess" [srcImage]="srcImage" [message]="message" [status]="status"></app-alert>
-<div class="product-grid">    
+
+<div *ngIf="articles.length === 0" class="empty-state show">
+    <img src="assets/images/Empty.png" alt="No hay datos" />
+    <p>No hay datos disponibles</p>
+</div>
+
+<div class="product-grid" *ngIf="articles.length > 0">    
     <div class="product-card" *ngFor="let product of articles | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
         <app-article-card 
-        [id]="product.id" 
-        [name]="product.name" 
-        [price]="product.price"
-        [description]="product.description"
-        [categories]="product.categories"
-        [brand]="product.brand"
-        (openModal)="productModal.openModal($event)"
-        (formSubmit)="onFormSubmit($event)"></app-article-card>
+            [id]="product.id" 
+            [name]="product.name" 
+            [price]="product.price"
+            [description]="product.description"
+            [categories]="product.categories"
+            [brand]="product.brand"
+            (openModal)="productModal.openModal($event)"
+            (formSubmit)="onFormSubmit($event)">
+        </app-article-card>
     </div>
 </div>
+
 <app-article-modal #productModal></app-article-modal>
+
 <div class="pagination-controls">
     <pagination-controls (pageChange)="page = $event; fetchArticles()"></pagination-controls>
 </div>

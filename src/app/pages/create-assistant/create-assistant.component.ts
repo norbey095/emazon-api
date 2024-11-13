@@ -27,7 +27,6 @@ export class CreateAssistantComponent {
   onFormSubmit(event: { user: User }) {
     this.userService.createAssistant(event.user).subscribe({
       next: (response: ResponseSuccess) => {
-        console.log("MENOR DE EDAD");      
         this.message =  response.messages; 
         this.isMessagess = true;  
         this.status = "success";
