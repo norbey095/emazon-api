@@ -16,6 +16,7 @@ export class ArticleCardComponent {
   @Input() categories: Category[] = [];
   @Input() brand: Brand = { id: 0, name: "", description: "" };  
   @Output() openModal = new EventEmitter<ArticleList>();
+  @Output() formSubmit = new EventEmitter<{ idArticle: number, quantity: number }>();
 
   quantity: number = 1;
 
@@ -30,7 +31,7 @@ export class ArticleCardComponent {
   }
 
   addToCart(): void {
-    alert(`Agregaste ${this.quantity} al carrito`);
+    this.formSubmit.emit({ idArticle: this.id, quantity: this.quantity });
   }
 
   handleCardClick(): void {
