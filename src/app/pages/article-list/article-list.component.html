@@ -11,7 +11,8 @@
     </div>
     <app-modal-supply #supplyModal></app-modal-supply>
 </div>
-<div class="product-grid">
+<app-alert *ngIf="isMessagess" [srcImage]="srcImage" [message]="message" [status]="status"></app-alert>
+<div class="product-grid">    
     <div class="product-card" *ngFor="let product of articles | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
         <app-article-card 
         [id]="product.id" 
@@ -20,7 +21,8 @@
         [description]="product.description"
         [categories]="product.categories"
         [brand]="product.brand"
-        (openModal)="productModal.openModal($event)"></app-article-card>
+        (openModal)="productModal.openModal($event)"
+        (formSubmit)="onFormSubmit($event)"></app-article-card>
     </div>
 </div>
 <app-article-modal #productModal></app-article-modal>

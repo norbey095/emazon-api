@@ -12,6 +12,7 @@ describe('ArticleCardComponent', () => {
 
         fixture = TestBed.createComponent(ArticleCardComponent);
         component = fixture.componentInstance;
+        jest.spyOn(component.formSubmit, 'emit');
         fixture.detectChanges();
     });
 
@@ -45,12 +46,6 @@ describe('ArticleCardComponent', () => {
         expect(component.quantity).toBe(1);
     });
 
-    it('should alert with adding to cart', () => {
-        jest.spyOn(window, 'alert').mockImplementation(() => {});
-        component.addToCart();
-        expect(window.alert).toHaveBeenCalledWith('Agregaste 1 al carrito');
-    });
-
     it('should emit openModal event', () => {
         jest.spyOn(component.openModal, 'emit');
         component.handleCardClick();
@@ -70,4 +65,17 @@ describe('ArticleCardComponent', () => {
         const formattedPrice = component.formatPrice(10000);
         expect(formattedPrice).toBe("$10.000,00");
     });
+
+    it('should emit formSubmit event with correct values when addToCart is called', () => {
+        component.id = 5;
+        component.quantity = 3;
+      
+        component.addToCart();
+      
+        expect(component.formSubmit.emit).toHaveBeenCalledWith({
+          idArticle: 5,
+          quantity: 3
+        });
+    });
+      
 });
