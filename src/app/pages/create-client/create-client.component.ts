@@ -12,7 +12,7 @@ import { User } from 'src/app/shared/types/user/user';
   encapsulation: ViewEncapsulation.None
 })
 export class CreateClientComponent {
-  title: string = "Crear Cliente";
+  title: string = "Registrarse";
   message: string = "";
   isMessagess: boolean = false;
   status: string = "sucess";
@@ -40,6 +40,7 @@ export class CreateClientComponent {
       },
       error: (error: HttpErrorResponse) => {
         this.isMessagess = true;
+        console.log(error.message)
         if(!error.message.includes("Error de comunicación")){
           this.status = "warning";
           this.srcImage = AppConstants.SRC_IMAGE_WARNING;   

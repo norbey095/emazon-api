@@ -20,6 +20,7 @@ export class FormUserComponent {
   birthdate: string = '';
   email: string = '';  
   password: string = '';
+  formSubmitted = false;
 
   constructor(private router: Router) {}
 
@@ -42,10 +43,10 @@ export class FormUserComponent {
       };
 
       this.formSubmit.emit({user: nuevoUser});
+      this.formSubmitted = false;
 
       if (this.resetOnSuccess) {
         this.resetFields();
-        form.resetForm();
       }
     } else {
       form.controls['name'].markAsTouched();
@@ -55,6 +56,7 @@ export class FormUserComponent {
       form.controls['birthdate'].markAsTouched();
       form.controls['email'].markAsTouched();
       form.controls['password'].markAsTouched();
+      this.formSubmitted = true;
     }
   }
 
@@ -66,5 +68,6 @@ export class FormUserComponent {
       this.birthdate = '';
       this.email = '';
       this.password = '';
+      this.formSubmitted = false;
   }
 }
