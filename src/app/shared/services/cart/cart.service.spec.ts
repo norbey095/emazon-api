@@ -79,4 +79,24 @@ describe('CartService', () => {
     req.flush(mockCartResponse);
   });
 
+  it('should delete item from cart and return ResponseSuccess', () => {
+    const mockSuccessResponse: ResponseSuccess = { status: '200', messages: 'Deleted successfully' };
+    const idArticle = 1;
+
+    const expectedParams = {
+      idArticle: idArticle.toString(),
+    };
+
+    service.deleteCart(idArticle).subscribe(response => {
+      expect(response).toEqual(mockSuccessResponse);
+    });
+
+    const req = httpMock.expectOne((request) => {
+      return request.url === `${environment.apiCartUrl}` &&
+        request.method === 'DELETE' &&
+        request.params.get('idArticle') === expectedParams.idArticle;
+    });
+
+    req.flush(mockSuccessResponse);
+  });
 });

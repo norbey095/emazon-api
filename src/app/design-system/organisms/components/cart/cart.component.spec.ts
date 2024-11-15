@@ -6,16 +6,20 @@ import { of, throwError } from 'rxjs';
 import { CartDetailResponse } from 'src/app/shared/types/cart/cart';
 import { EventEmitter } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AppConstants } from 'src/app/shared/constants/constants';
+import { ResponseSuccess } from 'src/app/shared/types/stop/response-success';
 
 describe('CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
-  let mockCartService: { getCart: jest.Mock };
+  let mockCartService: { getCart: jest.Mock, deleteCart: jest.Mock  };
   let closeSpy: jest.Mock;
 
   beforeEach(async () => {
     mockCartService = {
         getCart: jest.fn().mockReturnValue(of({ cartDetail: [], totalPrice: 0, totalItems: 0 })),
+        deleteCart: jest.fn().mockReturnValue(of({ status: '200', messages: 'Deleted successfully' }))
     };
 
     await TestBed.configureTestingModule({
@@ -117,5 +121,67 @@ describe('CartComponent', () => {
     const formattedPrice = component.formatPrice(price);
 
     expect(formattedPrice).toBe('$1.500,00');
+  });
+
+  it('should remove item from cart and handle success response', () => {
+    const idArticle = 1;
+    const mockSuccessResponse: ResponseSuccess = { status: '200', messages: 'Deleted successfully' };
+
+    mockCartService.deleteCart.mockReturnValue(of(mockSuccessResponse));
+
+    component.removeItem(idArticle);
+
+    expect(mockCartService.deleteCart).toHaveBeenCalledWith(idArticle);
+    expect(component.message).toBe(mockSuccessResponse.messages);
+    expect(component.isMessagess).toBe(true);
+    expect(component.status).toBe('success');
+    expect(component.srcImage).toBe(AppConstants.SRC_IMAGE_SUCCESS);
+    expect(component.isSuccessful).toBe(true);
+
+    expect(mockCartService.getCart).toHaveBeenCalled();
+
+    setTimeout(() => {
+      expect(component.isMessagess).toBe(false);
+    }, 4000);
+  });
+
+ it('should handle error 500 when removing item from cart', () => {
+    const idArticle = 1;
+    const errorResponse = new HttpErrorResponse({ error: { messages: 'Error al eliminar el artículo' }, status: 500 });
+
+    mockCartService.deleteCart.mockReturnValue(throwError(() => errorResponse));
+
+    component.removeItem(idArticle);
+
+    expect(mockCartService.deleteCart).toHaveBeenCalledWith(idArticle);
+
+    expect(component.isMessagess).toBe(true);
+    expect(component.status).toBe('error'); 
+    expect(component.srcImage).toBe(AppConstants.SRC_IMAGE_ERROR);
+    expect(component.message).toBe(errorResponse.message);
+
+    setTimeout(() => {
+      expect(component.isMessagess).toBe(false);
+    }, 4000);
+  });
+
+  it('should handle error 400 when removing item from cart', () => {
+    const idArticle = 1;
+    const errorResponse = new HttpErrorResponse({ error: { messages: 'Error al eliminar el artículo' }, status: 400 });
+
+    mockCartService.deleteCart.mockReturnValue(throwError(() => errorResponse));
+
+    component.removeItem(idArticle);
+
+    expect(mockCartService.deleteCart).toHaveBeenCalledWith(idArticle);
+
+    expect(component.isMessagess).toBe(true);
+    expect(component.status).toBe('warning'); 
+    expect(component.srcImage).toBe(AppConstants.SRC_IMAGE_WARNING);
+    expect(component.message).toBe(errorResponse.message);
+
+    setTimeout(() => {
+      expect(component.isMessagess).toBe(false);
+    }, 4000);
   });
 });
