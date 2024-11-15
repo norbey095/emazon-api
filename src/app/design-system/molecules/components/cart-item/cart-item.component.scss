@@ -1,0 +1,35 @@
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    
+    &__details {
+      flex-grow: 1;
+      word-wrap: break-word;
+    }
+
+    &__details strong,
+    &__details span {
+        display: block;
+    }
+  
+    &__message {
+      color: red;
+      font-size: 13px;
+      font-style: italic;
+    }
+  
+    &__delete-btn {
+      cursor: pointer;
+      color: #000000;
+      font-size: 20px;
+      margin-left: 15px;
+    }
+  
+    &__delete-btn:hover {
+      color: #ab2929;
+    }
+}
+  

@@ -1,0 +1,60 @@
+<div class="cart">
+  <div class="cart__header">
+    <h3>Mi Carrito</h3>
+    <span class="cart__close-btn" (click)="onClose()">&times;</span>
+  </div>  
+
+  <button class="cart__filters-toggle" (click)="toggleFilters()">Filtros</button>
+  
+  <div class="cart__filters" *ngIf="filtersVisible">
+    <div class="filter-container">
+      <app-filter-table (controlsChange)="onControlsChange($event)" [itemsPerPage]="itemsPerPage" [orderBy]="orderBy"></app-filter-table>
+    </div>
+    <div class="inputs-container">
+      <app-input 
+          [(ngModel)]="categoryName" 
+          type="text" 
+          id="categoryName" 
+          name="categoryName" 
+          placeholder="Categoría:" 
+          width="260px"  
+          height="15px" 
+          required>
+      </app-input>
+      <app-input 
+          [(ngModel)]="brandName" 
+          type="text" 
+          id="brandName" 
+          name="brandName" 
+          placeholder="Marca:" 
+          width="260px"  
+          height="15px" 
+          required>
+      </app-input>
+    </div>
+    <button class="cart__filters__close-btn" (click)="toggleFilters()" >Cerrar</button>
+  </div>
+
+  <div class="cart__items">
+    <app-cart-item
+      *ngFor="let item of itemsCart | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }"
+      [idArticle]="item.idArticle"
+      [name]="item.name"
+      [available]="item.quantityAvailable"
+      [quantity]="item.quantityRequest"
+      [price]="item.unitPrice"
+      [subPrice]="item.subPrice"
+      [message]="item.message"
+      (remove)="removeItem($event)">
+    </app-cart-item>
+  </div>
+  
+  <div class="pagination-controls">
+    <pagination-controls (pageChange)="page = $event; fetchCarts()"></pagination-controls>
+  </div>
+  
+  <div class="cart__footer">
+    <div class="cart__total-price">Precio Total: {{ formatPrice(totalPrices) }}</div>
+    <button class="cart__checkout-btn">Comprar</button>
+  </div>
+</div>  
