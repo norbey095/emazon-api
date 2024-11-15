@@ -1,6 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { AppConstants } from 'src/app/shared/constants/constants';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { CartDetail, CartDetailResponse } from 'src/app/shared/types/cart/cart';
+import { ResponseSuccess } from 'src/app/shared/types/stop/response-success';
 
 @Component({
   selector: 'app-cart',
@@ -19,6 +22,12 @@ export class CartComponent {
   filtersVisible: boolean = false;
   orderBy = 'ASC';
 
+  message: string = "";
+  isMessagess: boolean = false;
+  status: string = "sucess";
+  srcImage: string = "";
+  isSuccessful: boolean = false;
+
   @Output() close = new EventEmitter<void>();
 
   constructor(private cartService: CartService) {}
@@ -33,8 +42,6 @@ export class CartComponent {
   }  
 
   fetchCarts() {
-    console.log(this.categoryName);
-    console.log(this.brandName);
     this.cartService.getCart(this.page - 1, this.itemsPerPage, this.descending, this.categoryName, this.brandName).subscribe({
       next: (response: CartDetailResponse) => {
         this.totalPrices = response.totalPrice;
@@ -59,8 +66,36 @@ export class CartComponent {
     this.close.emit();
   }
 
-  removeItem(index: number): void {
-    this.itemsCart.splice(index, 1);
+  removeItem(idArticle: number): void {
+    this.cartService.deleteCart(idArticle).subscribe({
+      next: (response: ResponseSuccess) => {
+        this.message =  response.messages; 
+        this.isMessagess = true;  
+        this.status = "success";
+        this.srcImage = AppConstants.SRC_IMAGE_SUCCESS;
+        this.isSuccessful = true;
+        this.fetchCarts();
+        
+        setTimeout(() => {
+          this.isMessagess = false; 
+        }, 4000);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.isMessagess = true;
+        if(error.status == 409 || error.status == 400){
+          this.status = "warning";
+          this.srcImage = AppConstants.SRC_IMAGE_WARNING;   
+        } else {
+          this.status = "error";
+          this.srcImage = AppConstants.SRC_IMAGE_ERROR;   
+        }
+        this.message = error.message;
+        
+        setTimeout(() => {
+          this.isMessagess = false; 
+        }, 4000);
+      }
+    });
   }
 
   formatPrice(price: number): string {
