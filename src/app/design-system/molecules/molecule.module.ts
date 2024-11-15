@@ -18,6 +18,7 @@ import { ArticleModalComponent } from './components/article-modal/article-modal.
 import { FormUserComponent } from './components/form-user/form-user.component';
 import { ModalLoginComponent } from './components/modal-login/modal-login.component';
 import { ModalSupplyComponent } from './components/modal-supply/modal-supply.component';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ModalSupplyComponent } from './components/modal-supply/modal-supply.com
     ArticleModalComponent,
     FormUserComponent,
     ModalLoginComponent,
-    ModalSupplyComponent
+    ModalSupplyComponent,
+    CartItemComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,8 @@ import { ModalSupplyComponent } from './components/modal-supply/modal-supply.com
     ArticleModalComponent,
     FormUserComponent,
     ModalLoginComponent,
-    ModalSupplyComponent
+    ModalSupplyComponent,
+    CartItemComponent
   ],
 })
 export class MoleculeModule {}

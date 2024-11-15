@@ -1,0 +1,14 @@
+import { Component, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-cart-icon',
+  templateUrl: './cart-icon.component.html',
+  styleUrls: ['./cart-icon.component.scss']
+})
+export class CartIconComponent {
+  @Output() openCart = new EventEmitter<void>();
+
+  onClick(): void {
+    this.openCart.emit();
+  }
+}

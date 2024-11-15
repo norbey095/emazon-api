@@ -14,14 +14,14 @@ export class FilterTableComponent {
         filterBy: string;
     }>();
 
-    itemsPerPage: number = 8;
+    @Input() itemsPerPage: number = 8;
     descending: boolean = false;
     page: number = 1;
-    orderBy = 'ASC';
+    @Input() orderBy: string = 'ASC';
     filterBy = 'Artículo';
     orderByOptions = ["ASC", "DES"];
     filterByOptions = ["Artículo", "Marca","Categoría"];
-    itemsPerPageOptions = [8, 16, 24];
+    itemsPerPageOptions = [4, 8, 16, 24];
     filterByChanges = 'article'
 
 

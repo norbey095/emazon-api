@@ -1,0 +1,11 @@
+<div class="cart-item">
+    <div class="cart-item__details">
+        <strong>{{ name }}</strong>
+        <span>Disponible: {{ available }} | Pedida: {{ quantity }}</span>
+        <span>Precio por unidad: {{ formatPrice(price) }} | Subtotal: {{ formatPrice(subPrice) }}</span>
+        <div *ngIf="message" class="cart-item__message">{{ message }}</div>
+    </div>
+    <span class="cart-item__delete-btn" (click)="onRemove()">
+        <i class="fas fa-trash"></i>
+    </span>
+</div> 

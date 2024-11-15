@@ -9,6 +9,7 @@ import { inputComponent } from './components/input/input.component';
 import { InputButtonComponent } from './components/input-button/input-button.component';
 import { ImageComponent } from './components/image/image.component';
 import { TextareaComponent } from './components/textarea/textarea.component';
+import { CartIconComponent } from './components/cart-icon/cart-icon.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { TextareaComponent } from './components/textarea/textarea.component';
     inputComponent,
     InputButtonComponent,
     ImageComponent,
-    TextareaComponent
+    TextareaComponent,
+    CartIconComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { TextareaComponent } from './components/textarea/textarea.component';
     inputComponent,
     InputButtonComponent,
     ImageComponent,
-    TextareaComponent
+    TextareaComponent,
+    CartIconComponent
   ],
 })
 export class AtomsModule {}

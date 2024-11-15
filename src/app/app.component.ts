@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'emazon';
+  showCart = false;
+  showIcon = true;
+
+  openCart(): void {
+    this.showCart = true;
+    this.showIcon = false;
+  }
+
+  closeCart(): void {
+    this.showCart = false;
+    this.showIcon = true;
+  }
 }

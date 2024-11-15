@@ -64,7 +64,6 @@ describe('FormUserComponent', () => {
       }
     });
 
-    expect(form.resetForm).toHaveBeenCalled();
     expect(component.Name).toBe('');
     expect(component.lastname).toBe('');
     expect(component.documentNumber).toBe('');

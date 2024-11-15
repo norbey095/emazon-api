@@ -1,0 +1,151 @@
+.cart {
+  position: fixed;
+  top: 0;
+  right: -10px;
+  width: 350px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+  transition: right 0.3s ease-in-out;
+  z-index: 99;
+
+  &.open {
+    right: 0; 
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: black;
+    }
+  }
+
+  &__filters-toggle {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #9D3FE7;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    text-align: left;
+
+    &:hover {
+      background-color: #9D3FE7;
+    }
+  }
+
+  &__filters {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    right: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+
+    .filter-container {
+      margin-bottom: 15px;
+    }
+
+    .inputs-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      
+      app-input {
+        width: 100%;
+        max-width: 150px;
+      }
+    }
+
+    &__close-btn {
+      align-self: flex-end;
+      padding: 6px 12px;
+      background-color: #9D3FE7;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 5px;
+      margin-top: 15px;
+      
+      &:hover {
+        background-color: #7b1fa2;
+      }
+    }
+  }
+
+  &__items {
+    margin-top: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  &__footer {
+    position: sticky;
+    bottom: 20px;
+    width: 100%;
+    padding: 30px 0;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__total-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &__checkout-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #9D3FE7;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    box-sizing: border-box; 
+  }
+
+  &__checkout-btn:hover {
+    background-color: #9D3FE7;
+  }
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 85%;
+}
