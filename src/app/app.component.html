@@ -1,5 +1,5 @@
 <app-header></app-header>
 <router-outlet></router-outlet>
-<app-cart-icon *ngIf="showIcon" (openCart)="openCart()"></app-cart-icon>  <!-- Emite el evento para abrir el carrito -->
-<app-cart *ngIf="showCart" (close)="closeCart()"></app-cart>  <!-- Muestra el carrito si showCart es true -->
+<app-cart-icon *ngIf="showIcon" (openCart)="openCart()"></app-cart-icon>
+<app-cart *ngIf="showCart" (close)="closeCart()"></app-cart>
 <app-footer></app-footer>

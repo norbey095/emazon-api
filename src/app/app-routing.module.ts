@@ -45,6 +45,10 @@ const routes: Routes = [
     path: 'create-client',
     loadChildren: () => import('./pages/create-client/create-client.module').then(m => m.CreateClientModule)
   },
+  {
+    path: 'my-buy',
+    loadChildren: () => import('./pages/report/report.module').then(m => m.ReportModule),
+  },
 ];
 
 @NgModule({

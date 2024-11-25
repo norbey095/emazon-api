@@ -1,0 +1,108 @@
+.compras {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(138, 12, 12, 0.1);
+  overflow-x: auto;
+  height: auto;
+
+  &__title {
+      text-align: center;
+      color: #333;
+  }
+
+  .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+  }
+
+  &__table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      background-color: #fff;
+      min-width: 600px;
+  }
+
+  &__table-header, &__table-cell {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+  }
+
+  &__table-header {
+      background-color: #f8f8f8;
+  }
+
+  &__row {
+      &:hover {
+          background-color: #f1f1f1;
+      }
+  }
+
+  .empty-state {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 250px;
+      text-align: center;
+  }
+
+  .empty-state.show {
+      display: flex;
+  }
+
+  .empty-state img {
+      max-width: 100%;
+      max-height: 100%;
+  }
+
+  .empty-state p {
+      margin-top: 10px;
+      font-size: 18px;
+      font-family: 'Poppins', sans-serif;
+      color: #b6b6b6;
+  }
+
+  @media (max-width: 768px) {
+      .compras {
+          padding: 15px;
+          width: 95%;
+      }
+
+      .compras__title {
+          font-size: 24px;
+      }
+
+      .compras__table {
+          min-width: 500px;
+      }
+
+      .compras__table-header, .compras__table-cell {
+          padding: 10px;
+      }
+  }
+
+  @media (max-width: 480px) {
+      .compras {
+          padding: 10px;
+      }
+
+      .compras__title {
+          font-size: 20px;
+      }
+
+      .compras__table {
+          min-width: 400px;
+      }
+
+      .compras__table-header, .compras__table-cell {
+          padding: 8px;
+          font-size: 14px;
+      }
+  }
+}

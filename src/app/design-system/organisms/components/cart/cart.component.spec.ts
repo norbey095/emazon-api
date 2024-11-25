@@ -13,18 +13,19 @@ import { ResponseSuccess } from 'src/app/shared/types/stop/response-success';
 describe('CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
-  let mockCartService: { getCart: jest.Mock, deleteCart: jest.Mock  };
+  let mockCartService: { getCart: jest.Mock, deleteCart: jest.Mock, buy: jest.Mock };
   let closeSpy: jest.Mock;
 
   beforeEach(async () => {
     mockCartService = {
-        getCart: jest.fn().mockReturnValue(of({ cartDetail: [], totalPrice: 0, totalItems: 0 })),
-        deleteCart: jest.fn().mockReturnValue(of({ status: '200', messages: 'Deleted successfully' }))
+      getCart: jest.fn().mockReturnValue(of({ cartDetail: [], totalPrice: 0, totalItems: 0 })),
+      deleteCart: jest.fn().mockReturnValue(of({ status: '200', messages: 'Deleted successfully' })),
+      buy: jest.fn().mockReturnValue(of({ status: '200', messages: 'Purchase successful' }))
     };
 
     await TestBed.configureTestingModule({
       declarations: [CartComponent],
-      imports: [NgxPaginationModule,HttpClientTestingModule],
+      imports: [NgxPaginationModule, HttpClientTestingModule],
       providers: [{ provide: CartService, useValue: mockCartService }]
     }).compileComponents();
 
@@ -145,7 +146,7 @@ describe('CartComponent', () => {
     }, 4000);
   });
 
- it('should handle error 500 when removing item from cart', () => {
+  it('should handle error 500 when removing item from cart', () => {
     const idArticle = 1;
     const errorResponse = new HttpErrorResponse({ error: { messages: 'Error al eliminar el artículo' }, status: 500 });
 
@@ -156,7 +157,7 @@ describe('CartComponent', () => {
     expect(mockCartService.deleteCart).toHaveBeenCalledWith(idArticle);
 
     expect(component.isMessagess).toBe(true);
-    expect(component.status).toBe('error'); 
+    expect(component.status).toBe('error');
     expect(component.srcImage).toBe(AppConstants.SRC_IMAGE_ERROR);
     expect(component.message).toBe(errorResponse.message);
 
@@ -176,8 +177,65 @@ describe('CartComponent', () => {
     expect(mockCartService.deleteCart).toHaveBeenCalledWith(idArticle);
 
     expect(component.isMessagess).toBe(true);
-    expect(component.status).toBe('warning'); 
+    expect(component.status).toBe('warning');
     expect(component.srcImage).toBe(AppConstants.SRC_IMAGE_WARNING);
+    expect(component.message).toBe(errorResponse.message);
+
+    setTimeout(() => {
+      expect(component.isMessagess).toBe(false);
+    }, 4000);
+  });
+
+  it('should buy successfully and handle success response', () => {
+    const mockSuccessResponse: ResponseSuccess = { status: '200', messages: 'Purchase successful' };
+
+    mockCartService.buy.mockReturnValue(of(mockSuccessResponse));
+
+    component.buy();
+
+    expect(mockCartService.buy).toHaveBeenCalled();
+    expect(component.message).toBe(mockSuccessResponse.messages);
+    expect(component.isMessagess).toBe(true);
+    expect(component.status).toBe('success');
+    expect(component.srcImage).toBe(AppConstants.SRC_IMAGE_SUCCESS);
+    expect(component.isSuccessful).toBe(true);
+
+    setTimeout(() => {
+      expect(component.isMessagess).toBe(false);
+    }, 4000);
+  });
+
+  it('should handle error 400 when buying', () => {
+    const errorResponse = new HttpErrorResponse({ error: { messages: 'Error al realizar la compra' }, status: 400 });
+
+    mockCartService.buy.mockReturnValue(throwError(() => errorResponse));
+
+    component.buy();
+
+    expect(mockCartService.buy).toHaveBeenCalled();
+
+    expect(component.isMessagess).toBe(true);
+    expect(component.status).toBe('warning');
+    expect(component.srcImage).toBe(AppConstants.SRC_IMAGE_WARNING);
+    expect(component.message).toBe(errorResponse.message);
+
+    setTimeout(() => {
+      expect(component.isMessagess).toBe(false);
+    }, 4000);
+  });
+
+  it('should handle error 500 when buying', () => {
+    const errorResponse = new HttpErrorResponse({ error: { messages: 'Error al realizar la compra' }, status: 500 });
+
+    mockCartService.buy.mockReturnValue(throwError(() => errorResponse));
+
+    component.buy();
+
+    expect(mockCartService.buy).toHaveBeenCalled();
+
+    expect(component.isMessagess).toBe(true);
+    expect(component.status).toBe('error');
+    expect(component.srcImage).toBe(AppConstants.SRC_IMAGE_ERROR);
     expect(component.message).toBe(errorResponse.message);
 
     setTimeout(() => {

@@ -14,6 +14,7 @@ export class HeaderComponent {
   @ViewChild('loginModal') loginModal!: ModalLoginComponent;
   menuOpen = false;
   isAdmin= false;
+  isClient= false;
   isAuthenticate = false;
 
   constructor(private router: Router, private tokenService: TokenService) {}
@@ -21,7 +22,8 @@ export class HeaderComponent {
   ngOnInit() {
     this.tokenService.currentRole.subscribe(() => {
       this.isAuthenticate = this.tokenService.isAuthenticated();
-      this.isAdmin = localStorage.getItem("ROLE") == AppConstants.ROLE_ADMIN? true: false;    
+      this.isAdmin = localStorage.getItem("ROLE") == AppConstants.ROLE_ADMIN? true: false;
+      this.isClient = localStorage.getItem("ROLE") == AppConstants.ROLE_CLIENT? true: false;    
     });
   }
 

@@ -57,4 +57,31 @@ describe('TokenService', () => {
       expect(role).toBeNull();
     });
   });
+
+  it('should return null if no token is present', () => {
+    localStorage.removeItem('token');
+    expect(service.getUserNameToken()).toBeNull();
+  });
+
+  it('should return the user name from the token', () => {
+    const mockToken = 'mockToken';
+    const mockDecoded = { sub: 'testUser' };
+    localStorage.setItem('token', mockToken);
+    (jwtDecode as jest.Mock).mockReturnValue(mockDecoded);
+
+    const userName = service.getUserNameToken();
+    expect(userName).toBe('testUser');
+    expect(jwtDecode).toHaveBeenCalledWith(mockToken);
+  });
+
+  it('should return null if the token does not have a user name (sub)', () => {
+    const mockToken = 'mockToken';
+    const mockDecoded = {};
+    localStorage.setItem('token', mockToken);
+    (jwtDecode as jest.Mock).mockReturnValue(mockDecoded);
+
+    const userName = service.getUserNameToken();
+    expect(userName).toBeNull();
+    expect(jwtDecode).toHaveBeenCalledWith(mockToken);
+  });
 });

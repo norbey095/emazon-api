@@ -17,6 +17,7 @@
       <menu-item url="/categories" title="Categorías"></menu-item>
       <menu-item url="/brands" title="Marcas"></menu-item>
       <menu-item url="/create-user" title="Auxiliar" *ngIf="isAdmin"></menu-item>
+      <menu-item url="/my-buy" title="Mis Compras" *ngIf="isClient"></menu-item>
       <li *ngIf="!isAuthenticate">
         <button (click)="openLoginModal()" class="icon-button">
           <i class="fas fa-user" title="Iniciar Sesión"></i>
