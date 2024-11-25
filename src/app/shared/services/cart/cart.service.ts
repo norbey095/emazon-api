@@ -59,4 +59,16 @@ export class CartService {
 
     return this.http.delete<ResponseSuccess>(registryUrl, { params,headers });
   }
+
+  buy(): Observable<ResponseSuccess> {
+    const token = localStorage.getItem("token");
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    const registryUrl = `${this.apiUrl}buy`;
+
+    return this.http.post<ResponseSuccess>(registryUrl, "",{ headers });
+  }
 }

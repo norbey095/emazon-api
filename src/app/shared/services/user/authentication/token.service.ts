@@ -17,7 +17,17 @@ export class TokenService {
       return decoded.authorities || null;
     }
     return null;
+  }
+
+  getUserNameToken(): string | null {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: DecodedToken = jwtDecode(token);
+      return decoded.sub || null;
+    }
+    return null;
   }  
+
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');

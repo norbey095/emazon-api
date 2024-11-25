@@ -74,10 +74,11 @@ export class CartComponent {
         this.status = "success";
         this.srcImage = AppConstants.SRC_IMAGE_SUCCESS;
         this.isSuccessful = true;
-        this.fetchCarts();
+        
         
         setTimeout(() => {
-          this.isMessagess = false; 
+          this.isMessagess = false;
+          this.onClose();
         }, 4000);
       },
       error: (error: HttpErrorResponse) => {
@@ -101,5 +102,37 @@ export class CartComponent {
   formatPrice(price: number): string {
     const formattedNumber = price.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     return `$${formattedNumber}`;
+  }
+
+  buy(): void {
+    this.cartService.buy().subscribe({
+      next: (response: ResponseSuccess) => {
+        this.message =  response.messages; 
+        this.isMessagess = true;  
+        this.status = "success";
+        this.srcImage = AppConstants.SRC_IMAGE_SUCCESS;
+        this.isSuccessful = true;
+        this.fetchCarts();
+        
+        setTimeout(() => {
+          this.isMessagess = false;
+        }, 4000);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.isMessagess = true;
+        if(error.status == 409 || error.status == 400){
+          this.status = "warning";
+          this.srcImage = AppConstants.SRC_IMAGE_WARNING;   
+        } else {
+          this.status = "error";
+          this.srcImage = AppConstants.SRC_IMAGE_ERROR;   
+        }
+        this.message = error.message;
+        
+        setTimeout(() => {
+          this.isMessagess = false; 
+        }, 4000);
+      }
+    });
   }
 }

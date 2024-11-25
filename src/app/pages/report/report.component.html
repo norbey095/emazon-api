@@ -1,0 +1,29 @@
+<div class="compras">
+  <h1 class="compras__title">Mis Compras Realizadas</h1>
+
+  <div *ngIf="buys.length === 0" class="empty-state show">
+      <img src="assets/images/Empty.png" alt="No hay datos" />
+      <p>No hay datos disponibles</p>
+  </div>
+
+  <div class="table-wrapper">
+      <table class="compras__table" *ngIf="buys.length > 0">
+          <thead>
+              <tr>
+                  <th class="compras__table-header">Fecha</th>
+                  <th class="compras__table-header">Total</th>
+                  <th class="compras__table-header">Productos</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let buy of buys" class="compras__row">
+                  <td class="compras__table-cell">{{ buy.buyDate }}</td>
+                  <td class="compras__table-cell">${{ buy.totalPrice.toFixed(2) }}</td>
+                  <td class="compras__table-cell">
+                      {{ formatProducts(buy.articleDetails) }}
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
